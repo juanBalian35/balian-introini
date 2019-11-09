@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="614.0" prefWidth="1053.0" styleClass="paneCentro" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Polygon fill="#b8db81" layoutX="-17.0" layoutY="41.0" rotate="90.0" scaleX="0.3" scaleY="0.3" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Label layoutX="90.0" layoutY="56.0" prefHeight="67.0" prefWidth="444.0" text="Productos" textFill="WHITE">
+         <font>
+            <Font name="Heiti SC Light" size="40.0" />
+         </font>
+      </Label>
+      <TableView layoutX="566.0" layoutY="155.0" prefHeight="304.0" prefWidth="452.0">
+        <columns>
+          <TableColumn prefWidth="40.7003173828125" text="ID" />
+          <TableColumn prefWidth="73.76080322265625" text="Nombre" />
+            <TableColumn prefWidth="67.7811279296875" text="Material" />
+            <TableColumn prefWidth="110.7305908203125" text="Descripción" />
+            <TableColumn prefWidth="66.0706787109375" text="Imagen" />
+            <TableColumn prefWidth="87.74078369140625" text="Precio" />
+            <TableColumn prefWidth="118.25927734375" text="Envases" />
+        </columns>
+      </TableView>
+      <Button layoutX="220.0" layoutY="511.0" mnemonicParsing="false" text="Agregar producto" />
+      <Button layoutX="748.0" layoutY="501.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="116.0" text="Eliminar producto" />
+      <Pane layoutX="70.0" layoutY="156.0" prefHeight="321.0" prefWidth="486.0">
+         <children>
+            <Label layoutX="20.0" layoutY="30.0" text="ID:" />
+            <Label layoutX="20.0" layoutY="70.0" text="Nombre:" />
+            <Label layoutX="20.0" layoutY="110.0" text="Material:" />
+            <Label layoutX="20.0" layoutY="150.0" text="Precio:" />
+            <TextField layoutX="90.0" layoutY="25.0" prefHeight="27.0" prefWidth="169.0" />
+            <TextField layoutX="90.0" layoutY="65.0" prefHeight="27.0" prefWidth="169.0" />
+            <TextField layoutX="90.0" layoutY="105.0" prefHeight="27.0" prefWidth="169.0" />
+            <TextField layoutX="90.0" layoutY="145.0" prefHeight="27.0" prefWidth="169.0" />
+            <Label layoutX="20.0" layoutY="190.0" text="Descripción:" />
+            <TextArea layoutX="98.0" layoutY="188.0" prefHeight="77.0" prefWidth="143.0" />
+            <ImageView fitHeight="102.0" fitWidth="156.0" layoutX="298.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@recursos/empty-image.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="318.0" layoutY="143.0" mnemonicParsing="false" text="Agregar imagen" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

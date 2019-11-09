@@ -1,0 +1,56 @@
+.barraArriba{
+-fx-background-color :  #86AE46;
+
+    -fx-background-radius: 20 20 0 0;
+}
+
+.barraIzquierda{
+    -fx-background-color :  #86AE46;
+
+    -fx-background-radius: 20 0 0 20;
+}
+.paneCentro{
+    -fx-background-color :   #b8db81;
+
+    -fx-background-radius: 20;
+}
+
+.panelFondo
+{
+    -fx-background-color : #F5F3F0;
+  
+}
+
+.button1
+{
+-fx-background-color :  #86AE46;
+-fx-background-radius :  0 0 0 0;
+}
+.button1:hover
+{
+-fx-background-color : rgb(184, 219, 129);
+-fx-background-radius :  0 0 0 0;
+}
+.button1:pressed
+{
+-fx-background-color : rgb(109, 141, 58) ;
+-fx-background-radius :  0 0 0 0;
+}
+
+.button2
+{
+-fx-background-color :  #b8db81;
+-fx-background-radius :  0 0 0 0;
+}
+.button2:hover
+{
+-fx-background-color : rgb(184, 219, 129);
+-fx-background-radius :  0 0 0 0;
+}
+.button2:pressed
+{
+-fx-background-color : rgb(109, 141, 58) ;
+-fx-background-radius :  0 0 0 0;
+}
+
+
