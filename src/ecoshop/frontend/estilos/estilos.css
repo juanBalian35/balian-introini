@@ -10,14 +10,14 @@
     -fx-background-radius: 20 0 0 20;
 }
 .paneCentro{
-    -fx-background-color :   #b8db81;
+    -fx-background-color :   #6d8d3a;
 
     -fx-background-radius: 20;
 }
 
 .panelFondo
 {
-    -fx-background-color : #F5F3F0;
+    -fx-background-color : #f1fce4;
   
 }
 
@@ -28,19 +28,22 @@
 }
 .button1:hover
 {
--fx-background-color : rgb(184, 219, 129);
+    -fx-background-color : rgb(109, 141, 58) ;
+
 -fx-background-radius :  0 0 0 0;
 }
 .button1:pressed
 {
--fx-background-color : rgb(109, 141, 58) ;
+-fx-background-color : rgb(184, 219, 129);
+
 -fx-background-radius :  0 0 0 0;
 }
 
 .button2
 {
--fx-background-color :  #b8db81;
+-fx-background-color :  rgb(109, 141, 58);
 -fx-background-radius :  0 0 0 0;
+
 }
 .button2:hover
 {

@@ -16,19 +16,19 @@
       <VBox fillWidth="false" prefHeight="454.0" prefWidth="105.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
          <children>
             <Pane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="65.0" prefWidth="105.0" />
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn1" prefHeight="67.0" prefWidth="105.0" styleClass="button2" stylesheets="@estilos/estilos.css" text="Administrar productos" textFill="#38612e">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn1" prefHeight="67.0" prefWidth="105.0" styleClass="button2" stylesheets="@estilos/estilos.css" text="Administrar productos" textFill="#f1fce4">
                <font>
                   <Font size="9.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@recursos/003-basket.png" />
+                        <Image url="@recursos/006-basket-L.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn2" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Administrar envases" textFill="#38612e">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn2" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Administrar envases" textFill="#305329">
                <font>
                   <Font size="9.0" />
                </font>
@@ -40,7 +40,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn3" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Puntos de venta" textFill="#38612e">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn3" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Puntos de venta" textFill="#305329">
                <font>
                   <Font size="9.0" />
                </font>
@@ -52,7 +52,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn4" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Registrar venta" textFill="#38612e">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn4" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Registrar venta" textFill="#305329">
                <font>
                   <Font size="9.0" />
                </font>
@@ -64,7 +64,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn5" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Ver pre-ventas" textFill="#38612e">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn5" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Ver pre-ventas" textFill="#305329">
                <font>
                   <Font size="9.0" />
                </font>
@@ -76,12 +76,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn6" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Estadísticas" textFill="#38612e">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn6" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Estadísticas" textFill="#305329">
                <font>
                   <Font size="9.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/recursos/003-basket.png&quot;);">
                      <image>
                         <Image url="@recursos/007-graphic.png" />
                      </image>
@@ -96,7 +96,7 @@
          <children>
             <Pane layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1053.0" styleClass="paneCentro" stylesheets="@estilos/estilos.css">
                <children>
-                  <Polygon fill="#b8db81" layoutX="-17.0" layoutY="41.0" rotate="90.0" scaleX="0.3" scaleY="0.3" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0">
+                  <Polygon fill="#6d8d3a" layoutX="-14.0" layoutY="41.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0">
                     <points>
                       <Double fx:value="-50.0" />
                       <Double fx:value="40.0" />
@@ -128,7 +128,7 @@
                      <graphic>
                         <ImageView fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@recursos/icons8-cancel.png" />
+                              <Image url="@recursos/delete-button.png" />
                            </image>
                         </ImageView>
                      </graphic>
