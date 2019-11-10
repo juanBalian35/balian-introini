@@ -49,6 +49,7 @@ public class InterfazController implements Initializable {
 
     @FXML
     private void click_btn2(MouseEvent event) {
+        
     }
 
     @FXML

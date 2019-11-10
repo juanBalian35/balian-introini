@@ -1,0 +1,16 @@
+.tab{
+    -fx-pref-width: 430;
+    -fx-pref-height: 60;
+    
+
+}
+
+.tab-header-background{
+    -fx-background-color: rgb(84, 109, 45)
+
+}
+
+.jfx-tab-pane .tab-selected-line{
+    -fx-border-color:  #b8db81;
+    -fx-pref-height: 10;
+}
