@@ -16,7 +16,7 @@
       <VBox fillWidth="false" prefHeight="454.0" prefWidth="105.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
          <children>
             <Pane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="65.0" prefWidth="105.0" />
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn1" prefHeight="67.0" prefWidth="105.0" styleClass="button2" stylesheets="@estilos/estilos.css" text="Administrar productos" textFill="#f1fce4">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn1" prefHeight="67.0" prefWidth="105.0" styleClass="botonSeleccionado" stylesheets="@estilos/estilos.css" text="Administrar productos" textFill="#f1fce4">
                <font>
                   <Font size="9.0" />
                </font>
@@ -28,7 +28,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn2" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Administrar envases" textFill="#305329">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn2" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Administrar envases" textFill="#305329">
                <font>
                   <Font size="9.0" />
                </font>
@@ -40,7 +40,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn3" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Puntos de venta" textFill="#305329">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn3" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Puntos de venta" textFill="#305329">
                <font>
                   <Font size="9.0" />
                </font>
@@ -52,7 +52,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn4" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Registrar venta" textFill="#305329">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn4" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Registrar venta" textFill="#305329">
                <font>
                   <Font size="9.0" />
                </font>
@@ -64,7 +64,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn5" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Ver pre-ventas" textFill="#305329">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn5" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Ver pre-ventas" textFill="#305329">
                <font>
                   <Font size="9.0" />
                </font>
@@ -76,7 +76,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn6" prefHeight="67.0" prefWidth="108.0" styleClass="button1" stylesheets="@estilos/estilos.css" text="Estadísticas" textFill="#305329">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn6" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Estadísticas" textFill="#305329">
                <font>
                   <Font size="9.0" />
                </font>

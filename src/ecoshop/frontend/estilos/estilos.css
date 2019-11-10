@@ -23,39 +23,39 @@
   
 }
 
-.button1
+.botonNoSeleccionado
 {
 /*-fx-background-color :  #86AE46;*/
 -fx-background-color : #b8db81;
 -fx-background-radius :  0 0 0 0;
 }
-.button1:hover
+.botonNoSeleccionado:hover
 {
     
     -fx-background-color :  #86AE46;
 
 -fx-background-radius :  0 0 0 0;
 }
-.button1:pressed
+.botonNoSeleccionado:pressed
 {
     -fx-background-color : rgb(109, 141, 58) ;
 
 -fx-background-radius :  0 0 0 0;
 }
 
-.button2
+.botonSeleccionado
 {
 /*-fx-background-color :  rgb(109, 141, 58);*/
 -fx-background-color :  #86AE46;
 -fx-background-radius :  0 0 0 0;
 
 }
-.button2:hover
+.botonSeleccionado:hover
 {
 -fx-background-color : #86AE46;
 -fx-background-radius :  0 0 0 0;
 }
-.button2:pressed
+.botonSeleccionado:pressed
 {
 -fx-background-color : rgb(109, 141, 58) ;
 -fx-background-radius :  0 0 0 0;
