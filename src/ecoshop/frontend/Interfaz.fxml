@@ -16,72 +16,72 @@
       <VBox fillWidth="false" prefHeight="454.0" prefWidth="105.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
          <children>
             <Pane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="65.0" prefWidth="105.0" />
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn1" prefHeight="67.0" prefWidth="105.0" styleClass="botonSeleccionado" stylesheets="@estilos/estilos.css" text="Administrar productos" textFill="#f1fce4">
+            <Button fx:id="botonAdministrarProductos" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonAdministrarProductos" prefHeight="67.0" prefWidth="105.0" styleClass="botonSeleccionado" stylesheets="@estilos/estilos.css" text="Administrar productos">
                <font>
                   <Font size="9.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagenAdministrarProductos" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@recursos/006-basket-L.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn2" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Administrar envases" textFill="#305329">
+            <Button fx:id="botonAdministrarEnvases" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonAdministrarEnvases" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Administrar envases">
                <font>
                   <Font size="9.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagenAdministrarEnvases" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@recursos/001-plastic.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn3" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Puntos de venta" textFill="#305329">
+            <Button fx:id="botonPuntosDeVenta" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonPuntosDeVenta" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Puntos de venta">
                <font>
                   <Font size="9.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagenPuntosDeVenta" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@recursos/002-street.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn4" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Registrar venta" textFill="#305329">
+            <Button fx:id="botonRegistrarVentas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonRegistrarVentas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Registrar venta">
                <font>
                   <Font size="9.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagenRegistrarVentas" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@recursos/004-swipe.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn5" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Ver pre-ventas" textFill="#305329">
+            <Button fx:id="botonPreVentas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonPreVentas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Ver pre-ventas">
                <font>
                   <Font size="9.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagenPreVentas" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@recursos/011-payment-day.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#click_btn6" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Estadísticas" textFill="#305329">
+            <Button fx:id="botonEstadisticas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonEstadisticas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Estadísticas">
                <font>
                   <Font size="9.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/recursos/003-basket.png&quot;);">
+                  <ImageView fx:id="imagenEstadisticas" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/recursos/003-basket.png&quot;);">
                      <image>
                         <Image url="@recursos/007-graphic.png" />
                      </image>

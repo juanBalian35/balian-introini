@@ -6,8 +6,11 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -15,9 +18,44 @@ import javafx.stage.Stage;
  * @author Juan Balian
  */
 public class InterfazController implements Initializable {
+    @FXML 
+    private Button botonAdministrarEnvases;
+    
+    @FXML 
+    private Button botonAdministrarProductos;
+    
+    @FXML
+    private Button botonPuntosDeVenta;
+    
+    @FXML
+    private Button botonRegistrarVentas;
+    
+    @FXML
+    private Button botonPreVentas;
+    
+    @FXML
+    private Button botonEstadisticas;
+    
+    @FXML 
+    private ImageView imagenAdministrarEnvases;
+    
+    @FXML 
+    private ImageView imagenAdministrarProductos;
+    
+    @FXML
+    private ImageView imagenPuntosDeVenta;
+    
+    @FXML
+    private ImageView imagenRegistrarVentas;
+    
+    @FXML
+    private ImageView imagenPreVentas;
+    
+    @FXML
+    private ImageView imagenEstadisticas;
+            
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
   
     @FXML
@@ -40,52 +78,91 @@ public class InterfazController implements Initializable {
         x=event.getSceneX();
         y=event.getSceneY();
     }
-    private void cambiarBotones(Button b){
-        if(b.getStyleClass().contains("botonNoSeleccionado")){
-            b.getStyleClass().remove("botonNoSeleccionado");
-            b.getStyleClass().add("botonSeleccionado");
-        }
-        else{
-            b.getStyleClass().remove("botonSeleccionado");
-            b.getStyleClass().add("botonNoSeleccionado");
-        }
-    }
-
-    @FXML
-    private void click_btn1(MouseEvent event) {
-        Button tb = (Button)event.getSource();
+    
+    private void cambiarClaseBoton(Button boton, String nuevaClase){
+        if(nuevaClase.equals("botonSeleccionado"))
+            boton.getStyleClass().remove("botonNoSeleccionado");
+        else
+            boton.getStyleClass().remove("botonSeleccionado");
         
-        cambiarBotones(tb);
+        boton.getStyleClass().add(nuevaClase);
     }
-
+    
+    private void cambiarImagenBoton(ImageView imagen, String ruta){
+        imagen.setImage(new Image(getClass().getResourceAsStream(ruta)));
+    }
+    
+    private void limpiarBoton(Button boton, ImageView imageView, String ruta){
+        cambiarClaseBoton(boton,"botonNoSeleccionado");
+        cambiarImagenBoton(imageView, ruta);
+    }
+    
+    private void limpiarBotones(){
+        limpiarBoton(botonAdministrarProductos, imagenAdministrarProductos, "recursos/006-basket-L.png");
+        limpiarBoton(botonAdministrarEnvases, imagenAdministrarEnvases, "recursos/001-plastic.png");
+        limpiarBoton(botonPuntosDeVenta, imagenPuntosDeVenta, "recursos/002-street.png");
+        limpiarBoton(botonRegistrarVentas, imagenRegistrarVentas, "recursos/004-swipe.png");
+        limpiarBoton(botonPreVentas, imagenPreVentas, "recursos/011-payment-day.png");
+        limpiarBoton(botonEstadisticas, imagenEstadisticas, "recursos/007-graphic.png");
+    }
+    
     @FXML
-    private void click_btn2(MouseEvent event) {
-        Button tb = (Button)event.getSource();
+    private void clickBotonAdministrarProductos(MouseEvent event) {
+        limpiarBotones();
         
-        cambiarBotones(tb);
+        Button b = (Button)event.getSource();
+        cambiarClaseBoton(b,"botonSeleccionado");
+        
+        //cambiarImagenBoton(imagenAdministrarProductos,"001-plastic-L.png");
     }
-
+    
     @FXML
-    private void click_btn3(MouseEvent event) {
-        Button tb = (Button)event.getSource();
-        cambiarBotones(tb);
+    private void clickBotonAdministrarEnvases(MouseEvent event) {
+        limpiarBotones();
+        
+        Button b = (Button)event.getSource();
+        cambiarClaseBoton(b,"botonSeleccionado");
+        
+        cambiarImagenBoton(imagenAdministrarEnvases,"recursos/001-plastic-L.png");
     }
-
+    
     @FXML
-    private void click_btn4(MouseEvent event) {
-        Button tb = (Button)event.getSource();
-        cambiarBotones(tb);
+    private void clickBotonPuntosDeVenta(MouseEvent event) {
+        limpiarBotones();
+        
+        Button b = (Button)event.getSource();
+        cambiarClaseBoton(b,"botonSeleccionado");
+        
+        cambiarImagenBoton(imagenPuntosDeVenta,"recursos/002-street-L.png");
     }
-
+    
     @FXML
-    private void click_btn5(MouseEvent event) {
-        Button tb = (Button)event.getSource();
-        cambiarBotones(tb);
+    private void clickBotonRegistrarVentas(MouseEvent event) {
+        limpiarBotones();
+        
+        Button b = (Button)event.getSource();
+        cambiarClaseBoton(b,"botonSeleccionado");
+        
+        cambiarImagenBoton(imagenRegistrarVentas,"recursos/003-swipe-L.png");
     }
-
+    
     @FXML
-    private void click_btn6(MouseEvent event) {
-        Button tb = (Button)event.getSource();
-        cambiarBotones(tb);
+    private void clickBotonPreVentas(MouseEvent event) {
+        limpiarBotones();
+        
+        Button b = (Button)event.getSource();
+        cambiarClaseBoton(b,"botonSeleccionado");
+        
+        cambiarImagenBoton(imagenPreVentas,"recursos/005-payment-day-L.png");
+    }
+    
+    @FXML
+    private void clickBotonEstadisticas(MouseEvent event) {
+        limpiarBotones();
+        
+        Button b = (Button)event.getSource();
+        
+        cambiarClaseBoton(b,"botonSeleccionado");
+        cambiarImagenBoton(imagenEstadisticas,"recursos/007-bar-chart-L.png");
     }
 }

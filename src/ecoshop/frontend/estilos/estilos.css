@@ -1,63 +1,49 @@
 .barraArriba{
--fx-background-color :  #86AE46;
-
+    -fx-background-color :  #86AE46;
     -fx-background-radius: 20 20 0 0;
 }
 
 .barraIzquierda{
-    /*-fx-background-color :  #86AE46;*/
     -fx-background-color : #b8db81;
-
     -fx-background-radius: 20 0 0 20;
 }
 .paneCentro{
-   /* -fx-background-color :   #6d8d3a; */
-   
     -fx-background-color :  #86AE46;
     -fx-background-radius: 20;
 }
 
-.panelFondo
-{
+.panelFondo{
     -fx-background-color : #f1fce4;
-  
 }
 
-.botonNoSeleccionado
-{
-/*-fx-background-color :  #86AE46;*/
--fx-background-color : #b8db81;
--fx-background-radius :  0 0 0 0;
+.botonNoSeleccionado{
+    -fx-background-color : #b8db81;
+    -fx-background-radius :  0 0 0 0;
+    -fx-text-fill: #305329;
 }
-.botonNoSeleccionado:hover
-{
-    
+
+.botonNoSeleccionado:hover{  
     -fx-background-color :  #86AE46;
-
--fx-background-radius :  0 0 0 0;
+    -fx-background-radius :  0 0 0 0;
 }
-.botonNoSeleccionado:pressed
-{
+.botonNoSeleccionado:pressed{
     -fx-background-color : rgb(109, 141, 58) ;
-
--fx-background-radius :  0 0 0 0;
+    -fx-background-radius :  0 0 0 0;
 }
 
-.botonSeleccionado
-{
-/*-fx-background-color :  rgb(109, 141, 58);*/
--fx-background-color :  #86AE46;
--fx-background-radius :  0 0 0 0;
+.botonSeleccionado{
+    -fx-background-color :  #86AE46;
+    -fx-background-radius :  0 0 0 0;
+    -fx-text-fill: #f1fce4;
 
 }
 .botonSeleccionado:hover
 {
--fx-background-color : #86AE46;
--fx-background-radius :  0 0 0 0;
+    -fx-background-color : #86AE46;
+    -fx-background-radius :  0 0 0 0;
 }
-.botonSeleccionado:pressed
-{
--fx-background-color : rgb(109, 141, 58) ;
--fx-background-radius :  0 0 0 0;
+.botonSeleccionado:pressed{
+    -fx-background-color : rgb(109, 141, 58) ;
+    -fx-background-radius :  0 0 0 0;
 }
 
