@@ -98,7 +98,7 @@ public class InterfazController implements Initializable {
     }
     
     private void limpiarBotones(){
-        limpiarBoton(botonAdministrarProductos, imagenAdministrarProductos, "recursos/006-basket-L.png");
+        limpiarBoton(botonAdministrarProductos, imagenAdministrarProductos, "recursos/003-basket.png");
         limpiarBoton(botonAdministrarEnvases, imagenAdministrarEnvases, "recursos/001-plastic.png");
         limpiarBoton(botonPuntosDeVenta, imagenPuntosDeVenta, "recursos/002-street.png");
         limpiarBoton(botonRegistrarVentas, imagenRegistrarVentas, "recursos/004-swipe.png");
@@ -113,7 +113,7 @@ public class InterfazController implements Initializable {
         Button b = (Button)event.getSource();
         cambiarClaseBoton(b,"botonSeleccionado");
         
-        //cambiarImagenBoton(imagenAdministrarProductos,"001-plastic-L.png");
+        cambiarImagenBoton(imagenAdministrarProductos,"recursos/006-basket-L.png");
     }
     
     @FXML
