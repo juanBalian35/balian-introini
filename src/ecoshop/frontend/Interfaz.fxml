@@ -13,8 +13,18 @@
 
 <BorderPane prefHeight="709.0" prefWidth="1216.0" style="-fx-background-radius: 20" styleClass="panelFondo" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.InterfazController">
    <left>
-      <AnchorPane styleClass="barraIzquierda" stylesheets="@estilos/estilos.css">
+      <AnchorPane maxWidth="105.0" minWidth="105.0" prefWidth="105.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css">
          <children>
+            <Polygon fx:id="triangulo" fill="#86ae46" layoutX="118.0" layoutY="107.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0">
+              <points>
+                <Double fx:value="-50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="0.0" />
+                <Double fx:value="-60.0" />
+              </points>
+            </Polygon>
             <VBox fillWidth="false" prefHeight="454.0" prefWidth="105.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
                <children>
                   <Pane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="67.0" prefWidth="105.0" />
@@ -98,70 +108,7 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1053.0" styleClass="paneCentro" stylesheets="@estilos/estilos.css">
-               <children>
-                  <Polygon fx:id="triangulo" fill="#86ae46" layoutX="-14.0" layoutY="41.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0">
-                    <points>
-                      <Double fx:value="-50.0" />
-                      <Double fx:value="40.0" />
-                      <Double fx:value="50.0" />
-                      <Double fx:value="40.0" />
-                      <Double fx:value="0.0" />
-                      <Double fx:value="-60.0" />
-                    </points>
-                  </Polygon>
-                  <Polygon fx:id="triangulo1" fill="#86ae46" layoutX="-14.0" layoutY="108.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0" visible="false">
-                     <points>
-                        <Double fx:value="-50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="0.0" />
-                        <Double fx:value="-60.0" />
-                     </points>
-                  </Polygon>
-                  <Polygon fx:id="triangulo2" fill="#86ae46" layoutX="-14.0" layoutY="173.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0" visible="false">
-                     <points>
-                        <Double fx:value="-50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="0.0" />
-                        <Double fx:value="-60.0" />
-                     </points>
-                  </Polygon>
-                  <Polygon fx:id="triangulo3" fill="#86ae46" layoutX="-14.0" layoutY="238.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0" visible="false">
-                     <points>
-                        <Double fx:value="-50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="0.0" />
-                        <Double fx:value="-60.0" />
-                     </points>
-                  </Polygon>
-                  <Polygon fx:id="triangulo4" fill="#86ae46" layoutX="-14.0" layoutY="303.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0" visible="false">
-                     <points>
-                        <Double fx:value="-50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="0.0" />
-                        <Double fx:value="-60.0" />
-                     </points>
-                  </Polygon>
-                  <Polygon fx:id="triangulo5" fill="#86ae46" layoutX="-14.0" layoutY="368.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0" visible="false">
-                     <points>
-                        <Double fx:value="-50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="0.0" />
-                        <Double fx:value="-60.0" />
-                     </points>
-                  </Polygon>
-               </children>
-            </Pane>
+            <Pane layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1042.0" styleClass="paneCentro" stylesheets="@estilos/estilos.css" />
             <BorderPane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="56.0" prefWidth="1110.0">
                <left>
                   <Pane prefHeight="56.0" prefWidth="345.0">
@@ -189,31 +136,31 @@
                   </Button>
                </right>
             </BorderPane>
-            <Pane id="Estadisticas" fx:id="PaneEstadistica" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1053.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="Estadisticas" fx:id="PaneEstadistica" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Label layoutX="71.0" layoutY="50.0" text="Estadisticas" />
                </children></Pane>
-            <Pane id="PreVenta" fx:id="PanePreVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1053.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="PreVenta" fx:id="PanePreVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Label layoutX="71.0" layoutY="50.0" text="Pre-ventas" />
                </children></Pane>
-            <Pane id="RegistrarVenta" fx:id="PaneRegistrarVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1053.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="RegistrarVenta" fx:id="PaneRegistrarVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Label layoutX="71.0" layoutY="50.0" text="Registrar Venta" />
                </children></Pane>
-            <Pane id="PuntosDeVenta" fx:id="PanePuntosDeVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1053.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="PuntosDeVenta" fx:id="PanePuntosDeVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Label layoutX="71.0" layoutY="50.0" text="Puntos de venta" />
                </children></Pane>
-            <Pane id="AdministrarEnvase" fx:id="PaneAdministrarEnvase" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1053.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="AdministrarEnvase" fx:id="PaneAdministrarEnvase" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Label layoutX="71.0" layoutY="50.0" text="Administrar envase" />
                </children></Pane>
-            <Pane id="AdministrarProducto" fx:id="PaneAdministrarProducto" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1053.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="AdministrarProducto" fx:id="PaneAdministrarProducto" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Pane layoutX="35.0" layoutY="94.0" prefHeight="483.0" prefWidth="958.0" stylesheets="@estilos/main.css">
                      <children>
-                        <JFXTabPane layoutX="-17.0" layoutY="-78.0" prefHeight="515.0" prefWidth="1015.0" stylesheets="@estilos/main.css">
+                        <JFXTabPane layoutX="-35.0" layoutY="-94.0" prefHeight="615.0" prefWidth="1056.0" stylesheets="@estilos/main.css">
                            <tabs>
                               <Tab text="Agregar producto">
                                  <content>
@@ -245,7 +192,7 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Eliminar producto">
+                              <Tab closable="false" text="Eliminar producto">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
@@ -271,6 +218,7 @@
                   </Pane>
                </children>
             </Pane>
+            <Pane layoutX="1068.0" layoutY="49.0" prefHeight="630.0" prefWidth="42.0" style="-fx-background-color: #f1fce4;" />
          </children>
       </Pane>
    </center>

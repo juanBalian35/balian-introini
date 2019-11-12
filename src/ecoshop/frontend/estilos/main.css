@@ -1,13 +1,16 @@
-.tab{
-    -fx-pref-width: 470;
-    -fx-pref-height: 60;
+
+.tab{ 
+    -fx-pref-width: 520;
+
+    -fx-pref-height: 90;
     -fx-background-radius: 20 20 0 0;
     
 }
 
 .tab-header-background{
-    -fx-background-color: rgb(84, 109, 45);
+    -fx-background-color: #f1fce4;
     -fx-background-radius :  20 20 0 0;
+   
     
 }
 
@@ -19,7 +22,18 @@
     
 }
 
+.jfx-tab-pane .tab-selected{
+    
+    -fx-background-color: #b8db81;
+    
+    
+}
+
 .jfx-tab-pane .tab .tab-label {
-    -fx-font-size: 24;
-    -fx-font-family: 'Adobe Heiti Std'
+    -fx-font-size: 30;
+    -fx-font-family: 'AppleGothic'
+}
+.jfx-tab-pane .tab {
+    -fx-background-color: rgb(84, 109, 45);
+   
 }

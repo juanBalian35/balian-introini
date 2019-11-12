@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -62,9 +64,6 @@ public class InterfazController implements Initializable {
     
     @FXML 
      private Shape triangulo;
-        @FXML 
-     private Shape triangulo1;
-
     
     @FXML
     private Pane PaneRegistrarVenta;
@@ -150,9 +149,7 @@ public class InterfazController implements Initializable {
         cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
         cambiarClaseControl(PaneAdministrarProducto,"paneSeleccionado","paneNoSeleccionado");
         cambiarImagenBoton(imagenAdministrarProductos,"recursos/006-basket-L.png");
-        moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
-        
-        
+        moverTriangulo(b.getLayoutY() - b.getHeight());
         
     }
     
@@ -165,24 +162,7 @@ public class InterfazController implements Initializable {
         cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
         cambiarClaseControl(PaneAdministrarEnvase,"paneSeleccionado","paneNoSeleccionado");
         cambiarImagenBoton(imagenAdministrarEnvases,"recursos/001-plastic-L.png");
-        //moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
-        
-         TranslateTransition tt = new TranslateTransition(Duration.seconds(2), (Node) triangulo);
-       // tt.setToY(y);
-       tt.setToX(-40);
-        tt.setAutoReverse(true);
-        tt.play();
-        
-        triangulo1.setVisible(true);
-        TranslateTransition tt2 = new TranslateTransition(Duration.seconds(2), (Node) triangulo1);
-       // tt.setToY(y);
-       tt2.setToX(-14);
-        tt2.setAutoReverse(false);
- 
-     tt2.play();
-     
-     triangulo.setVisible(false);
-        
+        moverTriangulo(b.getLayoutY() - b.getHeight());
     }
     
     @FXML
@@ -194,7 +174,7 @@ public class InterfazController implements Initializable {
         cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
         cambiarClaseControl(PanePuntosDeVenta,"paneSeleccionado","paneNoSeleccionado");
         cambiarImagenBoton(imagenPuntosDeVenta,"recursos/002-street-L.png");
-        moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
+        moverTriangulo(b.getLayoutY() - b.getHeight());
     }
     
     @FXML
@@ -206,7 +186,7 @@ public class InterfazController implements Initializable {
         cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
         cambiarClaseControl(PaneRegistrarVenta,"paneSeleccionado","paneNoSeleccionado");
         cambiarImagenBoton(imagenRegistrarVentas,"recursos/003-swipe-L.png");
-        moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
+        moverTriangulo(b.getLayoutY() - b.getHeight());
     }
     
     @FXML
@@ -219,7 +199,7 @@ public class InterfazController implements Initializable {
         cambiarClaseControl(PanePreVenta,"paneSeleccionado","paneNoSeleccionado");
         
         cambiarImagenBoton(imagenPreVentas,"recursos/005-payment-day-L.png");
-       moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
+       moverTriangulo(b.getLayoutY() - b.getHeight());
     }
     
     @FXML
@@ -233,17 +213,39 @@ public class InterfazController implements Initializable {
         cambiarClaseControl(PaneEstadistica,"paneSeleccionado","paneNoSeleccionado");
         cambiarImagenBoton(imagenEstadisticas,"recursos/007-bar-chart-L.png");
         
-        moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
+        moverTriangulo(b.getLayoutY() - b.getHeight());
     }
     
     private void moverTriangulo(double y){
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.3), (Node) triangulo);
-       // tt.setToY(y);
-       tt.setToX(y);
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.1), (Node) triangulo);
+        TranslateTransition tt2 = new TranslateTransition(Duration.seconds(0.1), (Node) triangulo);
+        TranslateTransition tt3 = new TranslateTransition(Duration.seconds(0.1), (Node) triangulo);
+        tt.setToX(-30);
         tt.setAutoReverse(true);
- 
-     tt.play();
+        tt.play();
+      
+        tt.setOnFinished(new EventHandler<ActionEvent>() {
+
+    @Override
+    public void handle(ActionEvent event) {
+        triangulo.setVisible(false);
+        tt2.setToY(y);
+        tt2.play();
     }
-     
- 
+});
+        
+    tt2.setOnFinished(new EventHandler<ActionEvent>() {
+
+    @Override
+    public void handle(ActionEvent event) {
+        triangulo.setVisible(true);
+        tt3.setToX(0);
+        tt3.play();
+    }
+});
+       
+        
+        
+
+    }
 }
