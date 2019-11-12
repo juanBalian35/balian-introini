@@ -136,27 +136,27 @@
                   </Button>
                </right>
             </BorderPane>
-            <Pane id="Estadisticas" fx:id="PaneEstadistica" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="Estadisticas" fx:id="paneEstadistica" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Label layoutX="71.0" layoutY="50.0" text="Estadisticas" />
                </children></Pane>
-            <Pane id="PreVenta" fx:id="PanePreVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="PreVenta" fx:id="panePreVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Label layoutX="71.0" layoutY="50.0" text="Pre-ventas" />
                </children></Pane>
-            <Pane id="RegistrarVenta" fx:id="PaneRegistrarVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="RegistrarVenta" fx:id="paneRegistrarVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Label layoutX="71.0" layoutY="50.0" text="Registrar Venta" />
                </children></Pane>
-            <Pane id="PuntosDeVenta" fx:id="PanePuntosDeVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="PuntosDeVenta" fx:id="panePuntosDeVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Label layoutX="71.0" layoutY="50.0" text="Puntos de venta" />
                </children></Pane>
-            <Pane id="AdministrarEnvase" fx:id="PaneAdministrarEnvase" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="AdministrarEnvase" fx:id="paneAdministrarEnvase" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Label layoutX="71.0" layoutY="50.0" text="Administrar envase" />
                </children></Pane>
-            <Pane id="AdministrarProducto" fx:id="PaneAdministrarProducto" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css">
+            <Pane id="AdministrarProducto" fx:id="paneAdministrarProducto" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css">
                <children>
                   <Pane layoutX="35.0" layoutY="94.0" prefHeight="483.0" prefWidth="958.0" stylesheets="@estilos/main.css">
                      <children>

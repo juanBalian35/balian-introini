@@ -6,12 +6,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Control;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -66,17 +63,22 @@ public class InterfazController implements Initializable {
      private Shape triangulo;
     
     @FXML
-    private Pane PaneRegistrarVenta;
+    private Pane paneRegistrarVenta;
+    
     @FXML
-    private Pane PanePreVenta; 
+    private Pane panePreVenta; 
+    
     @FXML
-    private Pane PanePuntosDeVenta;
+    private Pane panePuntosDeVenta;
+    
     @FXML
-    private Pane PaneAdministrarProducto;
+    private Pane paneAdministrarProducto;
+    
     @FXML
-    private Pane PaneAdministrarEnvase;
+    private Pane paneAdministrarEnvase;
+    
     @FXML
-    private Pane PaneEstadistica;
+    private Pane paneEstadistica;
     
             
     @Override
@@ -89,7 +91,7 @@ public class InterfazController implements Initializable {
         stage.close();
     }
 
-    double x, y;
+    private double x, y;
      
     @FXML
     private void dragged(MouseEvent event) {
@@ -129,91 +131,60 @@ public class InterfazController implements Initializable {
     }
     
     private void esconderPanes(){
-        
-        
-       
-        cambiarClaseControl(PaneRegistrarVenta,"paneNoSeleccionado", "paneSeleccionado");
-        cambiarClaseControl(PanePreVenta,"paneNoSeleccionado", "paneSeleccionado");
-        cambiarClaseControl(PaneAdministrarProducto,"paneNoSeleccionado", "paneSeleccionado");
-        cambiarClaseControl(PanePuntosDeVenta,"paneNoSeleccionado", "paneSeleccionado");
-        cambiarClaseControl(PaneAdministrarEnvase,"paneNoSeleccionado", "paneSeleccionado");
-        cambiarClaseControl(PaneEstadistica,"paneNoSeleccionado", "paneSeleccionado");
+        cambiarClaseControl(paneRegistrarVenta,"paneNoSeleccionado", "paneSeleccionado");
+        cambiarClaseControl(panePreVenta,"paneNoSeleccionado", "paneSeleccionado");
+        cambiarClaseControl(paneAdministrarProducto,"paneNoSeleccionado", "paneSeleccionado");
+        cambiarClaseControl(panePuntosDeVenta,"paneNoSeleccionado", "paneSeleccionado");
+        cambiarClaseControl(paneAdministrarEnvase,"paneNoSeleccionado", "paneSeleccionado");
+        cambiarClaseControl(paneEstadistica,"paneNoSeleccionado", "paneSeleccionado");
     }
     
     @FXML
     private void clickBotonAdministrarProductos(MouseEvent event) {
-        limpiarBotones();
-        esconderPanes();
-        
-        Button b = (Button)event.getSource();
-        cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
-        cambiarClaseControl(PaneAdministrarProducto,"paneSeleccionado","paneNoSeleccionado");
-        cambiarImagenBoton(imagenAdministrarProductos,"recursos/006-basket-L.png");
-        moverTriangulo(b.getLayoutY() - b.getHeight());
-        
+        controlarClick(botonAdministrarProductos, paneAdministrarProducto, imagenAdministrarProductos,"recursos/006-basket-L.png");
     }
     
     @FXML
     private void clickBotonAdministrarEnvases(MouseEvent event) {
-        limpiarBotones();
-        esconderPanes();
-        
-        Button b = (Button)event.getSource();
-        cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
-        cambiarClaseControl(PaneAdministrarEnvase,"paneSeleccionado","paneNoSeleccionado");
-        cambiarImagenBoton(imagenAdministrarEnvases,"recursos/001-plastic-L.png");
-        moverTriangulo(b.getLayoutY() - b.getHeight());
+        controlarClick(botonAdministrarEnvases, paneAdministrarEnvase, imagenAdministrarEnvases,"recursos/001-plastic-L.png");
     }
     
     @FXML
     private void clickBotonPuntosDeVenta(MouseEvent event) {
-        limpiarBotones();
-        esconderPanes();
-        
-        Button b = (Button)event.getSource();
-        cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
-        cambiarClaseControl(PanePuntosDeVenta,"paneSeleccionado","paneNoSeleccionado");
-        cambiarImagenBoton(imagenPuntosDeVenta,"recursos/002-street-L.png");
-        moverTriangulo(b.getLayoutY() - b.getHeight());
+        controlarClick(botonPuntosDeVenta, panePuntosDeVenta, imagenPuntosDeVenta,"recursos/002-street-L.png");
     }
     
     @FXML
     private void clickBotonRegistrarVentas(MouseEvent event) {
-        limpiarBotones();
-        esconderPanes();
-        
-        Button b = (Button)event.getSource();
-        cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
-        cambiarClaseControl(PaneRegistrarVenta,"paneSeleccionado","paneNoSeleccionado");
-        cambiarImagenBoton(imagenRegistrarVentas,"recursos/003-swipe-L.png");
-        moverTriangulo(b.getLayoutY() - b.getHeight());
+        controlarClick(botonRegistrarVentas, paneRegistrarVenta, imagenRegistrarVentas,"recursos/003-swipe-L.png");
     }
     
     @FXML
     private void clickBotonPreVentas(MouseEvent event) {
-        limpiarBotones();
-        esconderPanes();
-        
-        Button b = (Button)event.getSource();
-        cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
-        cambiarClaseControl(PanePreVenta,"paneSeleccionado","paneNoSeleccionado");
-        
-        cambiarImagenBoton(imagenPreVentas,"recursos/005-payment-day-L.png");
-       moverTriangulo(b.getLayoutY() - b.getHeight());
+        controlarClick(botonPreVentas, panePreVenta, imagenPreVentas,"recursos/005-payment-day-L.png");
     }
     
     @FXML
     private void clickBotonEstadisticas(MouseEvent event) {
+        controlarClick(botonEstadisticas, paneEstadistica, imagenEstadisticas,"recursos/007-bar-chart-L.png");
+    }
+    
+    /**
+     * @param boton boton recien clickeado
+     * @param pane panel a ser priorizado
+     * @param imageView imageView que contiene la imagen para ser cambiada
+     * @param imagen cadena de texto que contiene la ruta de la imagen a poner
+     *               en el imageView
+     */
+    private void controlarClick(Button boton, Pane pane, ImageView imageView, String imagen){
         limpiarBotones();
         esconderPanes();
         
-        Button b = (Button)event.getSource();
+        cambiarClaseControl(boton,"botonSeleccionado", "botonNoSeleccionado");
+        cambiarClaseControl(pane,"paneSeleccionado","paneNoSeleccionado");
+        cambiarImagenBoton(imageView,imagen);
         
-        cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
-        cambiarClaseControl(PaneEstadistica,"paneSeleccionado","paneNoSeleccionado");
-        cambiarImagenBoton(imagenEstadisticas,"recursos/007-bar-chart-L.png");
-        
-        moverTriangulo(b.getLayoutY() - b.getHeight());
+        moverTriangulo(boton.getLayoutY() - boton.getHeight());
     }
     
     private void moverTriangulo(double y){
@@ -224,28 +195,16 @@ public class InterfazController implements Initializable {
         tt.setAutoReverse(true);
         tt.play();
       
-        tt.setOnFinished(new EventHandler<ActionEvent>() {
-
-    @Override
-    public void handle(ActionEvent event) {
-        triangulo.setVisible(false);
-        tt2.setToY(y);
-        tt2.play();
-    }
-});
+        tt.setOnFinished((ActionEvent event) -> {
+            triangulo.setVisible(false);
+            tt2.setToY(y);
+            tt2.play();
+        });
         
-    tt2.setOnFinished(new EventHandler<ActionEvent>() {
-
-    @Override
-    public void handle(ActionEvent event) {
-        triangulo.setVisible(true);
-        tt3.setToX(0);
-        tt3.play();
-    }
-});
-       
-        
-        
-
+        tt2.setOnFinished((ActionEvent event) -> {
+            triangulo.setVisible(true);
+            tt3.setToX(0);
+            tt3.play();
+        });
     }
 }
