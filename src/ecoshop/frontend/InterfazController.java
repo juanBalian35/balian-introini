@@ -3,6 +3,7 @@ package ecoshop.frontend;
 import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -11,6 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Shape;
+import javafx.util.Duration;
 
 /**
  *
@@ -53,6 +56,9 @@ public class InterfazController implements Initializable {
     
     @FXML
     private ImageView imagenEstadisticas;
+    
+    @FXML 
+     private Shape triangulo;
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -114,6 +120,7 @@ public class InterfazController implements Initializable {
         cambiarClaseBoton(b,"botonSeleccionado");
         
         cambiarImagenBoton(imagenAdministrarProductos,"recursos/006-basket-L.png");
+        moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
     }
     
     @FXML
@@ -124,6 +131,7 @@ public class InterfazController implements Initializable {
         cambiarClaseBoton(b,"botonSeleccionado");
         
         cambiarImagenBoton(imagenAdministrarEnvases,"recursos/001-plastic-L.png");
+        moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
     }
     
     @FXML
@@ -134,6 +142,7 @@ public class InterfazController implements Initializable {
         cambiarClaseBoton(b,"botonSeleccionado");
         
         cambiarImagenBoton(imagenPuntosDeVenta,"recursos/002-street-L.png");
+        moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
     }
     
     @FXML
@@ -144,6 +153,7 @@ public class InterfazController implements Initializable {
         cambiarClaseBoton(b,"botonSeleccionado");
         
         cambiarImagenBoton(imagenRegistrarVentas,"recursos/003-swipe-L.png");
+        moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
     }
     
     @FXML
@@ -154,6 +164,7 @@ public class InterfazController implements Initializable {
         cambiarClaseBoton(b,"botonSeleccionado");
         
         cambiarImagenBoton(imagenPreVentas,"recursos/005-payment-day-L.png");
+       moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
     }
     
     @FXML
@@ -164,5 +175,14 @@ public class InterfazController implements Initializable {
         
         cambiarClaseBoton(b,"botonSeleccionado");
         cambiarImagenBoton(imagenEstadisticas,"recursos/007-bar-chart-L.png");
+        moverTriangulo(b.getLayoutY() - b.getHeight() + 5);
+    }
+    
+    private void moverTriangulo(double y){
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.3), (Node) triangulo);
+        tt.setToY(y);
+        tt.setAutoReverse(true);
+ 
+     tt.play();
     }
 }

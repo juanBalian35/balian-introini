@@ -96,7 +96,7 @@
          <children>
             <Pane layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1053.0" styleClass="paneCentro" stylesheets="@estilos/estilos.css">
                <children>
-                  <Polygon fill="#86ae46" layoutX="-14.0" layoutY="41.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0">
+                  <Polygon fx:id="triangulo" fill="#86ae46" layoutX="-14.0" layoutY="41.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0">
                     <points>
                       <Double fx:value="-50.0" />
                       <Double fx:value="40.0" />
