@@ -7,10 +7,7 @@
     -fx-background-color : #b8db81;
     -fx-background-radius: 20 0 0 20;
 }
-.paneCentro{
-    -fx-background-color :  #86AE46;
-    -fx-background-radius: 20;
-}
+
 
 .panelFondo{
     -fx-background-color : #f1fce4;
@@ -47,3 +44,15 @@
     -fx-background-radius :  0 0 0 0;
 }
 
+.paneSeleccionado{
+    -fx-background-color :  #86AE46;
+    -fx-background-radius: 20; 
+    visibility: visible;
+}
+
+.paneNoSeleccionado{
+    -fx-background-color :  #86AE46;
+    -fx-background-radius: 20;
+        visibility: hidden;
+
+}

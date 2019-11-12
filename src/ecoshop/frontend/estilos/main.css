@@ -1,18 +1,25 @@
 .tab{
     -fx-pref-width: 470;
     -fx-pref-height: 60;
+    -fx-background-radius: 20 20 0 0;
+    
 }
 
 .tab-header-background{
-    -fx-background-color: rgb(84, 109, 45)
+    -fx-background-color: rgb(84, 109, 45);
+    -fx-background-radius :  20 20 0 0;
+    
 }
 
 .jfx-tab-pane .tab-selected-line{
     -fx-border-color:  #b8db81;
     -fx-pref-height: 5;
+    -fx-background-color: #b8db81;
+    -fx-background-radius: 20 20 0 0;
+    
 }
 
 .jfx-tab-pane .tab .tab-label {
     -fx-font-size: 24;
-    -fx-font-family: 'Courier new';
+    -fx-font-family: 'Adobe Heiti Std'
 }
