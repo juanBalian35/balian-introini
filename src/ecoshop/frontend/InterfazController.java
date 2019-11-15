@@ -65,19 +65,6 @@ public class InterfazController implements Initializable {
     
     @FXML 
      private Shape triangulo;
-    
-    @FXML 
-    private Pane PaneRegistrarVenta ;    
-    @FXML 
-    private Pane PanePreVenta;    
-    @FXML 
-    private Pane PaneAdministrarProducto ;    
-    @FXML 
-    private Pane PanePuntosDeVenta;    
-    @FXML 
-    private Pane PaneAdministrarEnvase ;
-    @FXML 
-    private Pane PaneEstadistica ;
   
     @FXML
     private Pane paneRegistrarVenta;
@@ -100,12 +87,12 @@ public class InterfazController implements Initializable {
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                cargarPane(PaneAdministrarProducto, "AdminProductos.fxml");
-                cargarPane(PanePreVenta, "PreVentas.fxml");
-                cargarPane(PaneRegistrarVenta, "RegistrarVenta.fxml");
-                cargarPane(PanePuntosDeVenta, "PuntosDeVenta.fxml");
-                cargarPane(PaneAdministrarEnvase, "AdminEnvases.fxml");
-                cargarPane(PaneEstadistica, "Estadisticas.fxml");                
+                cargarPane(paneAdministrarProducto, "AdminProductos.fxml");
+                cargarPane(panePreVenta, "PreVentas.fxml");
+                cargarPane(paneRegistrarVenta, "RegistrarVenta.fxml");
+                cargarPane(panePuntosDeVenta, "PuntosDeVenta.fxml");
+                cargarPane(paneAdministrarEnvase, "AdminEnvases.fxml");
+                cargarPane(paneEstadistica, "Estadisticas.fxml");                
 
     }    
   
@@ -163,32 +150,13 @@ public class InterfazController implements Initializable {
         cambiarClaseControl(paneEstadistica,"paneNoSeleccionado", "paneSeleccionado");
     }
     
-    @FXML
+   @FXML
     private void clickBotonAdministrarProductos(MouseEvent event) {
-        limpiarBotones();
-        esconderPanes();
-        
-        Button b = (Button)event.getSource();
-        cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
-       cambiarClaseControl(PaneAdministrarProducto,"paneSeleccionado","paneNoSeleccionado");
-        cambiarImagenBoton(imagenAdministrarProductos,"recursos/006-basket-L.png");
-        moverTriangulo(b.getLayoutY() - b.getHeight());
-                
-
         controlarClick(botonAdministrarProductos, paneAdministrarProducto, imagenAdministrarProductos,"recursos/006-basket-L.png");
     }
     
     @FXML
     private void clickBotonAdministrarEnvases(MouseEvent event) {
-        limpiarBotones();
-        esconderPanes();
-        
-        Button b = (Button)event.getSource();
-        cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
-       cambiarClaseControl(PaneAdministrarEnvase,"paneSeleccionado","paneNoSeleccionado");
-        cambiarImagenBoton(imagenAdministrarEnvases,"recursos/001-plastic-L.png");
-        moverTriangulo(b.getLayoutY() - b.getHeight());
-
         controlarClick(botonAdministrarEnvases, paneAdministrarEnvase, imagenAdministrarEnvases,"recursos/001-plastic-L.png");
     }
     
@@ -227,8 +195,10 @@ public class InterfazController implements Initializable {
         cambiarClaseControl(pane,"paneSeleccionado","paneNoSeleccionado");
         cambiarImagenBoton(imageView,imagen);
         
-        moverTriangulo(boton.getLayoutY() - boton.getHeight());     
+        moverTriangulo(boton.getLayoutY() - boton.getHeight());
     }
+    
+
     
     private void cargarPane(Pane pane, String ruta){
          
