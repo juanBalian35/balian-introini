@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.scene.image.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<Pane prefHeight="614.0" prefWidth="1053.0" styleClass="paneCentro" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="AdministrarProducto" fx:id="PaneAdministrarProducto" prefHeight="614.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="30.0" layoutY="36.0" prefHeight="67.0" prefWidth="444.0" text="Productos" textFill="WHITE">
-         <font>
-            <Font name="Heiti SC Light" size="40.0" />
-         </font>
-      </Label>
-      <Pane layoutX="43.0" layoutY="122.0" prefHeight="455.0" prefWidth="950.0" stylesheets="@estilos/main.css">
+      <Pane layoutX="35.0" layoutY="94.0" prefHeight="483.0" prefWidth="958.0" stylesheets="@estilos/main.css">
          <children>
-            <JFXTabPane layoutY="4.0" prefHeight="433.0" prefWidth="950.0" styleClass="jfx-tab-pane">
+            <JFXTabPane layoutX="-35.0" layoutY="-94.0" prefHeight="615.0" prefWidth="1056.0" stylesheets="@estilos/main.css">
                <tabs>
-                <Tab text="Agregar producto">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <Tab text="Agregar producto">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <Pane prefHeight="321.0" prefWidth="486.0">
                                  <children>
@@ -47,30 +44,31 @@
                                     <Button layoutX="272.0" layoutY="256.0" mnemonicParsing="false" text="Agregar producto" />
                                  </children>
                               </Pane>
+                              <Label layoutX="465.0" layoutY="176.0" text="Administrar producto" />
                            </children>
                         </AnchorPane>
-                  </content>
-                </Tab>
-                <Tab text="Eliminar producto">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Eliminar producto">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <TableView layoutX="44.0" layoutY="31.0" prefHeight="304.0" prefWidth="734.0">
-                                <columns>
-                                  <TableColumn prefWidth="40.7003173828125" text="ID" />
-                                  <TableColumn prefWidth="73.76080322265625" text="Nombre" />
+                                 <columns>
+                                    <TableColumn prefWidth="40.7003173828125" text="ID" />
+                                    <TableColumn prefWidth="73.76080322265625" text="Nombre" />
                                     <TableColumn prefWidth="67.7811279296875" text="Material" />
                                     <TableColumn prefWidth="110.7305908203125" text="Descripción" />
                                     <TableColumn prefWidth="66.0706787109375" text="Imagen" />
                                     <TableColumn prefWidth="87.74078369140625" text="Precio" />
                                     <TableColumn prefWidth="118.25927734375" text="Envases" />
-                                </columns>
+                                 </columns>
                               </TableView>
                               <Button layoutX="798.0" layoutY="152.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="116.0" text="Eliminar producto" />
                            </children>
                         </AnchorPane>
-                  </content>
-                </Tab>
+                     </content>
+                  </Tab>
                </tabs>
             </JFXTabPane>
          </children>

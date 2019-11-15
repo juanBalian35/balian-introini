@@ -1,13 +1,17 @@
 package ecoshop.frontend;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -65,22 +69,30 @@ public class InterfazController implements Initializable {
     @FXML 
      private Shape triangulo;
     
-    @FXML
-    private Pane PaneRegistrarVenta;
-    @FXML
-    private Pane PanePreVenta; 
-    @FXML
-    private Pane PanePuntosDeVenta;
-    @FXML
-    private Pane PaneAdministrarProducto;
-    @FXML
-    private Pane PaneAdministrarEnvase;
-    @FXML
-    private Pane PaneEstadistica;
+    @FXML 
+    private Pane PaneRegistrarVenta ;    
+    @FXML 
+    private Pane PanePreVenta;    
+    @FXML 
+    private Pane PaneAdministrarProducto ;    
+    @FXML 
+    private Pane PanePuntosDeVenta;    
+    @FXML 
+    private Pane PaneAdministrarEnvase ;
+    @FXML 
+    private Pane PaneEstadistica ;
+  
     
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+                cargarPane(PaneAdministrarProducto, "AdminProductos.fxml");
+                cargarPane(PanePreVenta, "PreVentas.fxml");
+                cargarPane(PaneRegistrarVenta, "RegistrarVenta.fxml");
+                cargarPane(PanePuntosDeVenta, "PuntosDeVenta.fxml");
+                cargarPane(PaneAdministrarEnvase, "AdminEnvases.fxml");
+                cargarPane(PaneEstadistica, "Estadisticas.fxml");                
+
     }    
   
     @FXML
@@ -147,10 +159,10 @@ public class InterfazController implements Initializable {
         
         Button b = (Button)event.getSource();
         cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
-        cambiarClaseControl(PaneAdministrarProducto,"paneSeleccionado","paneNoSeleccionado");
+       cambiarClaseControl(PaneAdministrarProducto,"paneSeleccionado","paneNoSeleccionado");
         cambiarImagenBoton(imagenAdministrarProductos,"recursos/006-basket-L.png");
         moverTriangulo(b.getLayoutY() - b.getHeight());
-        
+                
     }
     
     @FXML
@@ -160,7 +172,7 @@ public class InterfazController implements Initializable {
         
         Button b = (Button)event.getSource();
         cambiarClaseControl(b,"botonSeleccionado", "botonNoSeleccionado");
-        cambiarClaseControl(PaneAdministrarEnvase,"paneSeleccionado","paneNoSeleccionado");
+       cambiarClaseControl(PaneAdministrarEnvase,"paneSeleccionado","paneNoSeleccionado");
         cambiarImagenBoton(imagenAdministrarEnvases,"recursos/001-plastic-L.png");
         moverTriangulo(b.getLayoutY() - b.getHeight());
     }
@@ -214,6 +226,20 @@ public class InterfazController implements Initializable {
         cambiarImagenBoton(imagenEstadisticas,"recursos/007-bar-chart-L.png");
         
         moverTriangulo(b.getLayoutY() - b.getHeight());
+        
+       
+    }
+    
+    private void cargarPane(Pane pane, String ruta){
+         
+        try {
+            Pane panelNuevo;
+            panelNuevo = FXMLLoader.load(getClass().getResource(ruta));
+            pane.getChildren().add(panelNuevo);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     private void moverTriangulo(double y){
@@ -224,28 +250,17 @@ public class InterfazController implements Initializable {
         tt.setAutoReverse(true);
         tt.play();
       
-        tt.setOnFinished(new EventHandler<ActionEvent>() {
-
-    @Override
-    public void handle(ActionEvent event) {
-        triangulo.setVisible(false);
-        tt2.setToY(y);
-        tt2.play();
-    }
-});
+        tt.setOnFinished((ActionEvent event) -> {
+            triangulo.setVisible(false);
+            tt2.setToY(y);
+            tt2.play();
+        });
         
-    tt2.setOnFinished(new EventHandler<ActionEvent>() {
-
-    @Override
-    public void handle(ActionEvent event) {
+    tt2.setOnFinished((ActionEvent event) -> {
         triangulo.setVisible(true);
         tt3.setToX(0);
         tt3.play();
-    }
-});
+        });
        
-        
-        
-
     }
 }
