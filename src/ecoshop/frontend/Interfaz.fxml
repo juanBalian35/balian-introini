@@ -11,14 +11,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane prefHeight="740.0" prefWidth="1252.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.InterfazController">
    <children>
       <BorderPane layoutX="9.0" layoutY="9.0" prefHeight="709.0" prefWidth="1216.0" style="-fx-background-radius: 20" styleClass="panelFondo" stylesheets="@estilos/estilos.css">
          <left>
             <AnchorPane maxWidth="105.0" minWidth="105.0" prefWidth="105.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css">
                <children>
-                  <Polygon fx:id="triangulo" fill="#86ae46" layoutX="118.0" layoutY="107.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0">
+                  <Polygon fx:id="triangulo" fill="#68add4" layoutX="118.0" layoutY="107.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="triangulo">
                     <points>
                       <Double fx:value="-50.0" />
                       <Double fx:value="40.0" />
@@ -165,7 +164,6 @@
                      </children>
                   </Pane>
                   <Pane id="AdministrarProducto" fx:id="paneAdministrarProducto" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" />
-                  <Pane layoutX="1068.0" layoutY="68.0" prefHeight="611.0" prefWidth="42.0" styleClass="panelFondo" stylesheets="@estilos/estilos.css" />
                </children>
             </Pane>
          </center>

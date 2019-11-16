@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="AdministrarProducto" fx:id="PaneAdministrarProducto" prefHeight="614.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="AdministrarProducto" fx:id="PaneAdministrarProducto" prefHeight="614.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="35.0" layoutY="94.0" prefHeight="483.0" prefWidth="958.0" stylesheets="@estilos/main.css">
-         <children>
-            <Label layoutX="129.0" layoutY="71.0" prefHeight="57.0" prefWidth="340.0" text="ADMINISTRAR ENVASES">
-               <font>
-                  <Font name="Andale Mono" size="26.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
+      <BorderPane prefHeight="614.0" prefWidth="1041.0" stylesheets="@estilos/estilos.css">
+         <top>
+            <Pane prefHeight="106.0" prefWidth="1041.0" style="-fx-background-color: #61A3D4; -fx-background-radius: 20 20 0 0;" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="1041.0" text="Administrar Envases" textFill="WHITE">
+                     <font>
+                        <Font name="Kokonor Regular" size="46.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </top>
+      </BorderPane>
    </children>
 </Pane>
