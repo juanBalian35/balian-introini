@@ -15,9 +15,9 @@
    <children>
       <BorderPane layoutX="9.0" layoutY="9.0" prefHeight="709.0" prefWidth="1216.0" style="-fx-background-radius: 20" styleClass="panelFondo" stylesheets="@estilos/estilos.css">
          <left>
-            <AnchorPane maxWidth="105.0" minWidth="105.0" prefWidth="105.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css">
+            <AnchorPane maxWidth="105.0" minWidth="83.0" prefHeight="709.0" prefWidth="83.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css">
                <children>
-                  <Polygon fx:id="triangulo" fill="#68add4" layoutX="118.0" layoutY="107.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="triangulo">
+                  <Polygon fx:id="triangulo" fill="#68add4" layoutX="95.0" layoutY="45.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="triangulo">
                     <points>
                       <Double fx:value="-50.0" />
                       <Double fx:value="40.0" />
@@ -27,149 +27,190 @@
                       <Double fx:value="-60.0" />
                     </points>
                   </Polygon>
-                  <VBox fillWidth="false" prefHeight="454.0" prefWidth="105.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
+                  <VBox fillWidth="false" prefHeight="454.0" prefWidth="83.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
                      <children>
-                        <Pane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="67.0" prefWidth="105.0" />
-                        <Button fx:id="botonAdministrarProductos" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonAdministrarProductos" prefHeight="67.0" prefWidth="108.0" styleClass="botonSeleccionado" stylesheets="@estilos/estilos.css" text="Administrar productos">
+                        <Button fx:id="botonAdministrarProductos" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#clickBotonAdministrarProductos" prefHeight="67.0" prefWidth="108.0" styleClass="botonSeleccionado" stylesheets="@estilos/estilos.css" textAlignment="CENTER">
                            <font>
                               <Font size="9.0" />
                            </font>
                            <graphic>
-                              <ImageView fx:id="imagenAdministrarProductos" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imagenAdministrarProductos" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@recursos/006-basket-L.png" />
+                                    <Image url="@recursos/AdminProductosBLANCO.png" />
                                  </image>
+                                 <effect>
+                                    <DropShadow color="#0000006b" height="11.9" offsetX="1.0" offsetY="1.0" radius="5.45" width="11.9" />
+                                 </effect>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="botonAdministrarEnvases" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonAdministrarEnvases" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Administrar envases">
+                        <Button fx:id="botonAdministrarEnvases" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonAdministrarEnvases" onMouseEntered="#hoverAdminEnvases" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css">
                            <font>
                               <Font size="9.0" />
                            </font>
                            <graphic>
-                              <ImageView fx:id="imagenAdministrarEnvases" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imagenAdministrarEnvases" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@recursos/001-plastic.png" />
+                                    <Image url="@recursos/AdminEnvaseBLANCO.png" />
                                  </image>
+                                 <effect>
+                                    <DropShadow color="#0000006b" height="11.89" offsetX="1.0" offsetY="1.0" radius="5.4475" width="11.9" />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Administrar envases" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="botonPuntosDeVenta" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonPuntosDeVenta" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fx:id="imagenPuntosDeVenta" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@recursos/pdvBLANCO.png" />
+                                 </image>
+                                 <effect>
+                                    <DropShadow color="#0000006b" height="11.89" offsetX="1.0" offsetY="1.0" radius="5.4475" width="11.9" />
+                                 </effect>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="botonPuntosDeVenta" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonPuntosDeVenta" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Puntos de venta">
+                        <Button fx:id="botonRegistrarVentas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonRegistrarVentas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css">
                            <font>
                               <Font size="9.0" />
                            </font>
                            <graphic>
-                              <ImageView fx:id="imagenPuntosDeVenta" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imagenRegistrarVentas" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@recursos/002-street.png" />
+                                    <Image url="@recursos/RegistrarVentaBLANCO.png" />
                                  </image>
+                                 <effect>
+                                    <DropShadow color="#0000006b" height="11.89" offsetX="1.0" offsetY="1.0" radius="5.4475" width="11.9" />
+                                 </effect>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="botonRegistrarVentas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonRegistrarVentas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Registrar venta">
+                        <Button fx:id="botonPreVentas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonPreVentas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css">
                            <font>
                               <Font size="9.0" />
                            </font>
                            <graphic>
-                              <ImageView fx:id="imagenRegistrarVentas" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imagenPreVentas" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@recursos/004-swipe.png" />
+                                    <Image url="@recursos/PreventasBLANCO.png" />
                                  </image>
+                                 <effect>
+                                    <DropShadow color="#0000006b" height="11.89" offsetX="1.0" offsetY="1.0" radius="5.4475" width="11.9" />
+                                 </effect>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="botonPreVentas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonPreVentas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Ver pre-ventas">
+                        <Button fx:id="botonEstadisticas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonEstadisticas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css">
                            <font>
                               <Font size="9.0" />
                            </font>
                            <graphic>
-                              <ImageView fx:id="imagenPreVentas" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imagenEstadisticas" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/recursos/003-basket.png&quot;);">
                                  <image>
-                                    <Image url="@recursos/011-payment-day.png" />
+                                    <Image url="@recursos/EstadisticasBLANCO.png" />
                                  </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="botonEstadisticas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonEstadisticas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css" text="Estadísticas">
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="imagenEstadisticas" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/recursos/003-basket.png&quot;);">
-                                 <image>
-                                    <Image url="@recursos/007-graphic.png" />
-                                 </image>
+                                 <effect>
+                                    <DropShadow color="#0000006b" height="11.89" offsetX="1.0" offsetY="1.0" radius="5.4475" width="11.9" />
+                                 </effect>
                               </ImageView>
                            </graphic>
                         </Button>
                      </children>
                   </VBox>
+                  <Pane id="BarraBoton" fx:id="BarraBoton" prefHeight="67.0" prefWidth="6.0" style="-fx-background-color: #3979B2;" />
                </children>
             </AnchorPane>
          </left>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="panelFondo" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
                <children>
-                  <Pane layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1042.0" styleClass="paneCentro" stylesheets="@estilos/estilos.css" />
-                  <BorderPane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="66.0" prefWidth="1110.0" style="-fx-background-color: white; -fx-background-radius: 0 20 0 0;">
-                     <left>
-                        <Pane prefHeight="56.0" prefWidth="345.0">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                                 <image>
-                                    <Image url="@recursos/ecoshop-logotypografia.png" />
-                                 </image>
-                                 <BorderPane.margin>
-                                    <Insets left="15.0" top="18.0" />
-                                 </BorderPane.margin>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                     </left>
-                     <right>
-                        <Button mnemonicParsing="false" onMouseClicked="#close" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
-                           <graphic>
-                              <ImageView fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@recursos/delete-button.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </right>
-                  </BorderPane>
-                  <Pane id="Estadisticas" fx:id="paneEstadistica" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+                  <Pane layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneCentro" stylesheets="@estilos/estilos.css" />
+                  <Pane id="Estadisticas" fx:id="paneEstadistica" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                      <children>
                         <Label layoutX="71.0" layoutY="50.0" text="Estadisticas" />
                      </children>
                   </Pane>
-                  <Pane id="PreVenta" fx:id="panePreVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+                  <Pane id="PreVenta" fx:id="panePreVenta" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                      <children>
                         <Label layoutX="71.0" layoutY="50.0" text="Pre-ventas" />
                      </children>
                   </Pane>
-                  <Pane id="RegistrarVenta" fx:id="paneRegistrarVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+                  <Pane id="RegistrarVenta" fx:id="paneRegistrarVenta" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                      <children>
                         <Label layoutX="71.0" layoutY="50.0" text="Registrar Venta" />
                      </children>
                   </Pane>
-                  <Pane id="PuntosDeVenta" fx:id="panePuntosDeVenta" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+                  <Pane id="PuntosDeVenta" fx:id="panePuntosDeVenta" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                      <children>
                         <Label layoutX="71.0" layoutY="50.0" text="Puntos de venta" />
                      </children>
                   </Pane>
-                  <Pane id="AdministrarEnvase" fx:id="paneAdministrarEnvase" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
+                  <Pane id="AdministrarEnvase" fx:id="paneAdministrarEnvase" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                      <children>
                         <Label layoutX="71.0" layoutY="50.0" text="Administrar envase" />
                      </children>
                   </Pane>
-                  <Pane id="AdministrarProducto" fx:id="paneAdministrarProducto" layoutX="27.0" layoutY="66.0" prefHeight="614.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" />
+                  <Pane id="AdministrarProducto" fx:id="paneAdministrarProducto" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" />
                </children>
             </Pane>
          </center>
          <effect>
             <DropShadow blurType="GAUSSIAN" color="#0000009d" />
          </effect>
+         <top>
+            <BorderPane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="66.0" prefWidth="1110.0" style="-fx-background-color: white; -fx-background-radius: 20 20 0 0;" BorderPane.alignment="CENTER">
+               <left>
+                  <Pane prefHeight="66.0" prefWidth="82.0">
+                     <children>
+                        <Pane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="67.0" prefWidth="83.0" style="-fx-background-color: #A5D268; -fx-background-radius: 20 0 0 0;" />
+                     </children>
+                  </Pane>
+               </left>
+               <center>
+                  <Pane>
+                     <children>
+                        <Pane prefHeight="67.0" prefWidth="1137.0" style="-fx-background-radius: 0 20 0 0;">
+                           <children>
+                              <ImageView fitHeight="73.0" fitWidth="1071.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@recursos/fondo.jpg" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D height="71.0" minY="610.0" width="1137.0" />
+                                 </viewport>
+                              </ImageView>
+                              <Pane prefHeight="67.0" prefWidth="1072.0" style="-fx-background-color: #3D7AB0;" stylesheets="@estilos/estilos.css">
+                                 <children>
+                                    <ImageView fitHeight="44.0" fitWidth="446.0" layoutX="18.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@recursos/ecoshop-logotypografia.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Button layoutX="1072.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="67.0" prefWidth="62.0" style="-fx-background-color: white; -fx-background-radius: 20 20 20 20;">
+                                 <graphic>
+                                    <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@recursos/delete-button.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </center>
+            </BorderPane>
+         </top>
       </BorderPane>
    </children>
 </Pane>

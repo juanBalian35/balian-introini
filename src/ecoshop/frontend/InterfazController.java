@@ -65,6 +65,9 @@ public class InterfazController implements Initializable {
     
     @FXML 
      private Shape triangulo;
+    
+    @FXML
+    private Pane BarraBoton;
   
     @FXML
     private Pane paneRegistrarVenta;
@@ -129,16 +132,16 @@ public class InterfazController implements Initializable {
     
     private void limpiarBoton(Button boton, ImageView imageView, String ruta){
         cambiarClaseControl(boton,"botonNoSeleccionado", "botonSeleccionado");
-        cambiarImagenBoton(imageView, ruta);
+        //cambiarImagenBoton(imageView, ruta);
     }
     
     private void limpiarBotones(){
-        limpiarBoton(botonAdministrarProductos, imagenAdministrarProductos, "recursos/003-basket.png");
-        limpiarBoton(botonAdministrarEnvases, imagenAdministrarEnvases, "recursos/001-plastic.png");
-        limpiarBoton(botonPuntosDeVenta, imagenPuntosDeVenta, "recursos/002-street.png");
-        limpiarBoton(botonRegistrarVentas, imagenRegistrarVentas, "recursos/004-swipe.png");
-        limpiarBoton(botonPreVentas, imagenPreVentas, "recursos/011-payment-day.png");
-        limpiarBoton(botonEstadisticas, imagenEstadisticas, "recursos/007-graphic.png");
+        limpiarBoton(botonAdministrarProductos, imagenAdministrarProductos, "recursos/AdminProductosBLANCO.png");
+        limpiarBoton(botonAdministrarEnvases, imagenAdministrarEnvases, "recursos/AdminEnvaseBLANCO.png");
+        limpiarBoton(botonPuntosDeVenta, imagenPuntosDeVenta, "recursos/pdvBLANCO.png");
+        limpiarBoton(botonRegistrarVentas, imagenRegistrarVentas, "recursos/RegistrarVentaBLANCO.png");
+        limpiarBoton(botonPreVentas, imagenPreVentas, "recursos/PreventasBLANCO.png");
+        limpiarBoton(botonEstadisticas, imagenEstadisticas, "recursos/EstadisticasBLANCO.png");
     }
     
     private void esconderPanes(){
@@ -152,33 +155,41 @@ public class InterfazController implements Initializable {
     
    @FXML
     private void clickBotonAdministrarProductos(MouseEvent event) {
-        controlarClick(botonAdministrarProductos, paneAdministrarProducto, imagenAdministrarProductos,"recursos/006-basket-L.png");
+        controlarClick(botonAdministrarProductos, paneAdministrarProducto, imagenAdministrarProductos,"recursos/AdminProductosAZUL.png");
     }
     
     @FXML
     private void clickBotonAdministrarEnvases(MouseEvent event) {
-        controlarClick(botonAdministrarEnvases, paneAdministrarEnvase, imagenAdministrarEnvases,"recursos/001-plastic-L.png");
+        controlarClick(botonAdministrarEnvases, paneAdministrarEnvase, imagenAdministrarEnvases,"recursos/AdminEnvaseAZUL.png");
     }
     
     @FXML
     private void clickBotonPuntosDeVenta(MouseEvent event) {
-        controlarClick(botonPuntosDeVenta, panePuntosDeVenta, imagenPuntosDeVenta,"recursos/002-street-L.png");
+        controlarClick(botonPuntosDeVenta, panePuntosDeVenta, imagenPuntosDeVenta,"recursos/pdvAZUL.png");
     }
     
     @FXML
     private void clickBotonRegistrarVentas(MouseEvent event) {
-        controlarClick(botonRegistrarVentas, paneRegistrarVenta, imagenRegistrarVentas,"recursos/003-swipe-L.png");
+        controlarClick(botonRegistrarVentas, paneRegistrarVenta, imagenRegistrarVentas,"recursos/RegistrarVentaAZUL.png");
     }
     
     @FXML
     private void clickBotonPreVentas(MouseEvent event) {
-        controlarClick(botonPreVentas, panePreVenta, imagenPreVentas,"recursos/005-payment-day-L.png");
+        controlarClick(botonPreVentas, panePreVenta, imagenPreVentas,"recursos/PreventasAZUL.png");
     }
     
     @FXML
     private void clickBotonEstadisticas(MouseEvent event) {
-        controlarClick(botonEstadisticas, paneEstadistica, imagenEstadisticas,"recursos/007-bar-chart-L.png");
+        controlarClick(botonEstadisticas, paneEstadistica, imagenEstadisticas,"recursos/EstadisticasAZUL.png");
     }
+    
+     @FXML
+    private void hoverAdminEnvases(MouseEvent event) {
+       // cambiarImagenBoton(imagenAdministrarEnvases,"recursos/AdminEnvaseAZUL.png");
+    }
+    
+     
+ 
     
     /**
      * @param boton boton recien clickeado
@@ -193,9 +204,10 @@ public class InterfazController implements Initializable {
         
         cambiarClaseControl(boton,"botonSeleccionado", "botonNoSeleccionado");
         cambiarClaseControl(pane,"paneSeleccionado","paneNoSeleccionado");
-        cambiarImagenBoton(imageView,imagen);
+       // cambiarImagenBoton(imageView,imagen);
         
-        moverTriangulo(boton.getLayoutY() - boton.getHeight());
+        moverTriangulo(boton.getLayoutY() );
+        moverBarraBoton(boton.getLayoutY());
     }
     
 
@@ -233,10 +245,12 @@ public class InterfazController implements Initializable {
         tt3.play();
         });
        
-        tt2.setOnFinished((ActionEvent event) -> {
-            triangulo.setVisible(true);
-            tt3.setToX(0);
-            tt3.play();
-        });
+  
+    }
+    
+    private void moverBarraBoton(double y){
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), (Node) BarraBoton);
+        tt.setToY(y);
+            tt.play();
     }
 }

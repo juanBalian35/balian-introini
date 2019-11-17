@@ -3,7 +3,8 @@
    -fx-celeste: #61A3D4;
   -fx-celeste-oscuro: #5389b3;
    -fx-verde-opaco: #305329;
-   -fx-color-fondo: white;
+   -fx-color-fondo: #eaf3f9; 
+   -fx-celeste-opaco: #3979B2;
 
 }
 
@@ -26,7 +27,7 @@
 
 
 .panelFondo{
-    -fx-background-color : white;
+    -fx-background-color : -fx-color-fondo;
 }
 
 .botonNoSeleccionado{
@@ -38,6 +39,9 @@
 .botonNoSeleccionado:hover{  
     -fx-background-color :  -fx-celeste;
     -fx-background-radius :  0 0 0 0;
+    -fx-border-color: -fx-celeste-opaco;
+    -fx-border-width: 0 0 0 6; 
+    -fx-padding: 0 6 0 0; 
 }
 .botonNoSeleccionado:pressed{
     -fx-background-color :-fx-celeste-oscuro ;
@@ -47,8 +51,10 @@
 .botonSeleccionado{
     -fx-background-color :  -fx-celeste;
     -fx-background-radius :  0 0 0 0;
-    -fx-text-fill: white;
-
+   /* -fx-border-color: -fx-celeste-opaco;
+    -fx-border-width: 0 0 0 5; 
+    -fx-padding: 0 5 0 0;    
+*/
 }
 .botonSeleccionado:hover
 {
@@ -63,9 +69,6 @@
 .paneSeleccionado{
     -fx-background-color :  -fx-color-fondo;
     -fx-background-radius: 20; 
-    -fx-border-color: -fx-celeste;
-    -fx-border-radius: 20;
-    -fx-border-width: 3;
     visibility: visible;
 }
 
@@ -87,16 +90,14 @@
 */
 
 .tab{ 
-    -fx-pref-width: 521;
+    -fx-pref-width: 280;
    
-    -fx-pref-height: 90;
+    -fx-pref-height: 60;
     -fx-background-radius: 20 20 0 0;
-    -fx-border-color: -fx-celeste;
-    -fx-border-radius: 20 20 0 0;
 }
 
 .tab-header-background{
-    -fx-background-color: -fx-color-fondo;
+    -fx-background-color: transparent;
     -fx-background-radius :  0 0 0 0;
   
     
@@ -104,29 +105,23 @@
     
 }
 
-.jfx-tab-pane .tab-selected-line{
-    -fx-border-color:  -fx-verde-claro;
-    -fx-pref-height: 5;
-    -fx-background-color: -fx-verde-claro;
-    -fx-background-radius: 0 0 0 0;
- 
-    
-}
+.jfx-tab-pane .depth-container { -fx-effect: none; }
+
 
 .jfx-tab-pane .headers-region > .tab-selected-line{
     -fx-pref-width: 10 px;
-    -fx-border-color: -fx-verde-claro;
+    -fx-border-color: -fx-celeste-opaco;
     -fx-pref-height: 5;
-    -fx-background-color:-fx-verde-claro;
+    -fx-background-color:-fx-celeste-opaco;
    
 }
 
 .jfx-tab-pane .tab-selected{
     
-    -fx-background-color: -fx-celeste;
+    -fx-background-color: transparent;
     -fx-background-radius: 20 0 20 0;
 
-    -fx-border-color: -fx-celeste;
+    -fx-border-color: transparent;
     -fx-border-radius: 20 20 0 0;
     
 }
@@ -134,14 +129,22 @@
 .jfx-tab-pane .tab .tab-label {
     -fx-font-size: 30;
     -fx-font-family: 'AppleGothic';
-    -fx-text-fill: white;
+    -fx-alignment: BOTTOM_CENTER;
  
 }
 .jfx-tab-pane .tab {
 /*    -fx-background-color: #546d2d;*/
--fx-background-color: -fx-celeste;
--fx-border-color: -fx-celeste;
+-fx-background-color: transparent;
+-fx-border-color: transparent;
 -fx-border-radius: 20 20 0 0;
 
    
+}
+
+.jfx-tab-pane .headers-region .tab:selected .tab-container .tab-label {
+    -fx-text-fill: -fx-celeste-opaco;
+}
+
+.jfx-tab-pane .headers-region .tab .tab-container .tab-label {
+    -fx-text-fill: grey;
 }
