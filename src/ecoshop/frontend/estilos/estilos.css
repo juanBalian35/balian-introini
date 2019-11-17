@@ -27,7 +27,7 @@
 
 
 .panelFondo{
-    -fx-background-color : -fx-color-fondo;
+    -fx-background-color : white;
 }
 
 .botonNoSeleccionado{

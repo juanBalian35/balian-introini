@@ -5,8 +5,13 @@
  */
 package ecoshop.frontend;
 
+import com.jfoenix.controls.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -16,12 +21,27 @@ import javafx.fxml.Initializable;
  */
 public class AdminProductosController implements Initializable {
 
+    @FXML
+    private JFXComboBox BoxBuscarPor;
+    
+    @FXML
+    private JFXTextField TFBuscar;
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+      
     }    
+    
+      @FXML
+  private  void accionBoxBuscarPor(ActionEvent event) {
+       Object seleccion = BoxBuscarPor.getValue();
+       TFBuscar.disableProperty().setValue(Boolean.FALSE);
+       TFBuscar.promptTextProperty().setValue((String) seleccion);
+
+    }
     
 }

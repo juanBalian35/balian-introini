@@ -17,7 +17,7 @@
          <left>
             <AnchorPane maxWidth="105.0" minWidth="83.0" prefHeight="709.0" prefWidth="83.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css">
                <children>
-                  <Polygon fx:id="triangulo" fill="#68add4" layoutX="95.0" layoutY="45.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="triangulo">
+                   <Polygon fx:id="triangulo" fill="#68add4" layoutX="95.0" layoutY="45.0" rotate="90.0" scaleX="0.3" scaleY="0.26" stroke="BLACK" strokeMiterLimit="5.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="triangulo">
                     <points>
                       <Double fx:value="-50.0" />
                       <Double fx:value="40.0" />
@@ -26,7 +26,7 @@
                       <Double fx:value="0.0" />
                       <Double fx:value="-60.0" />
                     </points>
-                  </Polygon>
+                   </Polygon>
                   <VBox fillWidth="false" prefHeight="454.0" prefWidth="83.0" styleClass="barraIzquierda" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
                      <children>
                         <Button fx:id="botonAdministrarProductos" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#clickBotonAdministrarProductos" prefHeight="67.0" prefWidth="108.0" styleClass="botonSeleccionado" stylesheets="@estilos/estilos.css" textAlignment="CENTER">
@@ -129,7 +129,7 @@
             </AnchorPane>
          </left>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="panelFondo" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
+            <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
                <children>
                   <Pane layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneCentro" stylesheets="@estilos/estilos.css" />
                   <Pane id="Estadisticas" fx:id="paneEstadistica" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
