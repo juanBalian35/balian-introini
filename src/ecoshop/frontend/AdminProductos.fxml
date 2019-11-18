@@ -33,22 +33,22 @@
                            <children>
                               <JFXTextField focusColor="#a5d268" labelFloat="true" layoutX="34.0" layoutY="50.0" prefHeight="36.0" prefWidth="215.0" promptText="ID" unFocusColor="#839567">
                                  <font>
-                                    <Font size="19.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </JFXTextField>
                               <JFXTextField focusColor="#a5d268" labelFloat="true" layoutX="34.0" layoutY="120.0" prefHeight="36.0" prefWidth="215.0" promptText="Nombre" unFocusColor="#839567">
                                  <font>
-                                    <Font size="19.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </JFXTextField>
                               <JFXTextField focusColor="#a5d268" labelFloat="true" layoutX="34.0" layoutY="190.0" prefHeight="36.0" prefWidth="215.0" promptText="Material" unFocusColor="#839567">
                                  <font>
-                                    <Font size="19.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField focusColor="#a5d268" labelFloat="true" layoutX="34.0" layoutY="260.0" prefHeight="36.0" prefWidth="215.0" promptText="Precio" unFocusColor="#839567">
+                              <JFXTextField fx:id="TBPrecio" focusColor="#a5d268" labelFloat="true" layoutX="34.0" layoutY="260.0" prefHeight="36.0" prefWidth="215.0" promptText="Precio" unFocusColor="#839567">
                                  <font>
-                                    <Font size="19.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </JFXTextField>
                               <ImageView fitHeight="195.0" fitWidth="255.0" layoutX="395.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
@@ -56,28 +56,50 @@
                                     <Image url="@recursos/empty-image.png" />
                                  </image>
                               </ImageView>
-                              <JFXTextArea focusColor="#a5d268" labelFloat="true" layoutX="34.0" layoutY="330.0" prefHeight="73.0" prefWidth="215.0" promptText="Descripción" />
+                              <JFXTextArea focusColor="#a5d268" labelFloat="true" layoutX="34.0" layoutY="330.0" prefHeight="73.0" prefWidth="215.0" promptText="Descripción">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></JFXTextArea>
                               <Label layoutX="395.0" layoutY="58.0" text="Imagen">
                                  <font>
-                                    <Font size="19.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Label>
                               <JFXButton layoutX="395.0" layoutY="280.0" prefHeight="27.0" prefWidth="256.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" text="Agregar imagen" textFill="WHITE">
                                  <font>
                                     <Font size="19.0" />
                                  </font>
+                                 <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@recursos/baseline_add_photo_alternate_white_18dp.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </JFXButton>
                               <JFXListView depth="10" layoutX="770.0" layoutY="87.0" prefHeight="171.0" prefWidth="200.0" showTooltip="true" verticalGap="1.0" />
                               <Label layoutX="770.0" layoutY="56.0" text="Lista de envases">
                                  <font>
-                                    <Font size="19.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Label>
-                              <JFXButton buttonType="RAISED" layoutX="393.0" layoutY="436.0" prefHeight="67.0" prefWidth="256.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 20;" text="AGREGAR PRODUCTO" textFill="WHITE">
+                              <JFXButton buttonType="RAISED" layoutX="378.0" layoutY="441.0" prefHeight="67.0" prefWidth="289.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 20;" text="AGREGAR PRODUCTO" textFill="WHITE">
                                  <font>
                                     <Font size="22.0" />
                                  </font>
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@recursos/baseline_add_circle_white_18dp.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </JFXButton>
+                              <Label fx:id="signoPeso" layoutX="34.0" layoutY="267.0" text="\$" textFill="#839567" visible="false">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                      </content>
@@ -97,12 +119,7 @@
                                     <TableColumn prefWidth="181.0" text="Imagen" />
                                  </columns>
                               </TableView>
-                              <JFXButton buttonType="RAISED" layoutX="368.0" layoutY="394.0" prefHeight="67.0" prefWidth="256.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 20;" text="BORRAR PRODUCTO" textFill="WHITE">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutX="44.0" layoutY="75.0" onAction="#accionBoxBuscarPor" promptText="Buscar por">
+                              <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutX="44.0" layoutY="75.0" promptText="Buscar por">
                               <items>
                                 <FXCollections fx:factory="observableArrayList">                                    
                                     <String fx:value="ID" />
@@ -124,6 +141,18 @@
                                     <ImageView fitHeight="22.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@recursos/baseline_search_white_18dp.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" layoutX="378.0" layoutY="441.0" prefHeight="67.0" prefWidth="289.0" ripplerFill="RED" style="-fx-background-color: #5EADD8; -fx-background-radius: 20;" text="BORRAR PRODUCTO" textFill="WHITE">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@recursos/baseline_delete_white_18dp.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
