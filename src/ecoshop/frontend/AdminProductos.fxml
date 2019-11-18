@@ -111,7 +111,7 @@
                             </items>    
                               
                               </JFXComboBox>
-                              <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="175.0" layoutY="65.0" onInputMethodTextChanged="#cambioTexto" prefHeight="36.0" prefWidth="215.0" unFocusColor="#839567">
+                              <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="175.0" layoutY="65.0" prefHeight="36.0" prefWidth="215.0" unFocusColor="#839567">
                                  <font>
                                     <Font size="19.0" />
                                  </font>

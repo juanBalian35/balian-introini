@@ -8,13 +8,15 @@ package ecoshop.frontend;
 import com.jfoenix.controls.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-/**
+/*
  * FXML Controller class
  *
  * @author agustinintroini
@@ -36,22 +38,21 @@ public class AdminProductosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+      TFBuscar.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable,
+                String oldValue, String newValue) {
+            botonBuscar.disableProperty().setValue(newValue.length() == 0);
+        }
+    });
       
     }    
     
-      @FXML
-  private  void accionBoxBuscarPor(ActionEvent event) {
+    @FXML
+    private  void accionBoxBuscarPor(ActionEvent event) {
        Object seleccion = BoxBuscarPor.getValue();
        TFBuscar.disableProperty().setValue(Boolean.FALSE);
        TFBuscar.promptTextProperty().setValue((String) seleccion);
-       botonBuscar.disableProperty().setValue(Boolean.FALSE);
 
     }
-  
-  
-    @FXML
-    void cambioTexto(ActionEvent event) {
-      
-    }
-    
 }
