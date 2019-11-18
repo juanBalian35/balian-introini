@@ -25,6 +25,9 @@ public class AdminProductosController implements Initializable {
     private JFXComboBox BoxBuscarPor;
     
     @FXML
+    private JFXButton botonBuscar;
+    
+    @FXML
     private JFXTextField TFBuscar;
     /**
      * Initializes the controller class.
@@ -41,7 +44,14 @@ public class AdminProductosController implements Initializable {
        Object seleccion = BoxBuscarPor.getValue();
        TFBuscar.disableProperty().setValue(Boolean.FALSE);
        TFBuscar.promptTextProperty().setValue((String) seleccion);
+       botonBuscar.disableProperty().setValue(Boolean.FALSE);
 
+    }
+  
+  
+    @FXML
+    void cambioTexto(ActionEvent event) {
+      
     }
     
 }

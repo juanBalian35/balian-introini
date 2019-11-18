@@ -111,12 +111,12 @@
                             </items>    
                               
                               </JFXComboBox>
-                              <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="175.0" layoutY="65.0" prefHeight="36.0" prefWidth="215.0" unFocusColor="#839567">
+                              <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="175.0" layoutY="65.0" onInputMethodTextChanged="#cambioTexto" prefHeight="36.0" prefWidth="215.0" unFocusColor="#839567">
                                  <font>
                                     <Font size="19.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXButton layoutX="408.0" layoutY="70.0" prefHeight="38.0" prefWidth="113.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" text="Buscar" textFill="WHITE">
+                              <JFXButton fx:id="botonBuscar" disable="true" layoutX="408.0" layoutY="70.0" prefHeight="38.0" prefWidth="113.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" text="Buscar" textFill="WHITE">
                                  <font>
                                     <Font size="19.0" />
                                  </font>
