@@ -119,7 +119,7 @@
                                     <TableColumn prefWidth="181.0" text="Imagen" />
                                  </columns>
                               </TableView>
-                              <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutX="44.0" layoutY="75.0" promptText="Buscar por">
+                              <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutX="44.0" layoutY="75.0" promptText="Buscar por" onAction="#accionBoxBuscarPor">
                               <items>
                                 <FXCollections fx:factory="observableArrayList">                                    
                                     <String fx:value="ID" />

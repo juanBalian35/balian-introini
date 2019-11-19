@@ -9,23 +9,15 @@ import com.jfoenix.controls.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
-import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Side;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextFormatter;
-import javafx.scene.control.TextFormatter.Change;
 
 import javafx.scene.layout.Pane;
-import javafx.util.converter.IntegerStringConverter;
 
 /*
  * FXML Controller class
@@ -134,8 +126,8 @@ public class AdminProductosController implements Initializable {
      
     }
  
-     @FXML
-       private  void accionBoxBuscarPor(ActionEvent event) {
+    @FXML
+    private  void accionBoxBuscarPor(ActionEvent event) {
        Object seleccion = BoxBuscarPor.getValue();
        TFBuscar.disableProperty().setValue(Boolean.FALSE);
        TFBuscar.promptTextProperty().setValue((String) seleccion);
