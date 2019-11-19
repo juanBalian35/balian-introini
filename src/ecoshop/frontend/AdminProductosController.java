@@ -6,6 +6,7 @@
 package ecoshop.frontend;
 
 import com.jfoenix.controls.*;
+import com.jfoenix.validation.RequiredFieldValidator;
 import ecoshop.backend.JSONAuxiliar;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,8 +21,15 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import org.json.simple.JSONObject;
 import org.json.simple.JsonObject;
+import javafx.geometry.Insets;
+import static javafx.scene.control.Alert.AlertType.ERROR;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javax.swing.Icon;
+import org.kordamp.ikonli.javafx.*;
 
 /*
  * FXML Controller class
@@ -51,7 +59,13 @@ public class AdminProductosController implements Initializable {
     @FXML
     private JFXButton botonAgregarProducto;
     
+         @FXML
+    private StackPane paneChipEnvases;
+    
     boolean controlSignoPeso = false;
+    
+    
+    
     UnaryOperator<TextFormatter.Change> filter = new UnaryOperator<TextFormatter.Change>() {
         @Override
         public TextFormatter.Change apply(TextFormatter.Change t) {
@@ -77,6 +91,27 @@ public class AdminProductosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+      //Inicializa los ChipViews  
+        JFXChipView<String> chipView = new JFXChipView<>();
+        chipView.getChips().addAll("WEF", "WWW", "JD");
+        chipView.getSuggestions().addAll("HELLO", "TROLL", "WFEWEF", "WEF");
+        chipView.setStyle("-fx-background-color:#eaf3f9;");
+        
+        chipView.getChips().forEach((tab)-> {
+        System.out.println("stuff with" + tab);
+    });
+        
+        chipView.setChipFactory(
+        (view, item) -> {
+          JFXChip<String> chip = new JFXDefaultChip<>(view, item);
+          chip.setOnMouseClicked(event -> chip.setStyle("-fx-background-color: RED;"));
+          return chip;
+        });
+       
+        paneChipEnvases.getChildren().add(chipView);
+        paneChipEnvases.setMargin(chipView, new Insets(10));
+        
+        //Formato de los textfields
         TBPrecio.setTextFormatter(new TextFormatter<>(filter));    
       
         TFBuscar.textProperty().addListener(new ChangeListener<String>() {
@@ -115,8 +150,35 @@ public class AdminProductosController implements Initializable {
                 }
             } 
         });
+    RequiredFieldValidator var = new RequiredFieldValidator();
+     var.setMessage("Campo obligatorio");
+     
+     Image i = new Image(getClass().getResourceAsStream("recursos/attention.png"));
+     ImageView icono = new ImageView(i);
+     
+     var.setIcon(icono);
+     
+     
+      
+       TBPrecio.getValidators().add(var);
+        TBPrecio.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) {
+                TBPrecio.validate();
+            }
+        });
     }
  
+    
+    //validacion de los textfields
+     
+       // validator.setIcon(new Icon(AwesomeIcon.WARNING, "1em", ";", "error"));
+       /* validationField.getValidators().add(validator);
+        validationField.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) {
+                validationField.validate();
+            }
+        });
+    */
     @FXML
     private  void accionBoxBuscarPor(ActionEvent event) {
         Object seleccion = BoxBuscarPor.getValue();
