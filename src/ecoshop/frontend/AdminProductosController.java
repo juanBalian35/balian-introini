@@ -1,15 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ecoshop.frontend;
 
-import com.jfoenix.controls.*;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXChip;
+import com.jfoenix.controls.JFXChipView;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDefaultChip;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 import ecoshop.backend.JSONAuxiliar;
+import ecoshop.backend.Producto;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.function.UnaryOperator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,21 +28,22 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import org.json.simple.JSONObject;
-import org.json.simple.JsonObject;
 import javafx.geometry.Insets;
-import static javafx.scene.control.Alert.AlertType.ERROR;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javax.swing.Icon;
-import org.kordamp.ikonli.javafx.*;
 
 /*
- * FXML Controller class
+ * Clase controladora de productos diseñada para el administrador del sistema
  *
- * @author agustinintroini
+ * @author Agustín Introini
+ * @author Juan Balian
  */
 public class AdminProductosController implements Initializable {
-
+    private static final String NOMBRE_JSON = "productos";
+    
     @FXML
     private JFXComboBox BoxBuscarPor;
     
@@ -51,6 +57,18 @@ public class AdminProductosController implements Initializable {
     private JFXTextField TBPrecio;
     
     @FXML
+    private JFXTextArea TBDescripcion;
+            
+    @FXML
+    private JFXTextField TBMaterial;
+    
+    @FXML
+    private JFXTextField TBNombre;
+    
+    @FXML
+    private JFXTextField TBId;
+    
+    @FXML
     private Label signoPeso;
     
     @FXML
@@ -59,12 +77,34 @@ public class AdminProductosController implements Initializable {
     @FXML
     private JFXButton botonAgregarProducto;
     
-         @FXML
+    @FXML
     private StackPane paneChipEnvases;
     
+    @FXML
+    private TableView<Producto> tableViewBorrar;
+    
+    @FXML 
+    private TableColumn<Producto, String> columnId;
+    
+    @FXML 
+    private TableColumn<Producto, String> columnNombre;
+    
+    @FXML 
+    private TableColumn<Producto, String> columnMaterial;
+    
+    @FXML 
+    private TableColumn<Producto, String> columnDescripcion;
+    
+    @FXML 
+    private TableColumn<Producto, String> columnPrecio;
+    
+    @FXML 
+    private TableColumn<Producto, String> columnEnvases;
+    
+    @FXML 
+    private TableColumn<Producto, String> columnImagen;
+    
     boolean controlSignoPeso = false;
-    
-    
     
     UnaryOperator<TextFormatter.Change> filter = new UnaryOperator<TextFormatter.Change>() {
         @Override
@@ -91,21 +131,28 @@ public class AdminProductosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      //Inicializa los ChipViews  
+        columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnMaterial.setCellValueFactory(new PropertyValueFactory<>("material"));
+        columnDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        columnPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
+        columnEnvases.setCellValueFactory(new PropertyValueFactory<>("envases"));
+        columnImagen.setCellValueFactory(new PropertyValueFactory<>("imagen"));
+        
+        //Inicializa los ChipViews  
         JFXChipView<String> chipView = new JFXChipView<>();
         chipView.getChips().addAll("WEF", "WWW", "JD");
         chipView.getSuggestions().addAll("HELLO", "TROLL", "WFEWEF", "WEF");
         chipView.setStyle("-fx-background-color:#eaf3f9;");
         
         chipView.getChips().forEach((tab)-> {
-        System.out.println("stuff with" + tab);
-    });
+            System.out.println("stuff with" + tab);
+        });
         
-        chipView.setChipFactory(
-        (view, item) -> {
-          JFXChip<String> chip = new JFXDefaultChip<>(view, item);
-          chip.setOnMouseClicked(event -> chip.setStyle("-fx-background-color: RED;"));
-          return chip;
+        chipView.setChipFactory( (view, item) -> {
+            JFXChip<String> chip = new JFXDefaultChip<>(view, item);
+            chip.setOnMouseClicked(event -> chip.setStyle("-fx-background-color: RED;"));
+            return chip;
         });
        
         paneChipEnvases.getChildren().add(chipView);
@@ -150,17 +197,16 @@ public class AdminProductosController implements Initializable {
                 }
             } 
         });
-    RequiredFieldValidator var = new RequiredFieldValidator();
-     var.setMessage("Campo obligatorio");
+    
+        RequiredFieldValidator var = new RequiredFieldValidator();
+        var.setMessage("Campo obligatorio");
      
-     Image i = new Image(getClass().getResourceAsStream("recursos/attention.png"));
-     ImageView icono = new ImageView(i);
+        Image i = new Image(getClass().getResourceAsStream("recursos/attention.png"));
+        ImageView icono = new ImageView(i);
      
-     var.setIcon(icono);
-     
-     
+        var.setIcon(icono);
       
-       TBPrecio.getValidators().add(var);
+        TBPrecio.getValidators().add(var);
         TBPrecio.focusedProperty().addListener((o, oldVal, newVal) -> {
             if (!newVal) {
                 TBPrecio.validate();
@@ -168,17 +214,6 @@ public class AdminProductosController implements Initializable {
         });
     }
  
-    
-    //validacion de los textfields
-     
-       // validator.setIcon(new Icon(AwesomeIcon.WARNING, "1em", ";", "error"));
-       /* validationField.getValidators().add(validator);
-        validationField.focusedProperty().addListener((o, oldVal, newVal) -> {
-            if (!newVal) {
-                validationField.validate();
-            }
-        });
-    */
     @FXML
     private  void accionBoxBuscarPor(ActionEvent event) {
         Object seleccion = BoxBuscarPor.getValue();
@@ -187,15 +222,61 @@ public class AdminProductosController implements Initializable {
     }
     
     @FXML
+    private void clickBotonBuscar(ActionEvent event){
+        String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
+        
+        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON);
+        
+        Set<Entry<String, String>> entrySet = objeto.entrySet();
+        
+        ArrayList<Producto> productos = new ArrayList<>();
+        Producto producto = new Producto();
+        for(Entry<String,String> entry : entrySet){
+            switch(entry.getKey().toLowerCase()){
+                case "nombre":
+                    producto.setNombre(entry.getValue());
+                    break;
+                case "id":
+                    producto.setId(Integer.parseInt(entry.getValue()));
+                    break;
+                case "precio":
+                    producto.setPrecio(Double.parseDouble(entry.getValue()));
+                    break;
+                case "material":
+                    producto.setMaterial(entry.getValue());
+                    break;
+                case "descripcion":
+                    producto.setDescripcion(entry.getValue());
+                    break;
+                case "imagen":
+                    producto.setImagen(entry.getValue());
+                    break; 
+                //case "envases":
+                    //producto.setEnvases(entry.getValue());
+                default:
+                    // TODO: Preguntar si es necesario siempre poner un default?
+            }
+        }
+        
+        productos.add(producto);
+        
+        tableViewBorrar.getItems().setAll(productos);
+    }
+    
+    @FXML
     private void clickBotonAgregarProducto(MouseEvent event){
         JSONObject nuevo  = new JSONObject();
-        nuevo.put("id", "1");
-        nuevo.put("nombre", "1");
-        nuevo.put("material", "1");
-        nuevo.put("precio", "1");
-        nuevo.put("descripcion", "1");
+        nuevo.put("id", TBId.getText());
+        nuevo.put("nombre", TBNombre.getText());
+        nuevo.put("material", TBMaterial.getText());
+        nuevo.put("precio", TBPrecio.getText().substring(4));
+        nuevo.put("descripcion", TBDescripcion.getText());
         
-        JSONAuxiliar.agregar(nuevo,"productos");
+        if(JSONAuxiliar.existe(TBId.getText(), "id", NOMBRE_JSON)){
+            //TODO: Escribir error de que esta ID ya esta en uso
+            return; 
+        }
+        
+        JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
     }
-  
 }

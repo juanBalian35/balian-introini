@@ -13,16 +13,29 @@ public class Producto {
     private String material;
     private String descripcion;
     private String imagen;
+    private String nombre;
     private ArrayList<Envase> envases;
     
    
-    public Producto(int id, double precio, String material, String descripcion, String imagen) {
+    public Producto(){
+        this(-1,-1,"","","","");
+    }
+    
+    public Producto(int id, double precio, String nombre, String material, String descripcion, String imagen) {
         this.id = id;
         this.precio = precio;
         this.material = material;
         this.descripcion = descripcion;
         this.imagen= imagen;
         this.envases= new ArrayList();
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     public int getId() {
