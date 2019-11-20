@@ -14,7 +14,7 @@
 
 <Pane prefHeight="233.0" prefWidth="327.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PanelProductoController">
    <children>
-      <Pane fx:id="paneFondo" layoutX="5.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="221.0" prefWidth="316.0" style="-fx-background-color: white;">
+      <Pane fx:id="paneFondo" prefHeight="221.0" prefWidth="316.0" style="-fx-background-color: white;">
          <children>
             <VBox alignment="BOTTOM_RIGHT" prefHeight="418.0" prefWidth="316.0">
                <children>
@@ -48,9 +48,6 @@
                         <Pane layoutY="160.0">
                            <children>
                               <JFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="175.0" layoutY="-2.0" prefHeight="40.0" prefWidth="141.0" ripplerFill="#a5d268" text="Agregar al carrito" textFill="#5eadd8" VBox.vgrow="ALWAYS">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
                                  <font>
                                     <Font name="Roboto Condensed" size="16.0" />
                                  </font>

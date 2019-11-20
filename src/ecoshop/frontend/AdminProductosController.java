@@ -7,7 +7,9 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDefaultChip;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
+import com.jfoenix.validation.base.ValidatorBase;
 import ecoshop.backend.JSONAuxiliar;
 import ecoshop.backend.Producto;
 import java.net.URL;
@@ -131,6 +133,7 @@ public class AdminProductosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columnMaterial.setCellValueFactory(new PropertyValueFactory<>("material"));
@@ -198,20 +201,48 @@ public class AdminProductosController implements Initializable {
             } 
         });
     
-       validarCampo(TBPrecio, "recursos/attention.png", "Campo obligatorio");
-       validarCampo(TBMaterial, "recursos/attention.png", "Campo obligatorio");
-       validarCampo(TBId, "recursos/attention.png", "Campo obligatorio");
-       validarCampo(TBNombre, "recursos/attention.png", "Campo obligatorio");
-
+       validarCampo(TBPrecio, 
+               new String[]{"Campo obligatorio", "Campo debe ser un entero"}, 
+               new ValidatorBase[]{new RequiredFieldValidator(), new NumberValidator()});
+       validarCampo(TBMaterial, 
+               new String[]{"Campo obligatorio"}, 
+               new ValidatorBase[]{new RequiredFieldValidator()});
+       validarCampo(TBId, 
+               new String[]{"Campo obligatorio", "Campo debe ser un entero"}, 
+               new ValidatorBase[]{new RequiredFieldValidator(), new NumberValidator()});
+       validarCampo(TBNombre, 
+               new String[]{"Campo obligatorio"}, 
+               new ValidatorBase[]{new RequiredFieldValidator()});
 
 
     }
  
-    
-    
     @FXML
-     private void validarCampo(JFXTextField campo, String rutaImagen, String mensaje){
-            RequiredFieldValidator var = new RequiredFieldValidator();
+     private void validarCampo(JFXTextField campo, 
+             String[] mensajes,
+             ValidatorBase[] validators){
+        for(int i = 0; i < validators.length; ++i){
+            validators[i].setMessage(mensajes[i]);
+            campo.getValidators().add(validators[i]);
+            
+            Image image = new Image(getClass().getResourceAsStream("recursos/attention.png"));
+            ImageView icono = new ImageView(image);
+            icono.setFitHeight(13);
+            icono.setFitWidth(13);
+            validators[i].setIcon(icono);
+        }
+      
+        campo.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal && campo.validate()) {
+                campo.getStyleClass().add("error");
+            }
+        });
+    }
+    @FXML
+     private void validarCampo2(JFXTextField campo, 
+             String rutaImagen, 
+             String mensaje){
+        NumberValidator var = new NumberValidator();
         var.setMessage(mensaje);
      
         Image i = new Image(getClass().getResourceAsStream(rutaImagen));
@@ -229,8 +260,7 @@ public class AdminProductosController implements Initializable {
                 }
             }
         });
-     
-        }
+    }
     
     @FXML
     private  void accionBoxBuscarPor(ActionEvent event) {
@@ -283,10 +313,13 @@ public class AdminProductosController implements Initializable {
     
     @FXML
     private void clickBotonAgregarProducto(MouseEvent event){
-        if(!TBId.validate() && !TBNombre.validate() && !TBMaterial.validate() && !TBPrecio.validate()){
+        boolean idValida = TBId.validate();
+        boolean nombreValido = TBNombre.validate();
+        boolean materialValido = TBMaterial.validate();
+        boolean precioValido = TBPrecio.validate();
+        if(!(idValida && nombreValido && materialValido && precioValido)){
             return;
         }   
-       
         
         JSONObject nuevo  = new JSONObject();
         nuevo.put("id", TBId.getText());
