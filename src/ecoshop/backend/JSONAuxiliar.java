@@ -23,7 +23,7 @@ import org.json.simple.parser.ParseException;
  * 
  */
 public class JSONAuxiliar {
-    static final String RUTA = "src\\ecoshop\\backend";
+    static final String RUTA = "src/ecoshop/backend";
     
     /**
      * @param JSONAware JSONObject o JSONArray a ser escrito
@@ -31,7 +31,7 @@ public class JSONAuxiliar {
      * @return booleano que indica si pudo escribir correctamente
     */
     public static boolean escribir(JSONAware object, String nombre){
-        File archivoJson = new File(Paths.get(RUTA).toAbsolutePath().toString(), nombre + ".json");
+        File archivoJson = new File(nombre + ".json");
         
         try (FileWriter writer = new FileWriter(archivoJson)) {
             writer.write(object.toJSONString());
@@ -53,7 +53,7 @@ public class JSONAuxiliar {
     */
     public static JSONAware leer(String nombre) throws FileNotFoundException, IOException, ParseException{
         JSONParser parser  = new JSONParser();
-        File archivoJson = new File(Paths.get(RUTA).toAbsolutePath().toString(), nombre + ".json");
+        File archivoJson = new File(nombre + ".json");
         
         Object obj = parser.parse(new FileReader(archivoJson));
         

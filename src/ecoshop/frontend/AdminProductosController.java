@@ -198,22 +198,40 @@ public class AdminProductosController implements Initializable {
             } 
         });
     
-        RequiredFieldValidator var = new RequiredFieldValidator();
-        var.setMessage("Campo obligatorio");
-     
-        Image i = new Image(getClass().getResourceAsStream("recursos/attention.png"));
-        ImageView icono = new ImageView(i);
-     
-        var.setIcon(icono);
-      
-        TBPrecio.getValidators().add(var);
-        TBPrecio.focusedProperty().addListener((o, oldVal, newVal) -> {
-            if (!newVal) {
-                TBPrecio.validate();
-            }
-        });
+       validarCampo(TBPrecio, "recursos/attention.png", "Campo obligatorio");
+       validarCampo(TBMaterial, "recursos/attention.png", "Campo obligatorio");
+       validarCampo(TBId, "recursos/attention.png", "Campo obligatorio");
+       validarCampo(TBNombre, "recursos/attention.png", "Campo obligatorio");
+
+
+
     }
  
+    
+    
+    @FXML
+     private void validarCampo(JFXTextField campo, String rutaImagen, String mensaje){
+            RequiredFieldValidator var = new RequiredFieldValidator();
+        var.setMessage(mensaje);
+     
+        Image i = new Image(getClass().getResourceAsStream(rutaImagen));
+        ImageView icono = new ImageView(i);
+        icono.setFitHeight(13);
+        icono.setFitWidth(13);
+        var.setIcon(icono);
+      
+        campo.getValidators().add(var);
+        campo.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) {
+                campo.validate();
+                if(campo.validate()){
+                    campo.getStyleClass().add("error");
+                }
+            }
+        });
+     
+        }
+    
     @FXML
     private  void accionBoxBuscarPor(ActionEvent event) {
         Object seleccion = BoxBuscarPor.getValue();

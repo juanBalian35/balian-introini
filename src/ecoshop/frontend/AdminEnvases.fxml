@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -7,21 +13,221 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<Pane id="AdministrarProducto" fx:id="PaneAdministrarProducto" prefHeight="614.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="AdministrarProducto" fx:id="PaneAdministrarEnvases" prefHeight="598.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.AdminEnvasesController">
    <children>
-      <BorderPane prefHeight="614.0" prefWidth="1041.0" stylesheets="@estilos/estilos.css">
-         <top>
-            <Pane prefHeight="106.0" prefWidth="1041.0" style="-fx-background-color: #61A3D4; -fx-background-radius: 20 20 0 0;" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
-               <children>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="1041.0" text="Administrar Envases" textFill="WHITE">
-                     <font>
-                        <Font name="Kokonor Regular" size="46.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-         </top>
-      </BorderPane>
+      <Pane layoutX="14.0" prefHeight="582.0" prefWidth="1007.0" stylesheets="@estilos/estilos.css">
+         <children>
+            <JFXTabPane layoutX="2.0" layoutY="1.0" prefHeight="582.0" prefWidth="1003.0" stylesheets="@estilos/estilos.css" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab style="-fx-alignment: BOTTOM_CENTER;" text="Agregar envase">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0">
+                                 <children>
+                                    <Pane layoutX="318.0">
+                                       <children>
+                                          <Label layoutX="5.0" layoutY="10.0" prefHeight="36.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="Imagen del envase">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Pane layoutX="5.0" layoutY="46.0" prefHeight="286.0" prefWidth="367.0" styleClass="panelFondo" stylesheets="@estilos/estilos.css">
+                                             <children>
+                                                <JFXButton layoutX="226.0" layoutY="245.0" prefHeight="40.0" prefWidth="141.0" ripplerFill="#a5d268" stylesheets="@estilos/estilos.css" text="AGREGAR IMAGEN" textFill="#5eadd8">
+                                                   <font>
+                                                      <Font name="Roboto Condensed" size="16.0" />
+                                                   </font>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </JFXButton>
+                                                <ImageView fitHeight="245.0" fitWidth="367.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/empty-image.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="14.0" layoutY="255.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="Vista previa" textFill="#908a8a">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <effect>
+                                                <DropShadow color="#0000003f" height="16.45" offsetX="3.0" offsetY="3.0" radius="8.1025" width="17.96" />
+                                             </effect>
+                                          </Pane>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="40.0" prefHeight="257.0" prefWidth="216.0">
+                                       <children>
+                                          <JFXTextField fx:id="TBId" focusColor="#a5d268" labelFloat="true" layoutY="10.0" prefHeight="36.0" prefWidth="215.0" promptText="ID" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="TBNombre" focusColor="#a5d268" labelFloat="true" layoutY="90.0" prefHeight="36.0" prefWidth="215.0" promptText="Nombre" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </JFXTextField>
+                                          <JFXComboBox fx:id="BoxCategoria" focusColor="#a5d268" labelFloat="true" layoutY="170.0" prefHeight="36.0" prefWidth="215.0" promptText="Categoría" styleClass="jfx-controles" stylesheets="@estilos/estilos.css">
+                                             <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                           
+                                                   <Label>
+                                              <text>
+                                                           <String fx:value="Plástico" />
+                                              </text>
+                                                        <graphic>
+                                                           <ImageView fitHeight="24.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
+                                                                <image>
+                                                                   <Image url="@recursos/plastico1.png" />
+                                                                </image>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Label>
+                                                                  
+                                                   <Label>
+                                                                     <text>
+                                                           <String fx:value="Cartón" />
+                                                                     </text>
+                                                        <graphic>
+                                                           <ImageView fitHeight="24.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
+                                                                <image>
+                                                                   <Image url="@recursos/carton1.png" />
+                                                                </image>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Label>
+                                                                  
+                                                   <Label>
+                                                                     <text>
+                                                           <String fx:value="Vidrio / Cerámica" />
+                                                                     </text>
+                                                        <graphic>
+                                                           <ImageView fitHeight="24.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
+                                                                <image>
+                                                                   <Image url="@recursos/vidrio1.png" />
+                                                                </image>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Label>
+                                                                  
+                                                   <Label>
+                                                                     <text>
+                                                           <String fx:value="Metal" />
+                                                                     </text>
+                                                        <graphic>
+                                                           <ImageView fitHeight="24.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
+                                                                <image>
+                                                                   <Image url="@recursos/metal1.png" />
+                                                                </image>
+                                                            </ImageView>
+                                                        </graphic>
+                                                    </Label>
+                                                </FXCollections>
+                                             </items>
+                                          </JFXComboBox>
+                                       </children>
+                                    </Pane>
+                                    <JFXButton fx:id="botonAgregarProducto" buttonType="RAISED" layoutX="364.0" layoutY="391.0" onMouseClicked="#clickBotonAgregarProducto" prefHeight="67.0" prefWidth="289.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar envase" textFill="WHITE">
+                                       <font>
+                                          <Font name="Roboto Condensed" size="22.0" />
+                                       </font>
+                                       <graphic>
+                                          <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@recursos/baseline_add_circle_white_18dp.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Eliminar envase">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" layoutX="344.0" layoutY="391.0" prefHeight="67.0" prefWidth="289.0" ripplerFill="RED" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar envase" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                       <graphic>
+                                          <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@recursos/baseline_delete_white_18dp.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <JFXButton fx:id="botonBuscar" disable="true" layoutX="421.0" layoutY="55.0" onAction="#clickBotonBuscar" prefHeight="38.0" prefWidth="113.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" text="Buscar" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="Roboto Condensed" size="19.0" />
+                                       </font>
+                                       <graphic>
+                                          <ImageView fitHeight="22.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@recursos/baseline_search_white_18dp.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <TableView fx:id="tableViewBorrar" layoutX="57.0" layoutY="122.0" prefHeight="239.0" prefWidth="866.0" styleClass="jfx-controles">
+                                       <columns>
+                                          <TableColumn fx:id="columnId" prefWidth="40.7003173828125" text="ID" />
+                                          <TableColumn fx:id="columnNombre" prefWidth="73.76080322265625" text="Nombre" />
+                                          <TableColumn fx:id="columnMaterial" prefWidth="67.7811279296875" text="Material" />
+                                          <TableColumn fx:id="columnDescripcion" prefWidth="110.7305908203125" text="Descripción" />
+                                          <TableColumn fx:id="columnPrecio" prefWidth="105.0" text="Precio" />
+                                          <TableColumn fx:id="columnEnvases" prefWidth="126.0" text="Envases" />
+                                          <TableColumn fx:id="columnImagen" prefWidth="194.5555419921875" text="Imagen" />
+                                       </columns>
+                                       <stylesheets>
+                                          <URL value="@estilos/tableview.css" />
+                                          <URL value="@estilos/estilos.css" />
+                                       </stylesheets>
+                                    </TableView>
+                                    <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="194.0" layoutY="52.0" prefHeight="36.0" prefWidth="215.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutX="57.0" layoutY="56.0" onAction="#accionBoxBuscarPor" prefWidth="123.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css">
+                                       <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                             <String fx:value="ID" />
+                                             <String fx:value="Nombre" />
+                                          </FXCollections>
+                                       </items>
+                                    </JFXComboBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+         </children>
+      </Pane>
    </children>
 </Pane>

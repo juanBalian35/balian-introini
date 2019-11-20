@@ -5,7 +5,7 @@
    -fx-verde-opaco: #305329;
    -fx-color-fondo: #eaf3f9; 
    -fx-celeste-opaco: #3979B2;
-
+   -fx-rojo-eliminar: #d32f2f;
 }
 
 
@@ -30,10 +30,14 @@
     -fx-background-color : white;
 }
 
+
+
 .botonNoSeleccionado{
     -fx-background-color : -fx-verde-claro;
     -fx-background-radius :  0 0 0 0;
     -fx-text-fill: -fx-verde-opaco;
+    -fx-cursor: HAND;
+
 }
 
 .botonNoSeleccionado:hover{  
@@ -42,10 +46,14 @@
     -fx-border-color: -fx-celeste-opaco;
     -fx-border-width: 0 0 0 6; 
     -fx-padding: 0 6 0 0; 
+    -fx-cursor: HAND;
+
 }
 .botonNoSeleccionado:pressed{
     -fx-background-color :-fx-celeste-oscuro ;
     -fx-background-radius :  0 0 0 0;
+    -fx-cursor: HAND;
+
 }
 
 .botonSeleccionado{
@@ -54,16 +62,23 @@
    /* -fx-border-color: -fx-celeste-opaco;
     -fx-border-width: 0 0 0 5; 
     -fx-padding: 0 5 0 0;    
+    
 */
+-fx-cursor: HAND;
+
 }
 .botonSeleccionado:hover
 {
     -fx-background-color : -fx-celeste;
     -fx-background-radius :  0 0 0 0;
+    -fx-cursor: HAND;
+
 }
 .botonSeleccionado:pressed{
     -fx-background-color :-fx-celeste-oscuro ;
     -fx-background-radius :  0 0 0 0;
+    -fx-cursor: HAND;
+
 }
 
 .paneSeleccionado{
@@ -83,6 +98,23 @@
     -fx-fill: -fx-celeste;
 }
 
+.botonAgregar{
+    -fx-background-color: -fx-verde-claro; 
+    -fx-background-radius: 10;
+   -fx-font-family: "Roboto Condensed";
+   -fx-font-size: 23px;
+   -fx-cursor: HAND;
+
+}
+.botonEliminar{
+    -fx-background-color: -fx-rojo-eliminar ; 
+    -fx-background-radius: 10;
+    -fx-font-family: "Roboto Condensed";
+    -fx-font-size: 23px;
+    -fx-cursor: HAND;
+
+}
+
 /*
  ---------------------------------
             TAB PANE
@@ -94,6 +126,9 @@
    
     -fx-pref-height: 60;
     -fx-background-radius: 20 20 0 0;
+    -fx-cursor: HAND;
+
+
 }
 
 .tab-header-background{
@@ -128,7 +163,7 @@
 
 .jfx-tab-pane .tab .tab-label {
     -fx-font-size: 30;
-    -fx-font-family: 'AppleGothic';
+    -fx-font-family: 'Roboto thin';
     -fx-alignment: BOTTOM_CENTER;
  
 }
@@ -157,7 +192,7 @@
 
 
 .jfx-chip-view .jfx-chip > HBox {
-    -fx-font-family: "Roboto Medium";
+    -fx-font-family: "Roboto Thin";
     -fx-font-size: 14.0;
     -fx-background-color: -fx-verde-claro;
     -fx-background-radius: 40px;
@@ -165,4 +200,28 @@
     -fx-pref-height: 32px;
     -fx-alignment: center-left;
     -fx-spacing: 8;
+}
+
+/*
+ ---------------------------------
+            COMBO BOX
+ ---------------------------------
+*/
+
+
+
+
+.jfx-controles {
+    -fx-font-family: "Roboto Light";
+    -fx-font-size: 16px;
+}
+
+.jfx-text-field:error {
+    -jfx-focus-color: -fx-rojo-eliminar;
+    -jfx-unfocus-color: -fx-rojo-eliminar;
+}
+
+.jfx-text-field .error-label {
+    -fx-text-fill: -fx-rojo-eliminar;
+    -fx-font-size: 10px;
 }
