@@ -283,6 +283,11 @@ public class AdminProductosController implements Initializable {
     
     @FXML
     private void clickBotonAgregarProducto(MouseEvent event){
+        if(!TBId.validate() && !TBNombre.validate() && !TBMaterial.validate() && !TBPrecio.validate()){
+            return;
+        }   
+       
+        
         JSONObject nuevo  = new JSONObject();
         nuevo.put("id", TBId.getText());
         nuevo.put("nombre", TBNombre.getText());
@@ -296,5 +301,7 @@ public class AdminProductosController implements Initializable {
         }
         
         JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
+            System.out.println("agrego producto");
     }
+         
 }
