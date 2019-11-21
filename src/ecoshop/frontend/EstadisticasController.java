@@ -50,9 +50,13 @@ import javafx.util.Duration;
 public class EstadisticasController implements Initializable {
 @FXML
     private AnchorPane pane;
+@FXML
+    private VBox COL1;
+@FXML
+    private VBox COL2;
 
     @FXML
-    private FlowPane masonryPane;
+    private VBox COL3;
   
         @FXML
     private ScrollPane scrollPane;
@@ -65,11 +69,31 @@ public class EstadisticasController implements Initializable {
         // TODO
         
            // JFXMasonryPane masonryPane = new JFXMasonryPane();
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 3; i++) {
             Pane panelNuevo;
             try {
                 panelNuevo = FXMLLoader.load(getClass().getResource("PanelProducto.fxml"));
-                masonryPane.getChildren().add(panelNuevo);
+                COL1.getChildren().add(panelNuevo);
+            
+            } catch (IOException ex) {
+                Logger.getLogger(EstadisticasController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+         for (int i = 0; i < 3; i++) {
+            Pane panelNuevo;
+            try {
+                panelNuevo = FXMLLoader.load(getClass().getResource("PanelProducto.fxml"));
+                COL2.getChildren().add(panelNuevo);
+            
+            } catch (IOException ex) {
+                Logger.getLogger(EstadisticasController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+          for (int i = 0; i < 3; i++) {
+            Pane panelNuevo;
+            try {
+                panelNuevo = FXMLLoader.load(getClass().getResource("PanelProducto.fxml"));
+                COL3.getChildren().add(panelNuevo);
             
             } catch (IOException ex) {
                 Logger.getLogger(EstadisticasController.class.getName()).log(Level.SEVERE, null, ex);

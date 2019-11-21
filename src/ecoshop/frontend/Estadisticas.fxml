@@ -12,9 +12,27 @@
 <AnchorPane id="AnchorPane" fx:id="pane" prefHeight="598.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.EstadisticasController">
    <children>
        <ScrollPane fitToWidth="true" pannable="true" prefHeight="598.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <content>
-      <FlowPane fx:id="masonryPane" columnHalignment="CENTER" hgap="20.0" layoutX="18.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="Infinity" minHeight="-Infinity" prefHeight="595.0" prefWidth="1039.0" rowValignment="BASELINE" vgap="20.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="20.0" />
-    </content>
+         <content>
+            <HBox spacing="20.0">
+               <children>
+                  <VBox fx:id="COL1" fillWidth="false" spacing="30.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox fx:id="COL2" spacing="30.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox fx:id="COL3" spacing="30.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </content>
 </ScrollPane>
    </children>
    
