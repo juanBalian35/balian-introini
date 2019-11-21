@@ -46,6 +46,8 @@ public class PanelProductoController implements Initializable {
      @FXML
     private Pane paneFondo;
 
+     @FXML
+    private Pane paneFondot;
     @FXML
     private Pane paneSecundario;
 
@@ -71,6 +73,13 @@ public class PanelProductoController implements Initializable {
           new BackgroundSize(100, 100,true, true, true,true));
         //then you set to your node
         paneImagen.setBackground(new Background(myBI));
+        
+        paneFondo.heightProperty().addListener(new ChangeListener<Number>(){
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number o, Number n){
+                System.out.println("aaaa " + n);
+            }
+        });
 
     }    
     
@@ -83,17 +92,17 @@ public class PanelProductoController implements Initializable {
              
            tt.setToY(10);
            tt.play();
-           paneFondo.setPrefHeight(220);
+          // paneFondo.setPrefHeight(220);
             tt.setOnFinished((ActionEvent evento) -> {
             paneSecundario.setVisible(false);
-           // paneFondo.setPrefHeight(220);
+           paneFondot.setPrefHeight(220);
         });
            
         }else{
         paneSecundario.setVisible(true);
         tt.setToY(218);
         tt.play();
-        paneFondo.setPrefHeight(430);
+        paneFondot.setPrefHeight(430);
         // Hay que agrandar la ventana a tamaño pane fondo + tamaño sombra de ventana
       //  paneFondo.getScene().getWindow().setHeight(465);
         }

@@ -11,61 +11,73 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane fx:id="paneFondo" prefHeight="220.0" prefWidth="316.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PanelProductoController">
+
+<Pane fx:id="paneFondot" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PanelProductoController">
    <children>
-      <Pane fx:id="paneSecundario" prefHeight="190.0" prefWidth="316.0" style="-fx-background-color: white;" visible="false">
+      <Pane fx:id="paneFondo" layoutX="5.0" layoutY="5.0" prefHeight="220.0" prefWidth="316.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="14.0" layoutY="4.0" text="•Orgánico">
-               <font>
-                  <Font name="Roboto" size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblDescripcion" alignment="TOP_LEFT" graphicTextGap="10.0" layoutX="14.0" layoutY="37.0" lineSpacing="1.0" prefHeight="113.0" prefWidth="273.0" textAlignment="JUSTIFY" textFill="#8a8484" wrapText="true">
-               <font>
-                  <Font name="Roboto" size="12.0" />
-               </font>
-            </Label>
-            <Pane layoutY="151.0" prefHeight="45.0" prefWidth="295.0">
+            <Pane fx:id="paneSecundario" prefHeight="190.0" prefWidth="316.0" style="-fx-background-color: white;" visible="false">
                <children>
-                  <JFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="149.0" layoutY="-2.0" prefHeight="40.0" prefWidth="147.0" ripplerFill="#a5d268" text="Agregar al carrito" textFill="#5eadd8" VBox.vgrow="ALWAYS">
+                  <Label layoutX="14.0" layoutY="4.0" text="•Orgánico">
                      <font>
-                        <Font name="Roboto Condensed" size="16.0" />
+                        <Font name="Roboto" size="16.0" />
                      </font>
-                  </JFXButton>
-               </children>
-            </Pane>
-         </children>
-      </Pane>
-      <VBox prefHeight="220.0" prefWidth="316.0">
-         <children>
-            <Pane fx:id="paneImagen" prefHeight="186.0" prefWidth="316.0" />
-            <Pane prefHeight="55.0" prefWidth="316.0" style="-fx-background-color: white;">
-               <children>
-                  <BorderPane prefHeight="45.0" prefWidth="316.0">
-                     <left>
-                        <Label text="Semillas de Chía" BorderPane.alignment="CENTER">
+                  </Label>
+                  <Label fx:id="lblDescripcion" alignment="TOP_LEFT" graphicTextGap="10.0" layoutX="14.0" layoutY="37.0" lineSpacing="1.0" prefHeight="113.0" prefWidth="273.0" textAlignment="JUSTIFY" textFill="#8a8484" wrapText="true">
+                     <font>
+                        <Font name="Roboto" size="12.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutY="151.0" prefHeight="45.0" prefWidth="295.0">
+                     <children>
+                        <JFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="149.0" layoutY="-2.0" prefHeight="40.0" prefWidth="147.0" ripplerFill="#a5d268" text="Agregar al carrito" textFill="#5eadd8" VBox.vgrow="ALWAYS">
                            <font>
-                              <Font name="Roboto Bold" size="22.0" />
-                           </font>
-                           <padding>
-                              <Insets left="20.0" />
-                           </padding>
-                        </Label>
-                     </left>
-                     <right>
-                        <JFXButton fx:id="botonVerMas" onMouseClicked="#BotonApretado" prefHeight="45.0" prefWidth="50.0" text="V" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Arial Black" size="13.0" />
+                              <Font name="Roboto Condensed" size="16.0" />
                            </font>
                         </JFXButton>
-                     </right>
-                  </BorderPane>
+                     </children>
+                  </Pane>
                </children>
             </Pane>
+            <VBox prefHeight="220.0" prefWidth="316.0">
+               <children>
+                  <Pane fx:id="paneImagen" prefHeight="186.0" prefWidth="316.0" />
+                  <Pane prefHeight="55.0" prefWidth="316.0" style="-fx-background-color: white;">
+                     <children>
+                        <BorderPane prefHeight="45.0" prefWidth="316.0">
+                           <left>
+                              <Label text="Semillas de Chía" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="Roboto Bold" size="22.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                           </left>
+                           <right>
+                              <JFXButton fx:id="botonVerMas" ellipsisString="" onMouseClicked="#BotonApretado" prefHeight="40.0" prefWidth="52.0" textOverrun="CENTER_ELLIPSIS" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="36.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@recursos/sharp_arrow_drop_down_black_48dp.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </right>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
          </children>
-      </VBox>
+         <effect>
+            <DropShadow color="#00000040" height="17.0" offsetX="3.0" offsetY="3.0" radius="8.0" width="17.0" />
+         </effect>
+      </Pane>
    </children>
-   <effect>
-      <DropShadow color="#00000040" height="17.0" offsetX="3.0" offsetY="3.0" radius="8.0" width="17.0" />
-   </effect>
 </Pane>
