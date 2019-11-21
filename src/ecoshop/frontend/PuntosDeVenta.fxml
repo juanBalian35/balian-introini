@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.net.*?>
 <?import javafx.collections.*?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane id="AdministrarProducto" fx:id="PaneAdministrarEnvases" prefHeight="598.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.AdminEnvasesController">
+<Pane id="AdministrarProducto" fx:id="PaneAdministrarEnvases" prefHeight="598.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PuntosDeVentaController">
    <children>
       <Pane layoutX="14.0" prefHeight="582.0" prefWidth="1007.0" stylesheets="@estilos/estilos.css">
          <children>
@@ -80,7 +81,7 @@
                                           </JFXComboBox>
                                        </children>
                                     </Pane>
-                                    <JFXButton fx:id="botonAgregarProducto" buttonType="RAISED" layoutX="67.0" layoutY="389.0" onMouseClicked="#clickBotonAgregarProducto" prefHeight="67.0" prefWidth="289.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar envase" textFill="WHITE">
+                                    <JFXButton fx:id="botonAgregarProducto" buttonType="RAISED" layoutX="67.0" layoutY="389.0" prefHeight="67.0" prefWidth="289.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar envase" textFill="WHITE">
                                        <font>
                                           <Font name="Roboto Condensed" size="22.0" />
                                        </font>
@@ -92,7 +93,10 @@
                                           </ImageView>
                                        </graphic>
                                     </JFXButton>
-                                    <Pane layoutX="408.0" layoutY="16.0" prefHeight="442.0" prefWidth="554.0" />
+                                    <Pane fx:id="paneWebView" layoutX="408.0" layoutY="16.0" prefHeight="442.0" prefWidth="554.0">
+                                       <children>
+                                          <WebView fx:id="webView" prefHeight="443.0" prefWidth="555.0" />
+                                       </children></Pane>
                                  </children>
                               </Pane>
                            </children>
