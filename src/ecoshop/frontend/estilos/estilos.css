@@ -8,6 +8,15 @@
    -fx-rojo-eliminar: #d32f2f;
 }
 
+@font-face {
+    font-family: 'Roboto Thin';
+    src: url('fuentes/Roboto-Thin.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    src: url('fuentes/RobotoCondensed-Regular.ttf');
+}
 
 /*
  ---------------------------------
@@ -163,7 +172,7 @@
 
 .jfx-tab-pane .tab .tab-label {
     -fx-font-size: 30;
-    -fx-font-family: 'Roboto thin';
+    -fx-font-family: 'Roboto Thin';
     -fx-alignment: BOTTOM_CENTER;
  
 }
