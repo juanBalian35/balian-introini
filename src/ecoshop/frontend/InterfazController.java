@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.TranslateTransition;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -95,7 +96,8 @@ public class InterfazController implements Initializable {
                 cargarPane(paneRegistrarVenta, "RegistrarVenta.fxml");
                 cargarPane(panePuntosDeVenta, "PuntosDeVenta.fxml");
                 cargarPane(paneAdministrarEnvase, "AdminEnvases.fxml");
-                cargarPane(paneEstadistica, "Estadisticas.fxml");                
+                cargarPane(paneEstadistica, "Estadisticas.fxml");   
+                
 
     }    
   

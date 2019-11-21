@@ -8,6 +8,8 @@ package ecoshop.frontend;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -26,6 +28,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -73,10 +76,29 @@ public class PanelProductoController implements Initializable {
     
     @FXML
     private void BotonApretado(MouseEvent event) {
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), paneSecundario);
+
+        //paneFondo.setPrefHeight(430);
+        if(paneSecundario.isVisible()){
+             
+           tt.setToY(10);
+           tt.play();
+           paneFondo.setPrefHeight(220);
+            tt.setOnFinished((ActionEvent evento) -> {
+            paneSecundario.setVisible(false);
+           // paneFondo.setPrefHeight(220);
+        });
+           
+        }else{
+        paneSecundario.setVisible(true);
+        tt.setToY(218);
+        tt.play();
         paneFondo.setPrefHeight(430);
         // Hay que agrandar la ventana a tamaño pane fondo + tamaño sombra de ventana
-        paneFondo.getScene().getWindow().setHeight(445);
-        paneSecundario.setVisible(true);
+      //  paneFondo.getScene().getWindow().setHeight(465);
+        }
     }
+    
+    
     
 }
