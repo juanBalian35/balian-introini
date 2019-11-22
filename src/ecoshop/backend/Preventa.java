@@ -11,6 +11,7 @@ import java.util.Date;
 public class Preventa {
    private ArrayList<Producto> productos;
    private Date fecha;
+   private Date fechaARetirar;
    private Usuario usuario;
    private Envase envase;
    private String idVenta;

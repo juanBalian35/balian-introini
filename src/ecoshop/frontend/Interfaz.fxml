@@ -43,6 +43,9 @@
                                  </effect>
                               </ImageView>
                            </graphic>
+                           <tooltip>
+                              <Tooltip styleClass="tooltips-menu" text="Administrar productos" />
+                           </tooltip>
                         </Button>
                         <Button fx:id="botonAdministrarEnvases" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonAdministrarEnvases" onMouseEntered="#hoverAdminEnvases" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css">
                            <font>
@@ -59,7 +62,7 @@
                               </ImageView>
                            </graphic>
                            <tooltip>
-                              <Tooltip text="Administrar envases" />
+                              <Tooltip styleClass="tooltips-menu" text="Administrar envases" />
                            </tooltip>
                         </Button>
                         <Button fx:id="botonPuntosDeVenta" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonPuntosDeVenta" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css">
@@ -76,6 +79,9 @@
                                  </effect>
                               </ImageView>
                            </graphic>
+                           <tooltip>
+                              <Tooltip styleClass="tooltips-menu" text="Puntos de venta" />
+                           </tooltip>
                         </Button>
                         <Button fx:id="botonRegistrarVentas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonRegistrarVentas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css">
                            <font>
@@ -91,6 +97,9 @@
                                  </effect>
                               </ImageView>
                            </graphic>
+                           <tooltip>
+                              <Tooltip styleClass="tooltips-menu" text="Registrar venta" />
+                           </tooltip>
                         </Button>
                         <Button fx:id="botonPreVentas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonPreVentas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css">
                            <font>
@@ -106,6 +115,9 @@
                                  </effect>
                               </ImageView>
                            </graphic>
+                           <tooltip>
+                              <Tooltip styleClass="tooltips-menu" text="Pre-Ventas" />
+                           </tooltip>
                         </Button>
                         <Button fx:id="botonEstadisticas" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#clickBotonEstadisticas" prefHeight="67.0" prefWidth="108.0" styleClass="botonNoSeleccionado" stylesheets="@estilos/estilos.css">
                            <font>
@@ -121,6 +133,9 @@
                                  </effect>
                               </ImageView>
                            </graphic>
+                           <tooltip>
+                              <Tooltip styleClass="tooltips-menu" text="Estadísticas" />
+                           </tooltip>
                         </Button>
                      </children>
                   </VBox>

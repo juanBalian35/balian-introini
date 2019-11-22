@@ -105,6 +105,7 @@
    -fx-font-family: "Roboto Regular";
    -fx-font-size: 23px;
    -fx-cursor: HAND;
+   -jfx-rippler-fill: #3cff00;
 
 }
 .botonEliminar{
@@ -113,6 +114,7 @@
     -fx-font-family: "Roboto Regular";
     -fx-font-size: 23px;
     -fx-cursor: HAND;
+    -jfx-rippler-fill: red;
 
 }
 
@@ -160,7 +162,7 @@
 
 
 .jfx-tab-pane .headers-region > .tab-selected-line{
-    -fx-pref-width: 10 px;
+   /* -fx-pref-width: 10 px;*/
     -fx-border-color: -fx-celeste-opaco;
     -fx-pref-height: 5;
     -fx-background-color:-fx-celeste-opaco;
@@ -242,4 +244,11 @@
 .jfx-text-field .error-label {
     -fx-text-fill: -fx-rojo-eliminar;
     -fx-font-size: 10px;
+}
+
+.tooltips-menu {
+    -fx-font-family: "Roboto Light";
+    -fx-font-size: 12px;
+
+
 }

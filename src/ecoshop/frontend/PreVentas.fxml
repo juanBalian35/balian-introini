@@ -1,14 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="ecoshop.frontend.PreVentasController">
+<Pane id="AdministrarProducto" fx:id="PaneAdministrarProducto" prefHeight="598.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PreVentasController">
    <children>
-      <ToggleButton layoutX="237.0" layoutY="151.0" mnemonicParsing="false" text="ToggleButton" />
+      <Pane layoutX="14.0" prefHeight="582.0" prefWidth="1007.0" stylesheets="@estilos/estilos.css">
+         <children>
+            <JFXTabPane layoutX="2.0" layoutY="1.0" prefHeight="582.0" prefWidth="1003.0" stylesheets="@estilos/estilos.css" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab closable="false" text="Pre-Ventas">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" layoutX="344.0" layoutY="391.0" prefHeight="67.0" prefWidth="289.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Registrar venta" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                       <graphic>
+                                          <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@recursos/RegistrarVentaBLANCO.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <JFXButton fx:id="botonBuscar" disable="true" layoutX="447.0" layoutY="55.0" prefHeight="38.0" prefWidth="113.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" text="Buscar" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="Roboto Condensed" size="19.0" />
+                                       </font>
+                                       <graphic>
+                                          <ImageView fitHeight="22.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@recursos/baseline_search_white_18dp.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <TableView fx:id="tableViewBorrar" layoutX="57.0" layoutY="122.0" prefHeight="239.0" prefWidth="866.0" styleClass="jfx-controles">
+                                       <columns>
+                                          <TableColumn fx:id="columnId" prefWidth="54.0" text="ID" />
+                                          <TableColumn fx:id="columnEnvases" prefWidth="111.0" text="Resumen" />
+                                          <TableColumn fx:id="columnNombre" prefWidth="155.0" text="Fecha pre-vendido" />
+                                          <TableColumn fx:id="columnImagen" prefWidth="128.0" text="Fecha de retiro" />
+                                          <TableColumn fx:id="columnMaterial" minWidth="7.0" prefWidth="117.0" text="Usuario" />
+                                          <TableColumn fx:id="columnPrecio" prefWidth="128.0" text="Precio total" />
+                                       </columns>
+                                       <stylesheets>
+                                          <URL value="@estilos/tableview.css" />
+                                          <URL value="@estilos/estilos.css" />
+                                       </stylesheets>
+                                    </TableView>
+                                    <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="220.0" layoutY="52.0" prefHeight="36.0" prefWidth="215.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutX="57.0" layoutY="56.0" prefHeight="32.0" prefWidth="153.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css">
+                                       <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                             <String fx:value="ID" />
+                                             <String fx:value="Usuario" />
+                                             <String fx:value="Fecha retiro" />
+
+                                          </FXCollections>
+                                       </items>
+                                    </JFXComboBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+         </children>
+      </Pane>
    </children>
-</AnchorPane>
+</Pane>

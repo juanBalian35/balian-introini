@@ -47,15 +47,61 @@ import javafx.util.Duration;
  *
  * @author agustinintroini
  */
-public class EstadisticasController implements Initializable {
+public class VistaDeProductosController implements Initializable {
+@FXML
+    private AnchorPane pane;
+@FXML
+    private VBox COL1;
+@FXML
+    private VBox COL2;
 
+    @FXML
+    private VBox COL3;
+  
+        @FXML
+    private ScrollPane scrollPane;
+   
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+        // TODO
+        
+           // JFXMasonryPane masonryPane = new JFXMasonryPane();
+        for (int i = 0; i < 3; i++) {
+            Pane panelNuevo;
+            try {
+                panelNuevo = FXMLLoader.load(getClass().getResource("PanelProducto.fxml"));
+                COL1.getChildren().add(panelNuevo);
+            
+            } catch (IOException ex) {
+                Logger.getLogger(EstadisticasController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+         for (int i = 0; i < 3; i++) {
+            Pane panelNuevo;
+            try {
+                panelNuevo = FXMLLoader.load(getClass().getResource("PanelProducto.fxml"));
+                COL2.getChildren().add(panelNuevo);
+            
+            } catch (IOException ex) {
+                Logger.getLogger(EstadisticasController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+          for (int i = 0; i < 3; i++) {
+            Pane panelNuevo;
+            try {
+                panelNuevo = FXMLLoader.load(getClass().getResource("PanelProducto.fxml"));
+                COL3.getChildren().add(panelNuevo);
+            
+            } catch (IOException ex) {
+                Logger.getLogger(EstadisticasController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+           
+        
+    }
     
     
-}
 }

@@ -15,7 +15,7 @@
 
 <Pane id="AdministrarProducto" fx:id="PaneAdministrarEnvases" prefHeight="598.0" prefWidth="1041.0" style="-fx-background-color: transparent;" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.RegistrarVentaController">
    <children>
-      <Pane layoutX="2.0" layoutY="1.0" prefHeight="598.0" prefWidth="398.0" styleClass="paneSeleccionado">
+      <Pane prefHeight="598.0" prefWidth="398.0" styleClass="paneSeleccionado">
          <children>
             <Pane layoutX="12.0" prefHeight="582.0" prefWidth="387.0" stylesheets="@estilos/estilos.css">
                <children>
@@ -43,7 +43,7 @@
                                     </Pane>
                                     <Pane layoutX="33.0" layoutY="45.0" prefHeight="353.0" prefWidth="319.0">
                                        <children>
-                                          <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutY="4.0" prefHeight="32.0" prefWidth="113.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                          <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutY="4.0" prefHeight="32.0" prefWidth="124.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
                                              <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                    <String fx:value="ID" />
@@ -51,7 +51,7 @@
                                                 </FXCollections>
                                              </items>
                                           </JFXComboBox>
-                                          <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="129.0" prefHeight="36.0" prefWidth="129.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                          <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="137.0" prefHeight="36.0" prefWidth="121.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
@@ -95,7 +95,7 @@
             </Pane>
          </children>
       </Pane>
-      <Pane disable="true" layoutX="410.0" opacity="0.29" prefHeight="598.0" prefWidth="631.0" styleClass="paneSeleccionado">
+      <Pane disable="true" layoutX="410.0" opacity="0.44" prefHeight="598.0" prefWidth="631.0" styleClass="paneSeleccionado">
          <children>
             <Pane layoutX="12.0" prefHeight="582.0" prefWidth="619.0" stylesheets="@estilos/estilos.css">
                <children>
