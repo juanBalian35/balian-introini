@@ -250,6 +250,23 @@
 .tooltips-menu {
     -fx-font-family: "Roboto Light";
     -fx-font-size: 12px;
+}
 
+.barra-abajo-abierta{
+    -fx-background-color: white;
+    -fx-background-radius: 0 0 10 10; 
+}
 
+.barra-abajo-cerrada{
+    -fx-background-color: white;
+    -fx-background-radius: 0; 
+}
+
+.boton-abajo-abierto{
+    -fx-background-color: white;
+    -fx-background-radius: 0 0 10 0; 
+}
+.boton-abajo-cerrado{
+    -fx-background-color: white;
+    -fx-background-radius: 0; 
 }

@@ -27,6 +27,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
@@ -50,7 +51,8 @@ public class PanelProductoController implements Initializable {
     private Pane paneFondot;
     @FXML
     private Pane paneSecundario;
-
+    @FXML
+    private BorderPane barraAbajo;
   
       @FXML
     private JFXButton botonVerMas;
@@ -96,13 +98,22 @@ public class PanelProductoController implements Initializable {
             tt.setOnFinished((ActionEvent evento) -> {
             paneSecundario.setVisible(false);
            paneFondot.setPrefHeight(220);
+           botonVerMas.getStyleClass().remove("boton-abajo-cerrada");
+        barraAbajo.getStyleClass().remove("barra-abajo-cerrada");
+           botonVerMas.getStyleClass().add("boton-abajo-abierto");
+        barraAbajo.getStyleClass().add("barra-abajo-abierta");
+       
         });
            
         }else{
         paneSecundario.setVisible(true);
-        tt.setToY(218);
+        tt.setToY(164);
         tt.play();
-        paneFondot.setPrefHeight(430);
+        botonVerMas.getStyleClass().remove("boton-abajo-abierto");
+        barraAbajo.getStyleClass().remove("barra-abajo-abierta");
+        botonVerMas.getStyleClass().add("boton-abajo-cerrada");
+        barraAbajo.getStyleClass().add("barra-abajo-cerrada");
+        paneFondot.setPrefHeight(390);
         // Hay que agrandar la ventana a tamaño pane fondo + tamaño sombra de ventana
       //  paneFondo.getScene().getWindow().setHeight(465);
         }
