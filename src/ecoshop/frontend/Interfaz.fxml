@@ -131,7 +131,7 @@
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
                <children>
-                  <Pane layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneCentro" stylesheets="@estilos/estilos.css" />
+                  <Pane layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" style="-fx-background-color: transparent;" stylesheets="@estilos/estilos.css" visible="false" />
                   <Pane id="Estadisticas" fx:id="paneEstadistica" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                      <children>
                         <Label layoutX="71.0" layoutY="50.0" text="Estadisticas" />
@@ -147,11 +147,7 @@
                         <Label layoutX="71.0" layoutY="50.0" text="Registrar Venta" />
                      </children>
                   </Pane>
-                  <Pane id="PuntosDeVenta" fx:id="panePuntosDeVenta" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
-                     <children>
-                        <Label layoutX="71.0" layoutY="50.0" text="Puntos de venta" />
-                     </children>
-                  </Pane>
+                  <Pane id="PuntosDeVenta" fx:id="panePuntosDeVenta" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css" />
                   <Pane id="AdministrarEnvase" fx:id="paneAdministrarEnvase" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css">
                      <children>
                         <Label layoutX="71.0" layoutY="50.0" text="Administrar envase" />

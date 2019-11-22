@@ -1,11 +1,179 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.RegistrarVentaController">
-    
-</AnchorPane>
+<Pane id="AdministrarProducto" fx:id="PaneAdministrarEnvases" prefHeight="598.0" prefWidth="1041.0" style="-fx-background-color: transparent;" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.RegistrarVentaController">
+   <children>
+      <Pane layoutX="2.0" layoutY="1.0" prefHeight="598.0" prefWidth="398.0" styleClass="paneSeleccionado">
+         <children>
+            <Pane layoutX="12.0" prefHeight="582.0" prefWidth="387.0" stylesheets="@estilos/estilos.css">
+               <children>
+                  <JFXTabPane layoutX="2.0" layoutY="1.0" prefHeight="582.0" prefWidth="387.0" stylesheets="@estilos/estilos.css" tabClosingPolicy="UNAVAILABLE">
+                     <tabs>
+                        <Tab style="-fx-alignment: BOTTOM_CENTER;" text="Buscar producto">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="365.0">
+                                       <children>
+                                          <JFXButton fx:id="botonAgregarProducto1" buttonType="RAISED" layoutX="62.0" layoutY="402.0" prefHeight="67.0" prefWidth="245.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar a la venta" textFill="WHITE">
+                                             <font>
+                                                <Font name="Roboto Condensed" size="22.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/baseline_add_circle_white_18dp.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="33.0" layoutY="45.0" prefHeight="353.0" prefWidth="319.0">
+                                       <children>
+                                          <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutY="4.0" prefHeight="32.0" prefWidth="113.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                             <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                   <String fx:value="ID" />
+                                                   <String fx:value="Nombre" />
+                                                </FXCollections>
+                                             </items>
+                                          </JFXComboBox>
+                                          <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="129.0" prefHeight="36.0" prefWidth="129.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </JFXTextField>
+                                          <JFXButton fx:id="botonBuscar" contentDisplay="CENTER" disable="true" ellipsisString="" layoutX="277.0" layoutY="2.0" prefHeight="38.0" prefWidth="38.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <font>
+                                                <Font name="Roboto Condensed" size="1.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="22.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/baseline_search_white_18dp.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <TableView fx:id="tableViewBorrar" layoutY="72.0" prefHeight="269.0" prefWidth="319.0" styleClass="jfx-controles">
+                                             <columns>
+                                                <TableColumn fx:id="columnId" prefWidth="55.33051300048828" text="ID" />
+                                                <TableColumn fx:id="columnNombre" prefWidth="77.66108703613281" text="Nombre" />
+                                                <TableColumn fx:id="columnPrecio" prefWidth="72.33892822265625" text="Precio" />
+                                                <TableColumn fx:id="columnEnvases" prefWidth="111.5201416015625" text="Envases" />
+                                             </columns>
+                                             <stylesheets>
+                                                <URL value="@estilos/tableview.css" />
+                                                <URL value="@estilos/estilos.css" />
+                                             </stylesheets>
+                                          </TableView>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane disable="true" layoutX="410.0" opacity="0.29" prefHeight="598.0" prefWidth="631.0" styleClass="paneSeleccionado">
+         <children>
+            <Pane layoutX="12.0" prefHeight="582.0" prefWidth="619.0" stylesheets="@estilos/estilos.css">
+               <children>
+                  <JFXTabPane layoutX="2.0" layoutY="1.0" prefHeight="582.0" prefWidth="618.0" stylesheets="@estilos/estilos.css" tabClosingPolicy="UNAVAILABLE">
+                     <tabs>
+                        <Tab style="-fx-alignment: BOTTOM_CENTER;" text="Detalles de la venta">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="578.0" />
+                                    <Pane layoutX="15.0" layoutY="38.0" prefHeight="482.0" prefWidth="576.0">
+                                       <children>
+                                          <Pane layoutY="113.0" prefHeight="265.0" prefWidth="576.0">
+                                             <children>
+                                                <TableView fx:id="tableViewBorrar1" layoutY="23.0" prefHeight="196.0" prefWidth="576.0" style="-fx-background-color: #eaf3f9;" styleClass="jfx-controles">
+                                                   <columns>
+                                                      <TableColumn fx:id="columnId1" prefWidth="55.33051300048828" text="ID" />
+                                                      <TableColumn fx:id="columnNombre1" prefWidth="77.66108703613281" text="Nombre" />
+                                                      <TableColumn fx:id="columnPrecio1" prefWidth="86.0" text="Precio unit." />
+                                                      <TableColumn fx:id="columnEnvases1" prefWidth="104.0" text="Envase" />
+                                                      <TableColumn fx:id="columnEnvases11" prefWidth="107.0" text="Cantidad" />
+                                                      <TableColumn fx:id="columnPrecio11" prefWidth="109.0" text="Precio total" />
+                                                   </columns>
+                                                   <stylesheets>
+                                                      <URL value="@estilos/tableview.css" />
+                                                      <URL value="@estilos/estilos.css" />
+                                                   </stylesheets>
+                                                </TableView>
+                                                <Label stylesheets="@estilos/estilos.css" text="Resumen de productos" textFill="#3979b2">
+                                                   <font>
+                                                      <Font name="Roboto Thin" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="429.0" layoutY="226.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="Total:" textFill="#949494" />
+                                                <JFXTextField alignment="CENTER_RIGHT" editable="false" focusColor="#3979b2" labelFloat="true" layoutX="479.0" layoutY="221.0" prefHeight="27.0" prefWidth="93.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="1213" unFocusColor="#3979b2" />
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutY="4.0" prefHeight="104.0" prefWidth="520.0">
+                                             <children>
+                                                <JFXTextField fx:id="TFNombre1" focusColor="#a5d268" labelFloat="true" layoutX="269.0" layoutY="42.0" prefHeight="36.0" prefWidth="251.0" promptText="e-mail" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <Label stylesheets="@estilos/estilos.css" text="Detalles del usuario" textFill="#3979b2">
+                                                   <font>
+                                                      <Font name="Roboto Thin" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <JFXTextField fx:id="TFNombre" focusColor="#a5d268" labelFloat="true" layoutX="17.0" layoutY="42.0" prefHeight="36.0" prefWidth="225.0" promptText="Nombre de usuario" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                             </children>
+                                          </Pane>
+                                          <JFXButton fx:id="botonConfirmarCompra" buttonType="RAISED" layoutX="178.0" layoutY="385.0" onMouseClicked="#botonConfirmarCompra" prefHeight="67.0" prefWidth="251.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Confirmar compra" textFill="WHITE">
+                                             <font>
+                                                <Font name="Roboto Condensed" size="22.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/confirm-purchase.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children></Pane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>

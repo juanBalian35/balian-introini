@@ -22,6 +22,8 @@ public class Main extends Application {
         Font.loadFont(Main.class.getResource("frontend/estilos/fuentes/RobotoCondensed-Regular.ttf").toExternalForm(), 12);
         Font.loadFont(Main.class.getResource("frontend/estilos/fuentes/Roboto-Thin.ttf").toExternalForm(), 12);
         Font.loadFont(Main.class.getResource("frontend/estilos/fuentes/Roboto-Light.ttf").toExternalForm(), 12);
+        Font.loadFont(Main.class.getResource("frontend/estilos/fuentes/Roboto-Regular.ttf").toExternalForm(), 12);
+
 
         Parent root = FXMLLoader.load(getClass().getResource("/ecoshop/frontend/Interfaz.fxml"));
         

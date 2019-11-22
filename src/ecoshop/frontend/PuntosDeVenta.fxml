@@ -13,199 +13,192 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane id="AdministrarProducto" fx:id="PaneAdministrarEnvases" prefHeight="598.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PuntosDeVentaController">
+<Pane id="AdministrarProducto" fx:id="PaneAdministrarEnvases" prefHeight="598.0" prefWidth="1041.0" style="-fx-background-color: transparent;" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PuntosDeVentaController">
    <children>
-      <Pane layoutX="14.0" prefHeight="582.0" prefWidth="1007.0" stylesheets="@estilos/estilos.css">
+      <Pane prefHeight="598.0" prefWidth="398.0" styleClass="paneSeleccionado">
          <children>
-            <JFXTabPane layoutX="2.0" layoutY="1.0" prefHeight="582.0" prefWidth="1003.0" stylesheets="@estilos/estilos.css" tabClosingPolicy="UNAVAILABLE">
-               <tabs>
-                  <Tab style="-fx-alignment: BOTTOM_CENTER;" text="Agregar punto de venta">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0">
+            <Pane prefHeight="582.0" prefWidth="387.0" stylesheets="@estilos/estilos.css">
+               <children>
+                  <JFXTabPane layoutX="2.0" layoutY="1.0" prefHeight="582.0" prefWidth="387.0" stylesheets="@estilos/estilos.css" tabClosingPolicy="UNAVAILABLE">
+                     <tabs>
+                        <Tab style="-fx-alignment: BOTTOM_CENTER;" text="Agregar punto">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <Pane layoutX="23.0" layoutY="35.0" prefHeight="353.0" prefWidth="319.0">
+                                    <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="374.0">
                                        <children>
-                                          <JFXTextField fx:id="TFCalle" focusColor="#a5d268" labelFloat="true" layoutY="90.0" prefHeight="36.0" prefWidth="215.0" promptText="Calle" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                          <Pane layoutX="23.0" layoutY="35.0" prefHeight="353.0" prefWidth="319.0">
+                                             <children>
+                                                <JFXTextField fx:id="TFCalle" focusColor="#a5d268" labelFloat="true" layoutY="90.0" prefHeight="36.0" prefWidth="215.0" promptText="Calle" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="TFNumero" focusColor="#a5d268" labelFloat="true" layoutX="230.0" layoutY="90.0" prefHeight="36.0" prefWidth="85.0" promptText="Número" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <JFXComboBox fx:id="BoxDepartamentos" focusColor="#a5d268" labelFloat="true" layoutX="140.0" layoutY="180.0" prefHeight="36.0" prefWidth="174.0" promptText="Departamento" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567" visibleRowCount="4">
+                                                   <items>
+                                                      <FXCollections fx:factory="observableArrayList">
+                                                         <Label text="Montevideo">
+                                                   </Label>
+                                                         <Label text="Canelones">
+                                                   </Label>
+                                                         <Label text="Maldonado">
+                                                   </Label>
+                                                         <Label text="Florida">
+                                                   </Label>
+                                                         <Label text="Flores">
+                                                   </Label>
+                                                         <Label text="Lavalleja">
+                                                   </Label>
+                                                         <Label text="San José">
+                                                   </Label>
+                                                         <Label text="Rocha">
+                                                   </Label>
+                                                         <Label text="Colonia">
+                                                   </Label>
+                                                         <Label text="Soriano">
+                                                   </Label>
+                                                         <Label text="Durazno">
+                                                   </Label>
+                                                         <Label text="Treinta y tres">
+                                                   </Label>
+                                                         <Label text="Cerro largo">
+                                                   </Label>
+                                                         <Label text="Río negro">
+                                                   </Label>
+                                                         <Label text="Tacuarembó">
+                                                   </Label>
+                                                         <Label text="Rivera">
+                                                   </Label>
+                                                         <Label text="Paysandú">
+                                                   </Label>
+                                                         <Label text="Salto">
+                                                   </Label>
+                                                         <Label text="Plástico">
+                                                   </Label>
+                                                         
+                                                         
+                                                         
+                                                      </FXCollections>
+                                                   </items>
+                                                </JFXComboBox>
+                                                <JFXTextField fx:id="TFId" focusColor="#a5d268" labelFloat="true" prefHeight="36.0" prefWidth="85.0" promptText="ID" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="TFNombre" focusColor="#a5d268" labelFloat="true" layoutX="100.0" prefHeight="36.0" prefWidth="215.0" promptText="Nombre" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="TFCiudad" focusColor="#a5d268" labelFloat="true" layoutY="180.0" prefHeight="36.0" prefWidth="125.0" promptText="Ciudad" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                             </children>
+                                          </Pane>
+                                          <JFXButton fx:id="botonAgregarProducto" buttonType="RAISED" layoutX="34.0" layoutY="390.0" prefHeight="67.0" prefWidth="297.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar punto de venta" textFill="WHITE">
                                              <font>
-                                                <Font size="16.0" />
+                                                <Font name="Roboto Light" size="23.0" />
                                              </font>
-                                          </JFXTextField>
-                                          <JFXTextField fx:id="TFNumero" focusColor="#a5d268" labelFloat="true" layoutX="230.0" layoutY="90.0" prefHeight="36.0" prefWidth="85.0" promptText="Número" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                             <graphic>
+                                                <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/baseline_add_circle_white_18dp.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab style="-fx-alignment: BOTTOM_CENTER;" text="Eliminar punto">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="365.0">
+                                       <children>
+                                          <JFXButton fx:id="botonAgregarProducto1" buttonType="RAISED" layoutX="34.0" layoutY="390.0" prefHeight="67.0" prefWidth="297.0" ripplerFill="#8bd02a" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar punto de venta" textFill="WHITE">
                                              <font>
-                                                <Font size="16.0" />
+                                                <Font name="Roboto Condensed" size="22.0" />
                                              </font>
-                                          </JFXTextField>
-                                          <JFXComboBox fx:id="BoxDepartamentos" focusColor="#a5d268" labelFloat="true" layoutX="140.0" layoutY="180.0" prefHeight="36.0" prefWidth="174.0" promptText="Departamento" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567" visibleRowCount="4">
+                                             <graphic>
+                                                <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/baseline_delete_white_18dp.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="33.0" layoutY="45.0" prefHeight="353.0" prefWidth="319.0">
+                                       <children>
+                                          <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutY="4.0" prefHeight="32.0" prefWidth="113.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
                                              <items>
                                                 <FXCollections fx:factory="observableArrayList">
-                                                   <Label text="Montevido">
-                                                   </Label>
-                                                   <Label text="Canelones">
-                                                   </Label>
-                                                   <Label text="Maldonado">
-                                                   </Label>
-                                                   <Label text="Florida">
-                                                   </Label>
-                                                   <Label text="Flores">
-                                                   </Label>
-                                                   <Label text="Lavalleja">
-                                                   </Label>
-                                                   <Label text="San José">
-                                                   </Label>
-                                                   <Label text="Rocha">
-                                                   </Label>
-                                                   <Label text="Colonia">
-                                                   </Label>
-                                                   <Label text="Soriano">
-                                                   </Label>
-                                                   <Label text="Durazno">
-                                                   </Label>
-                                                   <Label text="Treinta y tres">
-                                                   </Label>
-                                                   <Label text="Cerro largo">
-                                                   </Label>
-                                                   <Label text="Río negro">
-                                                   </Label>
-                                                   <Label text="Tacuarembó">
-                                                   </Label>
-                                                   <Label text="Rivera">
-                                                   </Label>
-                                                   <Label text="Paysandú">
-                                                   </Label>
-                                                   <Label text="Salto">
-                                                   </Label>
-                                                   <Label text="Plástico">
-                                                   </Label>
-                                                   
-                                                   
-                                                   
+                                                   <String fx:value="ID" />
+                                                   <String fx:value="Nombre" />
                                                 </FXCollections>
                                              </items>
                                           </JFXComboBox>
-                                          <JFXTextField fx:id="TFId" focusColor="#a5d268" labelFloat="true" prefHeight="36.0" prefWidth="85.0" promptText="ID" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                          <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="129.0" prefHeight="36.0" prefWidth="129.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
                                           </JFXTextField>
-                                          <JFXTextField fx:id="TFNombre" focusColor="#a5d268" labelFloat="true" layoutX="100.0" prefHeight="36.0" prefWidth="215.0" promptText="Nombre" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                          <JFXButton fx:id="botonBuscar" contentDisplay="CENTER" disable="true" ellipsisString="" layoutX="277.0" layoutY="2.0" prefHeight="38.0" prefWidth="38.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                              <font>
-                                                <Font size="16.0" />
+                                                <Font name="Roboto Condensed" size="1.0" />
                                              </font>
-                                          </JFXTextField>
-                                          <JFXTextField fx:id="TFCiudad" focusColor="#a5d268" labelFloat="true" layoutY="180.0" prefHeight="36.0" prefWidth="125.0" promptText="Ciudad" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
-                                             <font>
-                                                <Font size="16.0" />
-                                             </font>
-                                          </JFXTextField>
+                                             <graphic>
+                                                <ImageView fitHeight="22.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/baseline_search_white_18dp.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <TableView fx:id="tableViewBorrar" layoutY="78.0" prefHeight="240.0" prefWidth="319.0" styleClass="jfx-controles">
+                                             <columns>
+                                                <TableColumn fx:id="columnId" prefWidth="40.7003173828125" text="ID" />
+                                                <TableColumn fx:id="columnNombre" prefWidth="114.172119140625" text="Nombre" />
+                                                <TableColumn fx:id="columnMaterial" prefWidth="161.827880859375" text="Dirección" />
+                                             </columns>
+                                             <stylesheets>
+                                                <URL value="@estilos/tableview.css" />
+                                                <URL value="@estilos/estilos.css" />
+                                             </stylesheets>
+                                          </TableView>
                                        </children>
                                     </Pane>
-                                    <JFXButton fx:id="botonAgregarProducto" buttonType="RAISED" layoutX="30.0" layoutY="390.0" prefHeight="67.0" prefWidth="289.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar punto de venta" textFill="WHITE">
-                                       <font>
-                                          <Font name="Roboto Condensed" size="22.0" />
-                                       </font>
-                                       <graphic>
-                                          <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@recursos/baseline_add_circle_white_18dp.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </JFXButton>
                                  </children>
-                              </Pane>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab style="-fx-alignment: BOTTOM_CENTER;" text="Eliminar punto de venta">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0">
-                                 <children>
-                                    <JFXButton fx:id="botonAgregarProducto1" buttonType="RAISED" layoutX="30.0" layoutY="390.0" prefHeight="67.0" prefWidth="289.0" ripplerFill="#8bd02a" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar punto de venta" textFill="WHITE">
-                                       <font>
-                                          <Font name="Roboto Condensed" size="22.0" />
-                                       </font>
-                                       <graphic>
-                                          <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@recursos/baseline_delete_white_18dp.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </JFXButton>
-                                    <Pane fx:id="paneWebView1" layoutX="382.0" layoutY="4.0" prefHeight="453.0" prefWidth="589.0">
-                                       <children>
-                                          <WebView fx:id="webView1" prefHeight="453.0" prefWidth="589.0" />
-                                       </children>
-                                       <effect>
-                                          <DropShadow color="#000000d5" height="22.0" radius="10.5" width="22.0" />
-                                       </effect>
-                                    </Pane>
-                                 </children>
-                              </Pane>
-                              <Pane layoutX="33.0" layoutY="45.0" prefHeight="353.0" prefWidth="319.0">
-                                 <children>
-                                    <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutY="4.0" prefHeight="32.0" prefWidth="113.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
-                                       <items>
-                                          <FXCollections fx:factory="observableArrayList">
-                                             <String fx:value="ID" />
-                                             <String fx:value="Nombre" />
-                                          </FXCollections>
-                                       </items>
-                                    </JFXComboBox>
-                                    <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="129.0" prefHeight="36.0" prefWidth="129.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </JFXTextField>
-                                    <JFXButton fx:id="botonBuscar" contentDisplay="CENTER" disable="true" ellipsisString="" layoutX="277.0" layoutY="2.0" prefHeight="38.0" prefWidth="38.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                       <font>
-                                          <Font name="Roboto Condensed" size="1.0" />
-                                       </font>
-                                       <graphic>
-                                          <ImageView fitHeight="22.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@recursos/baseline_search_white_18dp.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </JFXButton>
-                                    <TableView fx:id="tableViewBorrar" layoutY="78.0" prefHeight="240.0" prefWidth="319.0" styleClass="jfx-controles">
-                                       <columns>
-                                          <TableColumn fx:id="columnId" prefWidth="40.7003173828125" text="ID" />
-                                          <TableColumn fx:id="columnNombre" prefWidth="114.172119140625" text="Nombre" />
-                                          <TableColumn fx:id="columnMaterial" prefWidth="161.827880859375" text="Dirección" />
-                                       </columns>
-                                       <stylesheets>
-                                          <URL value="@estilos/tableview.css" />
-                                          <URL value="@estilos/estilos.css" />
-                                       </stylesheets>
-                                    </TableView>
-                                 </children>
-                              </Pane>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-               </tabs>
-            </JFXTabPane>
-            <Pane layoutX="391.0" layoutY="76.0" prefHeight="489.0" prefWidth="636.0" style="-fx-background-color: #eaf3f9;">
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane layoutX="418.0" prefHeight="598.0" prefWidth="623.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css">
+         <children>
+            <Pane fx:id="paneWebView" layoutX="19.0" layoutY="22.0" prefHeight="546.0" prefWidth="582.0">
                <children>
-                  <Pane fx:id="paneWebView" layoutX="9.0" layoutY="9.0" prefHeight="453.0" prefWidth="589.0">
-                     <children>
-                        <WebView fx:id="webView" prefHeight="453.0" prefWidth="589.0" />
-                     </children>
-                     <effect>
-                        <DropShadow color="#000000d5" height="22.0" radius="10.5" width="22.0" />
-                     </effect>
-                  </Pane>
+                  <WebView fx:id="webView" prefHeight="546.0" prefWidth="582.0" />
                </children>
             </Pane>
          </children>

@@ -147,12 +147,12 @@ public class InterfazController implements Initializable {
     }
     
     private void esconderPanes(){
-        cambiarClaseControl(paneRegistrarVenta,"paneNoSeleccionado", "paneSeleccionado");
-        cambiarClaseControl(panePreVenta,"paneNoSeleccionado", "paneSeleccionado");
-        cambiarClaseControl(paneAdministrarProducto,"paneNoSeleccionado", "paneSeleccionado");
-        cambiarClaseControl(panePuntosDeVenta,"paneNoSeleccionado", "paneSeleccionado");
-        cambiarClaseControl(paneAdministrarEnvase,"paneNoSeleccionado", "paneSeleccionado");
-        cambiarClaseControl(paneEstadistica,"paneNoSeleccionado", "paneSeleccionado");
+        paneRegistrarVenta.setVisible(false);
+       panePreVenta.setVisible(false);
+       paneAdministrarProducto.setVisible(false);
+        panePuntosDeVenta.setVisible(false);
+        paneAdministrarEnvase.setVisible(false);
+        paneEstadistica.setVisible(false);
     }
     
    @FXML
@@ -205,7 +205,8 @@ public class InterfazController implements Initializable {
         esconderPanes();
         
         cambiarClaseControl(boton,"botonSeleccionado", "botonNoSeleccionado");
-        cambiarClaseControl(pane,"paneSeleccionado","paneNoSeleccionado");
+       // cambiarClaseControl(pane,"paneSeleccionado","paneNoSeleccionado");
+        pane.setVisible(true);
        // cambiarImagenBoton(imageView,imagen);
         
         moverTriangulo(boton.getLayoutY() );
