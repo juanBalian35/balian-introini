@@ -108,21 +108,25 @@
                                           </Label>
                                        </children>
                                     </Pane>
-                                    <JFXButton fx:id="botonAgregarProducto" buttonType="RAISED" layoutX="364.0" layoutY="391.0" onMouseClicked="#clickBotonAgregarProducto" prefHeight="67.0" prefWidth="289.0" ripplerFill="#91da2a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar producto" textFill="WHITE">
-                                       <font>
-                                          <Font size="22.0" />
-                                       </font>
-                                       <graphic>
-                                          <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@recursos/baseline_add_circle_white_18dp.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </JFXButton>
+                                    <StackPane layoutX="-32.0" layoutY="380.0" prefWidth="1041.0">
+                                       <children>
+                                          <JFXButton fx:id="botonAgregarProducto" buttonType="RAISED" layoutX="364.0" layoutY="391.0" onMouseClicked="#clickBotonAgregarProducto" prefHeight="67.0" ripplerFill="#91da2a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar producto" textFill="WHITE">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/baseline_add_circle_white_18dp.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </JFXButton>
+                                       </children>
+                                    </StackPane>
                                     <Pane layoutX="745.0" prefHeight="417.0" prefWidth="213.0">
                                        <children>
                                           <Label layoutY="10.0" prefHeight="36.0" prefWidth="133.0" text="Lista de envases">
@@ -146,21 +150,25 @@
                            <children>
                               <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0">
                                  <children>
-                                    <JFXButton buttonType="RAISED" layoutX="344.0" layoutY="391.0" prefHeight="67.0" prefWidth="289.0" ripplerFill="RED" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar producto" textFill="WHITE">
-                                       <font>
-                                          <Font size="22.0" />
-                                       </font>
-                                       <graphic>
-                                          <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@recursos/baseline_delete_white_18dp.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </JFXButton>
+                                    <StackPane layoutX="-32.0" layoutY="380.0" prefWidth="1041.0">
+                                       <children>
+                                          <JFXButton buttonType="RAISED" layoutX="344.0" layoutY="391.0" prefHeight="67.0" ripplerFill="RED" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar producto" textFill="WHITE">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/baseline_delete_white_18dp.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </JFXButton>
+                                       </children>
+                                    </StackPane>
                                     <JFXButton fx:id="botonBuscar" disable="true" layoutX="421.0" layoutY="55.0" onAction="#clickBotonBuscar" prefHeight="38.0" prefWidth="113.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" text="Buscar" textFill="WHITE">
                                        <font>
                                           <Font name="Roboto Condensed" size="19.0" />

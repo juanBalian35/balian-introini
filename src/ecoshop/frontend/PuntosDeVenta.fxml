@@ -103,18 +103,22 @@
                                                 </JFXTextField>
                                              </children>
                                           </Pane>
-                                          <JFXButton fx:id="botonAgregarProducto" buttonType="RAISED" layoutX="34.0" layoutY="390.0" prefHeight="67.0" prefWidth="297.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar punto de venta" textFill="WHITE">
-                                             <font>
-                                                <Font name="Roboto Light" size="23.0" />
-                                             </font>
-                                             <graphic>
-                                                <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@recursos/baseline_add_circle_white_18dp.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
+                                          <StackPane layoutX="-17.0" layoutY="380.0" prefHeight="67.0" prefWidth="398.0">
+                                             <children>
+                                                <JFXButton fx:id="botonAgregarProducto" buttonType="RAISED" layoutX="34.0" layoutY="388.0" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar punto de venta" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Roboto Light" size="23.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@recursos/baseline_add_circle_white_18dp.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </JFXButton>
+                                             </children>
+                                          </StackPane>
                                        </children>
                                     </Pane>
                                  </children>
@@ -127,18 +131,22 @@
                                  <children>
                                     <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="365.0">
                                        <children>
-                                          <JFXButton fx:id="botonAgregarProducto1" buttonType="RAISED" layoutX="34.0" layoutY="390.0" prefHeight="67.0" prefWidth="297.0" ripplerFill="#8bd02a" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar punto de venta" textFill="WHITE">
-                                             <font>
-                                                <Font name="Roboto Condensed" size="22.0" />
-                                             </font>
-                                             <graphic>
-                                                <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@recursos/baseline_delete_white_18dp.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
+                                          <StackPane layoutX="-17.0" layoutY="379.0" prefWidth="398.0">
+                                             <children>
+                                                <JFXButton fx:id="botonAgregarProducto1" buttonType="RAISED" layoutX="34.0" layoutY="390.0" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar punto de venta" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Roboto Condensed" size="22.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@recursos/baseline_delete_white_18dp.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </JFXButton>
+                                             </children>
+                                          </StackPane>
                                        </children>
                                     </Pane>
                                     <Pane layoutX="33.0" layoutY="45.0" prefHeight="353.0" prefWidth="319.0">

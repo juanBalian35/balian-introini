@@ -106,6 +106,7 @@
    -fx-font-size: 23px;
    -fx-cursor: HAND;
    -jfx-rippler-fill: #3cff00;
+  
 
 }
 .botonEliminar{
@@ -115,7 +116,7 @@
     -fx-font-size: 23px;
     -fx-cursor: HAND;
     -jfx-rippler-fill: red;
-
+   
 }
 
 /*

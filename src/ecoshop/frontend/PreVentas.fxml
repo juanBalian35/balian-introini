@@ -25,21 +25,25 @@
                            <children>
                               <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0">
                                  <children>
-                                    <JFXButton buttonType="RAISED" layoutX="344.0" layoutY="391.0" prefHeight="67.0" prefWidth="289.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Registrar venta" textFill="WHITE">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                       <font>
-                                          <Font size="22.0" />
-                                       </font>
-                                       <graphic>
-                                          <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@recursos/RegistrarVentaBLANCO.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </JFXButton>
+                                    <StackPane layoutX="-32.0" layoutY="380.0" prefWidth="1041.0">
+                                       <children>
+                                          <JFXButton buttonType="RAISED" layoutX="344.0" layoutY="391.0" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Registrar venta" textFill="WHITE">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/RegistrarVentaBLANCO.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </StackPane>
                                     <JFXButton fx:id="botonBuscar" disable="true" layoutX="447.0" layoutY="55.0" prefHeight="38.0" prefWidth="113.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" text="Buscar" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
