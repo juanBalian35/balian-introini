@@ -202,11 +202,11 @@
             </Pane>
          </children>
       </Pane>
-      <Pane layoutX="418.0" prefHeight="598.0" prefWidth="623.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css">
+      <Pane layoutX="410.0" prefHeight="598.0" prefWidth="631.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css">
          <children>
-            <Pane fx:id="paneWebView" layoutX="19.0" layoutY="22.0" prefHeight="546.0" prefWidth="582.0">
+            <Pane fx:id="paneWebView" layoutX="19.0" layoutY="22.0" prefHeight="546.0" prefWidth="593.0">
                <children>
-                  <WebView fx:id="webView" prefHeight="546.0" prefWidth="582.0" />
+                  <WebView fx:id="webView" prefHeight="546.0" prefWidth="593.0" />
                </children>
             </Pane>
          </children>

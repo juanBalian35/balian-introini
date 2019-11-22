@@ -186,6 +186,14 @@
     -fx-alignment: BOTTOM_CENTER;
  
 }
+
+.jfx-tab-pane2 .tab .tab-label {
+    -fx-font-size: 15;
+    -fx-font-family: 'Roboto Thin';
+    -fx-alignment: BOTTOM_CENTER;
+ 
+}
+
 .jfx-tab-pane .tab {
 /*    -fx-background-color: #546d2d;*/
 -fx-background-color: transparent;

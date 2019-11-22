@@ -18,7 +18,7 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/ecoshop/frontend/VistaDeProductos.fxml"));
+       // Parent root = FXMLLoader.load(getClass().getResource("/ecoshop/frontend/VistaDeProductos.fxml"));
         Font.loadFont(Main.class.getResource("frontend/estilos/fuentes/RobotoCondensed-Regular.ttf").toExternalForm(), 12);
         Font.loadFont(Main.class.getResource("frontend/estilos/fuentes/Roboto-Thin.ttf").toExternalForm(), 12);
         Font.loadFont(Main.class.getResource("frontend/estilos/fuentes/Roboto-Light.ttf").toExternalForm(), 12);
@@ -27,7 +27,7 @@ public class Main extends Application {
         Font.loadFont(Main.class.getResource("frontend/estilos/fuentes/Roboto-Medium.ttf").toExternalForm(), 12);
 
 
-        //Parent root = FXMLLoader.load(getClass().getResource("/ecoshop/frontend/Interfaz.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/ecoshop/frontend/Interfaz.fxml"));
         
         stage.initStyle(StageStyle.TRANSPARENT);
         
