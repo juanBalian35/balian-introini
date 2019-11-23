@@ -11,6 +11,7 @@ import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RegexValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.base.ValidatorBase;
+import ecoshop.backend.ImagenesAuxiliar;
 import ecoshop.backend.JSONAuxiliar;
 import ecoshop.backend.Producto;
 import java.awt.Graphics2D;
@@ -19,6 +20,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -67,92 +69,49 @@ import org.json.simple.JSONArray;
 public class AdminProductosController implements Initializable {
     private static final String NOMBRE_JSON = "productos";
     
-    @FXML
-    private JFXComboBox BoxBuscarPor;
+    @FXML private JFXComboBox BoxBuscarPor;
+    @FXML private JFXButton botonBuscar;
+    @FXML private JFXTextField TFBuscar;
+    @FXML private JFXTextField TBPrecio;
+    @FXML private JFXTextArea TBDescripcion;
+    @FXML private JFXTextField TBMaterial;
+    @FXML private JFXTextField TBNombre;
+    @FXML private JFXTextField TBId;
+    @FXML private Label signoPeso;
+    @FXML private Pane pane;
+    @FXML private JFXButton botonEliminarProducto;
+    @FXML private ImageView imageViewImagen;
+    @FXML private JFXButton botonAgregarProducto;
+    @FXML private StackPane paneChipEnvases;
     
-    @FXML
-    private JFXButton botonBuscar;
-    
-    @FXML
-    private JFXTextField TFBuscar;
-    
-    @FXML
-    private JFXTextField TBPrecio;
-    
-    @FXML
-    private JFXTextArea TBDescripcion;
-            
-    @FXML
-    private JFXTextField TBMaterial;
-    
-    @FXML
-    private JFXTextField TBNombre;
-    
-    @FXML
-    private JFXTextField TBId;
-    
-    @FXML
-    private Label signoPeso;
-    
-    @FXML
-    private Pane pane;
-    
-    @FXML
-    private JFXButton botonAgregarProducto;
-    
-    @FXML
-    private StackPane paneChipEnvases;
-    
-    @FXML
-    private TableView<Producto> tableViewBorrar;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnId;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnNombre;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnMaterial;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnDescripcion;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnPrecio;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnEnvases;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnImagen;
-    
-    @FXML
-    private JFXButton botonEliminarProducto;
-    
-    @FXML
-    private ImageView imageViewImagen;
+    @FXML private TableView<Producto> tableViewBorrar;
+    @FXML private TableColumn<Producto, String> columnId;
+    @FXML private TableColumn<Producto, String> columnNombre;
+    @FXML private TableColumn<Producto, String> columnMaterial;
+    @FXML private TableColumn<Producto, String> columnDescripcion;
+    @FXML private TableColumn<Producto, String> columnPrecio;
+    @FXML private TableColumn<Producto, String> columnEnvases;
+    @FXML private TableColumn<Producto, String> columnImagen;
     
     private RepetidoValidator validadorRepeticionId;
     
-    boolean controlSignoPeso = false;
+    private boolean controlSignoPeso = false;
     
-    UnaryOperator<TextFormatter.Change> filter = new UnaryOperator<TextFormatter.Change>() {
-        @Override
-        public TextFormatter.Change apply(TextFormatter.Change t) {
-            if (t.isReplaced()) 
-                if(t.getText().matches("[^0-9]"))
-                    t.setText(t.getControlText().substring(t.getRangeStart(), t.getRangeEnd()));
-
-            if (t.isAdded()) {
-                if ((t.getControlText().contains(".") && t.getText().matches("[^0-9]")) 
-                        || t.getText().matches("[^0-9.]")) {
-                    t.setText("");
-                }
+    private boolean imagenSeleccionada = false;
+    
+    private static final UnaryOperator<TextFormatter.Change> FILTRO = (TextFormatter.Change t) -> {
+        if (t.isReplaced())
+            if(t.getText().matches("[^0-9]"))
+                t.setText(t.getControlText().substring(t.getRangeStart(), t.getRangeEnd()));
+        
+        if (t.isAdded()) {
+            if ((t.getControlText().contains(".") && t.getText().matches("[^0-9]"))
+                    || t.getText().matches("[^0-9.]")) {
+                t.setText("");
             }
-
-            return t;
         }
+        
+        return t;
     };
     
     /**
@@ -190,7 +149,7 @@ public class AdminProductosController implements Initializable {
         paneChipEnvases.setMargin(chipView, new Insets(10));
         
         //Formato de los textfields
-        TBPrecio.setTextFormatter(new TextFormatter<>(filter));    
+        TBPrecio.setTextFormatter(new TextFormatter<>(FILTRO));    
       
         TFBuscar.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -248,10 +207,10 @@ public class AdminProductosController implements Initializable {
                new String[]{"Campo obligatorio"}, 
                new ValidatorBase[]{new RequiredFieldValidator()});
        
-        actualizarTableView();
+        actualizarDatos();
     }
     
-    private void actualizarTableView(){
+    private void actualizarDatos(){
         ArrayList<Producto> productos = 
                 JSONAuxiliar.procesarArchivo(NOMBRE_JSON, AdminProductosController::productoDesdeEntrySet);
         validadorRepeticionId.setExistentes((ArrayList<String>)(productos.stream().map(x -> x.getId() + "").collect(Collectors.toList())));
@@ -290,10 +249,9 @@ public class AdminProductosController implements Initializable {
         return producto;
     }
     
-    @FXML
-     private void validarCampo(JFXTextField campo, 
-             String[] mensajes,
-             ValidatorBase[] validators){
+    private void validarCampo(JFXTextField campo, 
+            String[] mensajes,
+            ValidatorBase[] validators){
         for(int i = 0; i < validators.length; ++i){
             validators[i].setMessage(mensajes[i]);
             campo.getValidators().add(validators[i]);
@@ -314,58 +272,37 @@ public class AdminProductosController implements Initializable {
     
     @FXML
     private  void accionBoxBuscarPor(ActionEvent event) {
-        Object seleccion = BoxBuscarPor.getValue();
-        TFBuscar.disableProperty().setValue(Boolean.FALSE);
-        TFBuscar.promptTextProperty().setValue((String) seleccion);
+        String seleccion = ((String)BoxBuscarPor.getValue()).toLowerCase();
+        if("todos".equals(seleccion)){
+            TFBuscar.disableProperty().setValue(true);
+            TFBuscar.promptTextProperty().setValue(null);
+            TFBuscar.clear();
+            actualizarDatos();
+        }
+        else{
+            TFBuscar.disableProperty().setValue(false);
+            TFBuscar.promptTextProperty().setValue((String) seleccion);
+        }
+    
     }
     
     @FXML
     private void clickImagen(MouseEvent event){
-        FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png");
-        fileChooser.getExtensionFilters().add(imageFilter);
-        File file = fileChooser.showOpenDialog(new Stage());  
-        
-        
-        try {
-            BufferedImage bufferedImage = ImageIO.read(file);
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            imageViewImagen.setImage(image);
-        } catch (IOException ex) {
-       }
-    }
-    
-    private String guardarImagen(){
-        final String uuid = UUID.randomUUID().toString().replace("-", "");
-        final String ruta = "imagenes/" + uuid + ".jpg";
-        try{
-            File file = new File(ruta);
-
-            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(imageViewImagen.getImage(), null);
-            BufferedImage imageRGB = new BufferedImage(
-                bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.OPAQUE);
-            Graphics2D graphics = imageRGB.createGraphics();
-            graphics.drawImage(bufferedImage, 0, 0, null);
-
-            ImageIO.write(imageRGB, "jpg", file);
-        }
-        catch(IOException e){
-            return null;
-        }
-        
-        return ruta;
+        imageViewImagen.setImage(ImagenesAuxiliar.abrirImagen());
+        imagenSeleccionada = true;
     }
     
     @FXML
     private void clickBotonBuscar(ActionEvent event){
         String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
         
-        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, columna=="id");
+        JSONArray resultado = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, columna.equals("id"));
         
         ArrayList<Producto> productos = new ArrayList<>();
         
-        if(objeto != null)
-            productos.add(productoDesdeEntrySet(objeto.entrySet()));
+        for(int i = 0; i < resultado.size(); ++i){
+            productos.add(productoDesdeEntrySet(((JSONObject)resultado.get(i)).entrySet()));
+        }
         
         tableViewBorrar.getItems().setAll(productos);
     }
@@ -386,20 +323,42 @@ public class AdminProductosController implements Initializable {
         nuevo.put("material", TBMaterial.getText());
         nuevo.put("precio", TBPrecio.getText().substring(4));
         nuevo.put("descripcion", TBDescripcion.getText());
-        nuevo.put("imagen", guardarImagen());
+        
+        String rutaImagen =  "";
+        if(imagenSeleccionada)
+            rutaImagen = ImagenesAuxiliar.guardarImagen(imageViewImagen.getImage());
+        
+        nuevo.put("imagen", rutaImagen);
         
         JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
-            
-        actualizarTableView();
+        
+        volverEstadoInicial();
+        actualizarDatos();
+    }
+    
+    private void volverEstadoInicial(){
+        TBId.clear();
+        TBNombre.clear();
+        TBMaterial.clear();
+        TBPrecio.clear();
+        TBDescripcion.clear();
+        
+        imagenSeleccionada = false;
+        try{
+            imageViewImagen.setImage(new Image(getClass().getResourceAsStream("recursos/empty-image.png")));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
     @FXML
     private void clickBotonEliminar(ActionEvent event){
         Producto producto = tableViewBorrar.getSelectionModel().getSelectedItem();
-        JSONObject o = JSONAuxiliar.conseguirConColumna(producto.getId() + "", "id", NOMBRE_JSON, true);
+        JSONObject o = (JSONObject) JSONAuxiliar.conseguirConColumna(producto.getId() + "", "id", NOMBRE_JSON, true).get(0);
         JSONAuxiliar.borrar(NOMBRE_JSON, o);
             
-        actualizarTableView();
+        actualizarDatos();
     }
          
 }

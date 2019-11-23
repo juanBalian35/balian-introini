@@ -6,13 +6,14 @@
 package ecoshop.frontend;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXChip;
-import com.jfoenix.controls.JFXChipView;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDefaultChip;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.base.IFXLabelFloatControl;
 import com.jfoenix.validation.RequiredFieldValidator;
+import com.jfoenix.validation.base.ValidatorBase;
+import ecoshop.backend.Envase;
+import ecoshop.backend.ImagenesAuxiliar;
 import ecoshop.backend.JSONAuxiliar;
 import ecoshop.backend.Producto;
 import java.net.URL;
@@ -21,13 +22,13 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
+import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -38,7 +39,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
@@ -47,87 +47,39 @@ import org.json.simple.JSONObject;
  * @author agustinintroini
  */
 public class AdminEnvasesController implements Initializable {
-
-    private static final String NOMBRE_JSON = "productos";
+    private static final String NOMBRE_JSON = "envases";
     
-    @FXML
-    private JFXComboBox BoxBuscarPor;
+    @FXML private JFXComboBox BoxBuscarPor;
+    @FXML private JFXButton botonBuscar;
+    @FXML private JFXTextField TFBuscar;
+    @FXML private JFXTextField TBNombre;
+    @FXML private JFXTextField TBId;
+    @FXML private ImageView imageViewImagen;
+    @FXML private JFXComboBox BoxCategoria;
     
-    @FXML
-    private JFXButton botonBuscar;
+    @FXML private TableView<Envase> tableViewBorrar;
+    @FXML private TableColumn<Envase, String> columnId;
+    @FXML private TableColumn<Envase, String> columnNombre;
+    @FXML private TableColumn<Envase, String> columnCategoria;
+    @FXML private TableColumn<Envase, String> columnImagen;
     
-    @FXML
-    private JFXTextField TFBuscar;
+    boolean imagenSeleccionada = false;
     
-    @FXML
-    private JFXTextField TBPrecio;
+    private RepetidoValidator validadorRepeticionId;
     
-    @FXML
-    private JFXTextArea TBDescripcion;
-            
-    @FXML
-    private JFXTextField TBMaterial;
-    
-    @FXML
-    private JFXTextField TBNombre;
-    
-    @FXML
-    private JFXTextField TBId;
-    
-    @FXML
-    private Label signoPeso;
-    
-    @FXML
-    private Pane pane;
-    
-    @FXML
-    private JFXButton botonAgregarProducto;
-    
-    @FXML
-    private StackPane paneChipEnvases;
-    
-    @FXML
-    private TableView<Producto> tableViewBorrar;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnId;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnNombre;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnMaterial;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnDescripcion;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnPrecio;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnEnvases;
-    
-    @FXML 
-    private TableColumn<Producto, String> columnImagen;
-    
-    boolean controlSignoPeso = false;
-    
-    UnaryOperator<TextFormatter.Change> filter = new UnaryOperator<TextFormatter.Change>() {
-        @Override
-        public TextFormatter.Change apply(TextFormatter.Change t) {
-            if (t.isReplaced()) 
-                if(t.getText().matches("[^0-9]"))
-                    t.setText(t.getControlText().substring(t.getRangeStart(), t.getRangeEnd()));
-
-            if (t.isAdded()) {
-                if ((t.getControlText().contains(".") && t.getText().matches("[^0-9]")) 
-                        || t.getText().matches("[^0-9.]")) {
-                    t.setText("");
-                }
+    private final static UnaryOperator<TextFormatter.Change> FILTRO = (TextFormatter.Change t) -> {
+        if (t.isReplaced())
+            if(t.getText().matches("[^0-9]"))
+                t.setText(t.getControlText().substring(t.getRangeStart(), t.getRangeEnd()));
+        
+        if (t.isAdded()) {
+            if ((t.getControlText().contains(".") && t.getText().matches("[^0-9]"))
+                    || t.getText().matches("[^0-9.]")) {
+                t.setText("");
             }
-
-            return t;
         }
+        
+        return t;
     };
     
     /**
@@ -139,49 +91,63 @@ public class AdminEnvasesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        columnMaterial.setCellValueFactory(new PropertyValueFactory<>("material"));
-        columnDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        columnPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        columnEnvases.setCellValueFactory(new PropertyValueFactory<>("envases"));
+        columnCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         columnImagen.setCellValueFactory(new PropertyValueFactory<>("imagen"));
         
-        
         //Formato de los textfields
-        TFBuscar.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable,
-                String oldValue, String newValue) {
-                botonBuscar.disableProperty().setValue(newValue.length() == 0);
-            }
+        TFBuscar.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            botonBuscar.disableProperty().setValue(newValue.length() == 0);
         });
           
-        validarCampo(TBId, "recursos/attention.png", "Campo obligatorio");
-        validarCampo(TBNombre, "recursos/attention.png", "Campo obligatorio");
+        validadorRepeticionId = new RepetidoValidator();
+       
+        validarCampo(TBId, 
+                new String[]{"Campo obligatorio", "Esa ID ya esta en uso"}, 
+                new ValidatorBase[]{new RequiredFieldValidator(), validadorRepeticionId});
+        validarCampo(TBNombre, 
+                new String[]{"Campo obligatorio"}, 
+                new ValidatorBase[]{new RequiredFieldValidator()});
+        validarCampo(BoxCategoria,
+                new String[]{"Campo obligatorio"},
+                new ValidatorBase[]{new RequiredFieldValidator()});
+        
+        actualizarDatos();
+    }
+ 
+    private void validarCampo(IFXLabelFloatControl campo, 
+            String[] mensajes,
+            ValidatorBase[] validators){
+        for(int i = 0; i < validators.length; ++i){
+            validators[i].setMessage(mensajes[i]);
+            campo.getValidators().add(validators[i]);
+            
+            Image image = new Image(getClass().getResourceAsStream("recursos/attention.png"));
+            ImageView icono = new ImageView(image);
+            icono.setFitHeight(13);
+            icono.setFitWidth(13);
+            validators[i].setIcon(icono);
+        }
+      
+        if(campo instanceof JFXTextField){
+            ((JFXTextField)campo).focusedProperty().addListener((o, oldVal, newVal) -> {
+                if (!newVal && campo.validate())
+                    ((JFXTextField)campo).getStyleClass().add("error");
+            });
+        }
+        else if(campo instanceof JFXComboBox){
+            ((JFXComboBox)campo).focusedProperty().addListener((o, oldVal, newVal) -> {
+                if (!newVal && campo.validate())
+                    ((JFXComboBox)campo).getStyleClass().add("error");
+            });
+        }
     }
  
     @FXML
-     private void validarCampo(JFXTextField campo, String rutaImagen, String mensaje){
-            RequiredFieldValidator var = new RequiredFieldValidator();
-        var.setMessage(mensaje);
-     
-        Image i = new Image(getClass().getResourceAsStream(rutaImagen));
-        ImageView icono = new ImageView(i);
-        icono.setFitHeight(13);
-        icono.setFitWidth(13);
-        var.setIcon(icono);
-      
-        campo.getValidators().add(var);
-        campo.focusedProperty().addListener((o, oldVal, newVal) -> {
-            if (!newVal) {
-                campo.validate();
-                if(campo.validate()){
-                    campo.getStyleClass().add("error");
-                }
-            }
-        });
-     
-        }
- 
+    private void clickImagen(MouseEvent event){
+        imageViewImagen.setImage(ImagenesAuxiliar.abrirImagen());
+        imagenSeleccionada = true;
+    }
+    
     @FXML
     private  void accionBoxBuscarPor(ActionEvent event) {
         Object seleccion = BoxBuscarPor.getValue();
@@ -193,29 +159,73 @@ public class AdminEnvasesController implements Initializable {
     private void clickBotonBuscar(ActionEvent event){
         String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
         
-        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, true);
+        //JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, true);
         
         //Set<Map.Entry<String, String>> entrySet = objeto.entrySet();
         
-        ArrayList<Producto> productos = new ArrayList<>();
+        ArrayList<Envase> envases = new ArrayList<>();
         
         //productos.add(productoDesdeEntrySet(objeto.entrySet()));
         
-        tableViewBorrar.getItems().setAll(productos);
+        tableViewBorrar.getItems().setAll(envases);
+    }
+    
+    public static Envase envaseDesdeEntrySet(Set<Map.Entry<String, String>> entrySet){
+        Envase envase = new Envase();
+        for(Map.Entry<String,String> entry : entrySet){
+            switch(entry.getKey().toLowerCase()){
+                case "nombre":
+                    envase.setNombre(entry.getValue());
+                    break;
+                case "id":
+                    envase.setId(Integer.parseInt(entry.getValue()));
+                    break;
+                case "categoria":
+                    envase.setCategoria(entry.getValue());
+                    break;
+                case "imagen":
+                    envase.setImagen(entry.getValue());
+                    break; 
+                //case "envases":
+                    //producto.setEnvases(entry.getValue());
+                default:
+                    // TODO: Preguntar si es necesario siempre poner un default?
+            }
+        }
+        
+        return envase;
+    }
+    
+    private void actualizarDatos(){
+        ArrayList<Envase> envases = 
+                JSONAuxiliar.procesarArchivo(NOMBRE_JSON, AdminEnvasesController::envaseDesdeEntrySet);
+        validadorRepeticionId.setExistentes((ArrayList<String>)(envases.stream().map(x -> x.getId() + "").collect(Collectors.toList())));
+        tableViewBorrar.getItems().setAll(envases);
     }
     
     @FXML
-    private void clickBotonAgregarProducto(MouseEvent event){
+    private void clickBotonAgregarEnvase(MouseEvent event){
+        boolean idValida = TBId.validate();
+        boolean nombreValido = TBNombre.validate();
+        boolean categoriaValida = BoxCategoria.validate();
+        if(!(idValida && nombreValido && categoriaValida)){
+            return;
+        }
+        
         JSONObject nuevo  = new JSONObject();
         nuevo.put("id", TBId.getText());
         nuevo.put("nombre", TBNombre.getText());
-      
+        String categoria = ((Label)BoxCategoria.getSelectionModel().getSelectedItem()).getText();
+        nuevo.put("categoria", categoria);
         
-        if(JSONAuxiliar.existe(TBId.getText(), "id", NOMBRE_JSON)){
-            //TODO: Escribir error de que esta ID ya esta en uso
-            return; 
-        }
+        String rutaImagen =  "";
+        if(imagenSeleccionada)
+            rutaImagen = ImagenesAuxiliar.guardarImagen(imageViewImagen.getImage());
+        
+        nuevo.put("imagen", rutaImagen);
         
         JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
+        //volverEstadoInicial();
+        //actualizarDatos();
     }
 }

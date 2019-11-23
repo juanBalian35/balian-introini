@@ -40,7 +40,7 @@
                                           </Label>
                                           <Pane layoutX="5.0" layoutY="46.0" prefHeight="286.0" prefWidth="367.0" styleClass="panelFondo" stylesheets="@estilos/estilos.css">
                                              <children>
-                                                <JFXButton layoutX="226.0" layoutY="245.0" prefHeight="40.0" prefWidth="141.0" ripplerFill="#a5d268" stylesheets="@estilos/estilos.css" text="AGREGAR IMAGEN" textFill="#5eadd8">
+                                                <JFXButton onMouseClicked="#clickImagen" layoutX="226.0" layoutY="245.0" prefHeight="40.0" prefWidth="141.0" ripplerFill="#a5d268" stylesheets="@estilos/estilos.css" text="AGREGAR IMAGEN" textFill="#5eadd8">
                                                    <font>
                                                       <Font name="Roboto Condensed" size="16.0" />
                                                    </font>
@@ -48,7 +48,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </JFXButton>
-                                                <ImageView fitHeight="245.0" fitWidth="367.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="imageViewImagen" fitHeight="245.0" fitWidth="367.0" pickOnBounds="true" >
                                                    <image>
                                                       <Image url="@recursos/empty-image.png" />
                                                    </image>
@@ -139,7 +139,7 @@
                                     </Pane>
                                     <StackPane layoutX="-31.0" layoutY="380.0" prefWidth="1041.0">
                                        <children>
-                                          <JFXButton fx:id="botonAgregarProducto" buttonType="RAISED" layoutX="364.0" layoutY="391.0" onMouseClicked="#clickBotonAgregarProducto" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar envase" textFill="WHITE">
+                                          <JFXButton fx:id="botonAgregarEnvase" buttonType="RAISED" layoutX="364.0" layoutY="391.0" onMouseClicked="#clickBotonAgregarEnvase" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar envase" textFill="WHITE">
                                              <font>
                                                 <Font name="Roboto Condensed" size="22.0" />
                                              </font>
@@ -203,10 +203,7 @@
                                        <columns>
                                           <TableColumn fx:id="columnId" prefWidth="40.7003173828125" text="ID" />
                                           <TableColumn fx:id="columnNombre" prefWidth="73.76080322265625" text="Nombre" />
-                                          <TableColumn fx:id="columnMaterial" prefWidth="67.7811279296875" text="Material" />
-                                          <TableColumn fx:id="columnDescripcion" prefWidth="110.7305908203125" text="Descripción" />
-                                          <TableColumn fx:id="columnPrecio" prefWidth="105.0" text="Precio" />
-                                          <TableColumn fx:id="columnEnvases" prefWidth="126.0" text="Envases" />
+                                          <TableColumn fx:id="columnCategoria" prefWidth="67.7811279296875" text="Categoria" />
                                           <TableColumn fx:id="columnImagen" prefWidth="194.5555419921875" text="Imagen" />
                                        </columns>
                                        <stylesheets>

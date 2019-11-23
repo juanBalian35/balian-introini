@@ -103,19 +103,19 @@ public class JSONAuxiliar {
     
     /**
      * 
-     * @param Object Objeto a comparar en el archivo json
-     * @param String columna
-     * @param String nombre del archivo, depende del tipo de dato el archivo al que ira
-     * @param boolean estricto, si es verdadero entonces la igualdad debe de ser
+     * @param objeto a comparar en el archivo json
+     * @param columna
+     * @param nombre nombre del archivo, depende del tipo de dato el archivo al que ira
+     * @param estricto si es verdadero entonces la igualdad debe de ser
      *                exacta, sino con que sean parecidas es suficiente. (Ejemplo,
      *                se puede buscar en un string de manear no estricta un caracter)
      * @return JSONObject que se encuentra en el archivo `ruta+nombre+".json"` y 
      *         contiene en columna `columna`  el objeto `objeto`
     */
-    public static JSONObject conseguirConColumna(Object objeto, String columna, String nombre, boolean estricto){
-        JSONArray jsonArray = null;
+    public static JSONArray conseguirConColumna(Object objeto, String columna, String nombre, boolean estricto){
+        JSONArray contenidoArchivo = null;
         try{
-            jsonArray = (JSONArray)leer(nombre);
+            contenidoArchivo = (JSONArray)leer(nombre);
         }
         catch (FileNotFoundException ex) {
             return null;
@@ -125,13 +125,16 @@ public class JSONAuxiliar {
             return null;
         }
         
-        for (int i = 0; i < jsonArray.size(); i++) {
-            String contenidoColumna = (String)(((JSONObject)jsonArray.get(i)).get(columna));
-            if((estricto && contenidoColumna.equals(objeto)) || (!estricto && contenidoColumna.contains((CharSequence)objeto)))
-                return (JSONObject)jsonArray.get(i);
+        JSONArray jsonArray = new JSONArray();
+        for (int i = 0; i < contenidoArchivo.size(); ++i) {
+            String contenidoColumna = (String) (((JSONObject) contenidoArchivo.get(i)).get(columna));
+
+            if ((estricto && contenidoColumna.equals(objeto)) || (!estricto && contenidoColumna.contains((CharSequence)objeto))) {
+                jsonArray.add(contenidoArchivo.get(i));
+            }
         }
         
-        return null;
+        return jsonArray;
     }
     
     /**
@@ -166,7 +169,8 @@ public class JSONAuxiliar {
             JSONArray a = (JSONArray)JSONAuxiliar.leer(nombreArchivo);
             al = procesarJSONArray(a,convertidor);
         }
-        catch(Exception e){ }
+        catch(Exception e){
+        }
         
         return al;
     }
