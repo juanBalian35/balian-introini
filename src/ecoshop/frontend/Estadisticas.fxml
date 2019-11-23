@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import java.net.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.effect.*?>
@@ -23,29 +24,10 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0" />
-                              <JFXTabPane layoutX="41.0" layoutY="11.0" prefHeight="506.0" prefWidth="955.0" styleClass="jfx-tab-pane2" stylesheets="@estilos/estilos.css" tabClosingPolicy="UNAVAILABLE">
-                                 <tabs>
-                                    <Tab style="-fx-alignment: BOTTOM_CENTER;" text="TOP 10">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                             <children>
-                                                <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0" />
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </Tab>
-                                    <Tab closable="false" text="Todos">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                             <children>
-                                                <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0" />
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </Tab>
-                                 </tabs>
-                              </JFXTabPane>
+                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0">
+                                 <children>
+                                    <PieChart layoutX="156.0" layoutY="27.0" prefHeight="444.0" prefWidth="676.0" />
+                                 </children></Pane>
                            </children>
                         </AnchorPane>
                      </content>
@@ -54,7 +36,21 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0" />
+                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0">
+                                 <children>
+                                    <BarChart layoutX="44.0" layoutY="49.0" prefHeight="387.0" prefWidth="909.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css">
+                                      <xAxis>
+                                        <CategoryAxis label="Envases" side="BOTTOM" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis label="Cantidad de veces re-utilizado" minorTickCount="10" side="LEFT" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" upperBound="50.0">
+                                             <tickLabelFont>
+                                                <Font name="Roboto Black" size="16.0" />
+                                             </tickLabelFont>
+                                          </NumberAxis>
+                                      </yAxis>
+                                    </BarChart>
+                                 </children></Pane>
                            </children>
                         </AnchorPane>
                      </content>
@@ -63,7 +59,17 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0" />
+                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0">
+                                 <children>
+                                    <BarChart layoutX="244.0" layoutY="49.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </BarChart>
+                                 </children></Pane>
                            </children>
                         </AnchorPane>
                      </content>

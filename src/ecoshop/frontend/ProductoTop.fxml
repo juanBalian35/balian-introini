@@ -78,14 +78,31 @@
                      <top>
                         <StackPane alignment="CENTER_LEFT" prefHeight="46.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label graphicTextGap="0.0" maxWidth="245.0" prefWidth="245.0" stylesheets="@estilos/estilos.css" text="Semillas de Chía" BorderPane.alignment="CENTER">
-                                 <font>
-                                    <Font name="Roboto" size="22.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets left="10.0" />
-                                 </padding>
-                              </Label>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <Label graphicTextGap="0.0" maxWidth="245.0" prefWidth="245.0" stylesheets="@estilos/estilos.css" text="Semillas de Chía" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="Roboto" size="22.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                       <BorderPane.margin>
+                                          <Insets top="10.0" />
+                                       </BorderPane.margin>
+                                    </Label>
+                                 </center>
+                                 <left>
+                                    <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@recursos/1.png" />
+                                       </image>
+                                       <BorderPane.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </BorderPane.margin>
+                                    </ImageView>
+                                 </left>
+                              </BorderPane>
                            </children>
                         </StackPane>
                      </top>
