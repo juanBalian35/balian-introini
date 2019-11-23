@@ -8,16 +8,21 @@ import com.jfoenix.controls.JFXDefaultChip;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RegexValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.base.ValidatorBase;
 import ecoshop.backend.JSONAuxiliar;
 import ecoshop.backend.Producto;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -36,6 +41,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.json.simple.JSONArray;
 
 /*
  * Clase controladora de productos diseñada para el administrador del sistema
@@ -106,6 +112,11 @@ public class AdminProductosController implements Initializable {
     @FXML 
     private TableColumn<Producto, String> columnImagen;
     
+    @FXML
+    private JFXButton botonEliminarProducto;
+    
+    private RepetidoValidator validadorRepeticionId;
+    
     boolean controlSignoPeso = false;
     
     UnaryOperator<TextFormatter.Change> filter = new UnaryOperator<TextFormatter.Change>() {
@@ -133,7 +144,6 @@ public class AdminProductosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columnMaterial.setCellValueFactory(new PropertyValueFactory<>("material"));
@@ -200,7 +210,13 @@ public class AdminProductosController implements Initializable {
                 }
             } 
         });
+        
+        tableViewBorrar.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            botonEliminarProducto.setDisable(newSelection == null);
+        });
     
+       validadorRepeticionId = new RepetidoValidator();
+       
        validarCampo(TBPrecio, 
                new String[]{"Campo obligatorio", "Campo debe ser un entero"}, 
                new ValidatorBase[]{new RequiredFieldValidator(), new NumberValidator()});
@@ -208,78 +224,27 @@ public class AdminProductosController implements Initializable {
                new String[]{"Campo obligatorio"}, 
                new ValidatorBase[]{new RequiredFieldValidator()});
        validarCampo(TBId, 
-               new String[]{"Campo obligatorio", "Campo debe ser un entero"}, 
-               new ValidatorBase[]{new RequiredFieldValidator(), new NumberValidator()});
+               new String[]{"Campo obligatorio", "Campo debe ser un entero", "Esa ID ya esta en uso"}, 
+               new ValidatorBase[]{new RequiredFieldValidator(), new NumberValidator(), validadorRepeticionId});
        validarCampo(TBNombre, 
                new String[]{"Campo obligatorio"}, 
                new ValidatorBase[]{new RequiredFieldValidator()});
-
-
-    }
- 
-    @FXML
-     private void validarCampo(JFXTextField campo, 
-             String[] mensajes,
-             ValidatorBase[] validators){
-        for(int i = 0; i < validators.length; ++i){
-            validators[i].setMessage(mensajes[i]);
-            campo.getValidators().add(validators[i]);
-            
-            Image image = new Image(getClass().getResourceAsStream("recursos/attention.png"));
-            ImageView icono = new ImageView(image);
-            icono.setFitHeight(13);
-            icono.setFitWidth(13);
-            validators[i].setIcon(icono);
-        }
-      
-        campo.focusedProperty().addListener((o, oldVal, newVal) -> {
-            if (!newVal && campo.validate()) {
-                campo.getStyleClass().add("error");
-            }
-        });
-    }
-    @FXML
-     private void validarCampo2(JFXTextField campo, 
-             String rutaImagen, 
-             String mensaje){
-        NumberValidator var = new NumberValidator();
-        var.setMessage(mensaje);
-     
-        Image i = new Image(getClass().getResourceAsStream(rutaImagen));
-        ImageView icono = new ImageView(i);
-        icono.setFitHeight(13);
-        icono.setFitWidth(13);
-        var.setIcon(icono);
-      
-        campo.getValidators().add(var);
-        campo.focusedProperty().addListener((o, oldVal, newVal) -> {
-            if (!newVal) {
-                campo.validate();
-                if(campo.validate()){
-                    campo.getStyleClass().add("error");
-                }
-            }
-        });
+       
+       
+       
+        actualizarTableView();
     }
     
-    @FXML
-    private  void accionBoxBuscarPor(ActionEvent event) {
-        Object seleccion = BoxBuscarPor.getValue();
-        TFBuscar.disableProperty().setValue(Boolean.FALSE);
-        TFBuscar.promptTextProperty().setValue((String) seleccion);
+    private void actualizarTableView(){
+        ArrayList<Producto> productos = 
+                JSONAuxiliar.procesarArchivo(NOMBRE_JSON, AdminProductosController::productoDesdeEntrySet);
+        validadorRepeticionId.setExistentes((ArrayList<String>)(productos.stream().map(x -> x.getId() + "").collect(Collectors.toList())));
+        tableViewBorrar.getItems().setAll(productos);
     }
     
-    @FXML
-    private void clickBotonBuscar(ActionEvent event){
-        String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
-        
-        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON);
-        
-        Set<Entry<String, String>> entrySet = objeto.entrySet();
-        
-        ArrayList<Producto> productos = new ArrayList<>();
+    public static Producto productoDesdeEntrySet(Set<Map.Entry<String, String>> entrySet){
         Producto producto = new Producto();
-        for(Entry<String,String> entry : entrySet){
+        for(Map.Entry<String,String> entry : entrySet){
             switch(entry.getKey().toLowerCase()){
                 case "nombre":
                     producto.setNombre(entry.getValue());
@@ -306,7 +271,47 @@ public class AdminProductosController implements Initializable {
             }
         }
         
-        productos.add(producto);
+        return producto;
+    }
+    
+    @FXML
+     private void validarCampo(JFXTextField campo, 
+             String[] mensajes,
+             ValidatorBase[] validators){
+        for(int i = 0; i < validators.length; ++i){
+            validators[i].setMessage(mensajes[i]);
+            campo.getValidators().add(validators[i]);
+            
+            Image image = new Image(getClass().getResourceAsStream("recursos/attention.png"));
+            ImageView icono = new ImageView(image);
+            icono.setFitHeight(13);
+            icono.setFitWidth(13);
+            validators[i].setIcon(icono);
+        }
+      
+        campo.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal && campo.validate()) {
+                campo.getStyleClass().add("error");
+            }
+        });
+    }
+    
+    @FXML
+    private  void accionBoxBuscarPor(ActionEvent event) {
+        Object seleccion = BoxBuscarPor.getValue();
+        TFBuscar.disableProperty().setValue(Boolean.FALSE);
+        TFBuscar.promptTextProperty().setValue((String) seleccion);
+    }
+    
+    @FXML
+    private void clickBotonBuscar(ActionEvent event){
+        String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
+        
+        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON);
+        
+        ArrayList<Producto> productos = new ArrayList<>();
+        
+        productos.add(productoDesdeEntrySet(objeto.entrySet()));
         
         tableViewBorrar.getItems().setAll(productos);
     }
@@ -319,7 +324,7 @@ public class AdminProductosController implements Initializable {
         boolean precioValido = TBPrecio.validate();
         if(!(idValida && nombreValido && materialValido && precioValido)){
             return;
-        }   
+        }
         
         JSONObject nuevo  = new JSONObject();
         nuevo.put("id", TBId.getText());
@@ -328,13 +333,20 @@ public class AdminProductosController implements Initializable {
         nuevo.put("precio", TBPrecio.getText().substring(4));
         nuevo.put("descripcion", TBDescripcion.getText());
         
-        if(JSONAuxiliar.existe(TBId.getText(), "id", NOMBRE_JSON)){
-            //TODO: Escribir error de que esta ID ya esta en uso
-            return; 
-        }
-        
         JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
             System.out.println("agrego producto");
+            
+        actualizarTableView();
+    }
+    
+    @FXML
+    private void clickBotonEliminar(ActionEvent event){
+        Producto producto = tableViewBorrar.getSelectionModel().getSelectedItem();
+        JSONObject o = JSONAuxiliar.conseguirConColumna(producto.getId() + "", "id", NOMBRE_JSON);
+        JSONAuxiliar.borrar(NOMBRE_JSON, o);
+            System.out.println("3333");
+            
+        actualizarTableView();
     }
          
 }

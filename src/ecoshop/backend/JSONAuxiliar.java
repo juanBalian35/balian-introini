@@ -10,6 +10,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.function.Function;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONAware;
 import org.json.simple.JSONObject;
@@ -45,8 +50,7 @@ public class JSONAuxiliar {
     }
     
     /**
-     * Si ya existe un archivo, agrega al archivo el objeto deseado, y si no
-     * existe el archivo, lo crea con el nuevo dato.
+     * Convierte el archivo al Objeto JSON (JSONObject o JSONArray) que corresponda.
      * 
      * @param String nombre del archivo, depende del tipo de dato el archivo al que ira.
      * @return JSONAware que sera el contenido del archivo. (JSONObject o JSONArray o null)
@@ -134,7 +138,43 @@ public class JSONAuxiliar {
      * @param 
      * @return booleano que indica si pudo borrar correctamente
     */
-    public static boolean borrar(){
-        return true;
+    public static boolean borrar(String nombre, JSONObject objeto){
+        JSONArray jsonArray = null;
+        try{
+            jsonArray = (JSONArray)leer(nombre);
+        }
+        catch (FileNotFoundException ex) {
+            jsonArray = new JSONArray();
+        } 
+        catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+            
+        jsonArray.remove(objeto);
+        return escribir(jsonArray, nombre);
+    }
+    
+    public static <T> ArrayList<T> procesarArchivo(String nombreArchivo,
+            Function<Set<Map.Entry<String, String>>,T> convertidor){
+        ArrayList<T> al = new ArrayList<>();
+        try{
+            JSONArray a = (JSONArray)JSONAuxiliar.leer(nombreArchivo);
+            al = procesarJSONArray(a,convertidor);
+        }
+        catch(Exception e){ }
+        
+        return al;
+    }
+    
+    public static <T> ArrayList<T> procesarJSONArray(JSONArray array,
+            Function<Set<Map.Entry<String, String>>,T> convertidor){
+        ArrayList<T> al = new ArrayList<>();
+        for(int i = 0; i < array.size(); ++i){
+            JSONObject objeto = (JSONObject) array.get(i);
+            al.add((T) convertidor.apply(objeto.entrySet()));
+        }
+        
+        return al;
     }
 }

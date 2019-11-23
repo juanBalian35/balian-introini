@@ -152,7 +152,7 @@
                                  <children>
                                     <StackPane layoutX="-32.0" layoutY="380.0" prefWidth="1041.0">
                                        <children>
-                                          <JFXButton buttonType="RAISED" layoutX="344.0" layoutY="391.0" prefHeight="67.0" ripplerFill="RED" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar producto" textFill="WHITE">
+                                          <JFXButton fx:id="botonEliminarProducto" buttonType="RAISED" disable="true" layoutX="344.0" layoutY="391.0" prefHeight="67.0" ripplerFill="RED" onAction="#clickBotonEliminar" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar producto" textFill="WHITE">
                                              <font>
                                                 <Font size="22.0" />
                                              </font>
