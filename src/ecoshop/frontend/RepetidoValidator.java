@@ -16,7 +16,10 @@ import javafx.scene.control.TextInputControl;
 public class RepetidoValidator extends ValidatorBase {
     private ArrayList<String> existentes;
     
-    public RepetidoValidator(){setMessage("Valor no debe de estar repetido");};
+    public RepetidoValidator(){
+        setMessage("Valor no debe de estar repetido");
+        existentes = new ArrayList<>();
+    };
     
     public RepetidoValidator(ArrayList<String> existentes){
         setMessage("Valor no debe de estar repetido");

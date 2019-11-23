@@ -8,7 +8,7 @@ package ecoshop.backend;
 public class Envase {
     
     private String nombre;
-    private String id;
+    private int id;
     private String imagen;
     private enum Categorias{
         Plastico,
@@ -20,11 +20,11 @@ public class Envase {
     private int contadorReuso;
 
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

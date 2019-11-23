@@ -245,12 +245,12 @@
     -fx-font-size: 16px;
 }
 
-.jfx-text-field:error {
+.jfx-text-field:error, .jfx-combo-box:error  {
     -jfx-focus-color: -fx-rojo-eliminar;
     -jfx-unfocus-color: -fx-rojo-eliminar;
 }
 
-.jfx-text-field .error-label {
+.jfx-text-field .error-label, .jfx-combo-box .error-label {
     -fx-text-fill: -fx-rojo-eliminar;
     -fx-font-size: 10px;
 }
