@@ -98,7 +98,7 @@ public class JSONAuxiliar {
      *          el dato que tenga en la columna `columna` el objeto `objeto`
     */
     public static boolean existe(Object objeto, String columna, String nombre){
-        return conseguirConColumna(objeto, columna, nombre) != null;
+        return conseguirConColumna(objeto, columna, nombre,true) != null;
     }
     
     /**
@@ -106,10 +106,13 @@ public class JSONAuxiliar {
      * @param Object Objeto a comparar en el archivo json
      * @param String columna
      * @param String nombre del archivo, depende del tipo de dato el archivo al que ira
+     * @param boolean estricto, si es verdadero entonces la igualdad debe de ser
+     *                exacta, sino con que sean parecidas es suficiente. (Ejemplo,
+     *                se puede buscar en un string de manear no estricta un caracter)
      * @return JSONObject que se encuentra en el archivo `ruta+nombre+".json"` y 
      *         contiene en columna `columna`  el objeto `objeto`
     */
-    public static JSONObject conseguirConColumna(Object objeto, String columna, String nombre){
+    public static JSONObject conseguirConColumna(Object objeto, String columna, String nombre, boolean estricto){
         JSONArray jsonArray = null;
         try{
             jsonArray = (JSONArray)leer(nombre);
@@ -123,7 +126,8 @@ public class JSONAuxiliar {
         }
         
         for (int i = 0; i < jsonArray.size(); i++) {
-            if(((JSONObject)jsonArray.get(i)).get(columna).equals(objeto))
+            String contenidoColumna = (String)(((JSONObject)jsonArray.get(i)).get(columna));
+            if((estricto && contenidoColumna.equals(objeto)) || (!estricto && contenidoColumna.contains((CharSequence)objeto)))
                 return (JSONObject)jsonArray.get(i);
         }
         

@@ -13,18 +13,27 @@ import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.base.ValidatorBase;
 import ecoshop.backend.JSONAuxiliar;
 import ecoshop.backend.Producto;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.UUID;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,6 +50,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelFormat;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.WritablePixelFormat;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 import org.json.simple.JSONArray;
 
 /*
@@ -114,6 +129,9 @@ public class AdminProductosController implements Initializable {
     
     @FXML
     private JFXButton botonEliminarProducto;
+    
+    @FXML
+    private ImageView imageViewImagen;
     
     private RepetidoValidator validadorRepeticionId;
     
@@ -217,20 +235,18 @@ public class AdminProductosController implements Initializable {
     
        validadorRepeticionId = new RepetidoValidator();
        
-       validarCampo(TBPrecio, 
+        validarCampo(TBPrecio, 
                new String[]{"Campo obligatorio", "Campo debe ser un entero"}, 
                new ValidatorBase[]{new RequiredFieldValidator(), new NumberValidator()});
-       validarCampo(TBMaterial, 
+        validarCampo(TBMaterial, 
                new String[]{"Campo obligatorio"}, 
                new ValidatorBase[]{new RequiredFieldValidator()});
-       validarCampo(TBId, 
+        validarCampo(TBId, 
                new String[]{"Campo obligatorio", "Campo debe ser un entero", "Esa ID ya esta en uso"}, 
                new ValidatorBase[]{new RequiredFieldValidator(), new NumberValidator(), validadorRepeticionId});
-       validarCampo(TBNombre, 
+        validarCampo(TBNombre, 
                new String[]{"Campo obligatorio"}, 
                new ValidatorBase[]{new RequiredFieldValidator()});
-       
-       
        
         actualizarTableView();
     }
@@ -304,14 +320,52 @@ public class AdminProductosController implements Initializable {
     }
     
     @FXML
+    private void clickImagen(MouseEvent event){
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png");
+        fileChooser.getExtensionFilters().add(imageFilter);
+        File file = fileChooser.showOpenDialog(new Stage());  
+        
+        
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageViewImagen.setImage(image);
+        } catch (IOException ex) {
+       }
+    }
+    
+    private String guardarImagen(){
+        final String uuid = UUID.randomUUID().toString().replace("-", "");
+        final String ruta = "imagenes/" + uuid + ".jpg";
+        try{
+            File file = new File(ruta);
+
+            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(imageViewImagen.getImage(), null);
+            BufferedImage imageRGB = new BufferedImage(
+                bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.OPAQUE);
+            Graphics2D graphics = imageRGB.createGraphics();
+            graphics.drawImage(bufferedImage, 0, 0, null);
+
+            ImageIO.write(imageRGB, "jpg", file);
+        }
+        catch(IOException e){
+            return null;
+        }
+        
+        return ruta;
+    }
+    
+    @FXML
     private void clickBotonBuscar(ActionEvent event){
         String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
         
-        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON);
+        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, columna=="id");
         
         ArrayList<Producto> productos = new ArrayList<>();
         
-        productos.add(productoDesdeEntrySet(objeto.entrySet()));
+        if(objeto != null)
+            productos.add(productoDesdeEntrySet(objeto.entrySet()));
         
         tableViewBorrar.getItems().setAll(productos);
     }
@@ -332,9 +386,9 @@ public class AdminProductosController implements Initializable {
         nuevo.put("material", TBMaterial.getText());
         nuevo.put("precio", TBPrecio.getText().substring(4));
         nuevo.put("descripcion", TBDescripcion.getText());
+        nuevo.put("imagen", guardarImagen());
         
         JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
-            System.out.println("agrego producto");
             
         actualizarTableView();
     }
@@ -342,9 +396,8 @@ public class AdminProductosController implements Initializable {
     @FXML
     private void clickBotonEliminar(ActionEvent event){
         Producto producto = tableViewBorrar.getSelectionModel().getSelectedItem();
-        JSONObject o = JSONAuxiliar.conseguirConColumna(producto.getId() + "", "id", NOMBRE_JSON);
+        JSONObject o = JSONAuxiliar.conseguirConColumna(producto.getId() + "", "id", NOMBRE_JSON, true);
         JSONAuxiliar.borrar(NOMBRE_JSON, o);
-            System.out.println("3333");
             
         actualizarTableView();
     }

@@ -193,7 +193,7 @@ public class AdminEnvasesController implements Initializable {
     private void clickBotonBuscar(ActionEvent event){
         String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
         
-        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON);
+        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, true);
         
         //Set<Map.Entry<String, String>> entrySet = objeto.entrySet();
         
