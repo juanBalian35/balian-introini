@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane prefHeight="422.0" prefWidth="629.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.MainInterfazController">
+   <children>
+      <BorderPane layoutX="12.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="597.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <top>
+            <StackPane prefHeight="57.0" prefWidth="600.0" styleClass="barraArriba" stylesheets="@frontend/estilos/estilos.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Label stylesheets="@frontend/estilos/estilos.css" text="Seleccione un tipo de usuario" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto Light" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+         </top>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="botonAdmin" contentDisplay="TOP" layoutX="45.0" layoutY="23.0" onMouseClicked="#clickBotonAdmin" prefHeight="172.0" prefWidth="251.0" styleClass="botonAgregar" stylesheets="@frontend/estilos/estilos.css" text="Usuario administrador" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="141.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@frontend/recursos/001-automobile-with-wrench.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="botonCliente" contentDisplay="TOP" layoutX="304.0" layoutY="23.0" onMouseClicked="#clickBotonCliente" prefHeight="172.0" prefWidth="251.0" styleClass="botonAgregar" stylesheets="@frontend/estilos/estilos.css" text="Usuario cliente" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="141.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@frontend/recursos/002-man-user.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Label layoutX="100.0" layoutY="248.0" prefHeight="56.0" prefWidth="450.0" styleClass="jfx-controles" stylesheets="@frontend/estilos/estilos.css" text="Este panel no es un login, se utiliza solo en el  inicio para poder seleccionar desde que tipo de usuario se quiere utilizar la app. " wrapText="true" />
+                  <ImageView fitHeight="50.0" fitWidth="44.0" layoutX="45.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@frontend/recursos/information.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </center>
+         <effect>
+            <DropShadow color="#0000006c" />
+         </effect>
+      </BorderPane>
+   </children>
+</Pane>
