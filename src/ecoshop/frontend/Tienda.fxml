@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="AdministrarProducto" fx:id="PaneAdministrarEnvases" prefHeight="598.0" prefWidth="1041.0" style="-fx-background-color: transparent;" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.TiendaController">
+   <children>
+      <Pane prefHeight="598.0" prefWidth="257.0" styleClass="paneSeleccionado">
+         <children>
+            <Pane layoutX="10.0" prefHeight="582.0" stylesheets="@estilos/estilos.css">
+               <children>
+                  <JFXTabPane layoutX="2.0" layoutY="1.0" prefHeight="582.0" prefWidth="254.0" stylesheets="@estilos/estilos.css" tabClosingPolicy="UNAVAILABLE">
+                     <tabs>
+                        <Tab style="-fx-alignment: BOTTOM_CENTER;" text="Tienda">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Pane layoutX="1.0" layoutY="22.0" prefHeight="497.0" prefWidth="240.0" />
+                                    <Pane layoutX="7.0" layoutY="35.0" prefHeight="363.0" prefWidth="226.0">
+                                       <children>
+                                          <Label stylesheets="@estilos/estilos.css" text="Filtros de búsqueda" textFill="#5389b3">
+                                             <font>
+                                                <Font name="Roboto Light" size="19.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator layoutY="25.0" prefHeight="2.0" prefWidth="211.0" />
+                                          <Pane layoutY="50.0">
+                                             <children>
+                                                <Label layoutX="8.0" stylesheets="@estilos/estilos.css" text="Material" textFill="#5389b3">
+                                                   <font>
+                                                      <Font name="Roboto Thin" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <HBox layoutX="13.0" layoutY="39.0" prefHeight="161.0" prefWidth="244.0">
+                                                   <children>
+                                                      <VBox prefHeight="152.0" prefWidth="244.0" spacing="10.0">
+                                                         <children>
+                                                            <JFXCheckBox checkedColor="#a5d268" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="Orgánico" />
+                                                            <JFXCheckBox checkedColor="#a5d268" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="Reciclado" />
+                                                            <JFXCheckBox checkedColor="#a5d268" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="Plástico" />
+                                                            <JFXCheckBox checkedColor="#a5d268" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="Madera" />
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox layoutY="83.0" prefHeight="152.0" prefWidth="244.0" spacing="10.0">
+                                                         <children>
+                                                            <JFXCheckBox checkedColor="#a5d268" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="Metal" />
+                                                            <JFXCheckBox checkedColor="#a5d268" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="Otros" />
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                                <Separator layoutX="9.0" layoutY="16.0" prefHeight="11.0" prefWidth="195.0" />
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutY="236.0" prefHeight="152.0" prefWidth="257.0">
+                                             <children>
+                                                <Label layoutX="8.0" stylesheets="@estilos/estilos.css" text="Precio máximo" textFill="#5389b3">
+                                                   <font>
+                                                      <Font name="Roboto Thin" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Separator layoutX="9.0" layoutY="16.0" prefHeight="11.0" prefWidth="195.0" />
+                                                <JFXSlider fx:id="slider" blockIncrement="100.0" layoutX="13.0" layoutY="65.0" majorTickUnit="100.0" max="2000.0" minorTickCount="10" prefHeight="21.0" prefWidth="185.0" showTickLabels="true" showTickMarks="true" value="1.0" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </Pane>
+                                    <StackPane layoutX="-13.0" layoutY="420.0" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <JFXButton fx:id="botonAgregarProducto1" buttonType="RAISED" layoutX="62.0" layoutY="402.0" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Aplicar filtros" textFill="WHITE">
+                                             <font>
+                                                <Font name="Roboto Condensed" size="22.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/filter.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane layoutX="275.0" prefHeight="598.0" prefWidth="766.0" styleClass="paneSeleccionado">
+         <children>
+            <Pane layoutX="12.0" prefHeight="582.0" prefWidth="733.0" stylesheets="@estilos/estilos.css">
+               <children>
+                  <Pane layoutX="18.0" layoutY="13.0">
+                     <children>
+                        <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutY="4.0" prefHeight="32.0" prefWidth="124.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="ID" />
+                                 <String fx:value="Fecha" />
+                              </FXCollections>
+                           </items>
+                        </JFXComboBox>
+                        <JFXButton fx:id="botonBuscar" contentDisplay="CENTER" disable="true" ellipsisString="" layoutX="277.0" layoutY="2.0" prefHeight="38.0" prefWidth="38.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Roboto Condensed" size="1.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@recursos/baseline_search_white_18dp.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXTextField fx:id="TFBuscar" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="137.0" prefHeight="36.0" prefWidth="121.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </JFXTextField>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneProductos" layoutX="2.0" layoutY="59.0" prefHeight="521.0" prefWidth="732.0" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>

@@ -16,6 +16,10 @@
  ---------------------------------
 */
 
+.fondo{
+    -fx-background-color: -fx-color-fondo;
+}
+
 .barraArriba{
     -fx-background-color :  -fx-celeste;
     -fx-background-radius: 20 20 0 0;
@@ -237,7 +241,10 @@
  ---------------------------------
 */
 
-
+.jfx-slider {
+    -jfx-default-thumb:-fx-verde-claro;
+    -jfx-default-track: #CCCCCC;
+}
 
 
 .jfx-controles {

@@ -3,12 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/AdminEnvasesController.java</file>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/AdminProductosController.java</file>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/backend/JSONAuxiliar.java</file>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/AdminProductos.fxml</file>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/RepetidoValidator.java</file>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/Main.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/VistaDeProductosController.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/PuntosDeVentaController.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/backend/Envase.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/MainInterfazController.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/InterfazUsuario.fxml</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/Main.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/PuntosDeVenta.fxml</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/PanelProducto.fxml</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/RegistrarVenta.fxml</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/AdminProductosController.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/ProductoTop.fxml</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/test/ecoshop/backend/EnvaseTest.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/VistaDeProductos.fxml</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/backend/Usuario.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/backend/RegistroDeVenta.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/backend/PuntoDeVenta.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/PreVentas.fxml</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/PanelProductoController.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/RegistrarVentaController.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/backend/Preventa.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/ProductoTopController.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/EstadisticasController.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/InterfazController.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/frontend/demo.html</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/backend/Producto.java</file>
+            <file>file:/Users/agustinintroini/Desktop/Obl2/src/ecoshop/MainInterfaz.fxml</file>
         </group>
     </open-files>
 </project-private>

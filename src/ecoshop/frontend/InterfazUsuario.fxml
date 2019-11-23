@@ -28,7 +28,7 @@
                      </children>
                   </Pane>
                   <Pane id="PuntosDeVenta" fx:id="panePuntosDeVenta" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneNoSeleccionado" stylesheets="@estilos/estilos.css" />
-                  <Pane id="AdministrarProducto" fx:id="paneTienda" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" />
+                  <Pane id="AdministrarProducto" fx:id="paneTienda" layoutX="27.0" layoutY="25.0" prefHeight="598.0" prefWidth="1041.0" stylesheets="@estilos/estilos.css" />
                </children>
             </Pane>
          </center>
