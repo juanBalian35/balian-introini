@@ -10,13 +10,7 @@ public class Envase {
     private String nombre;
     private int id;
     private String imagen;
-    private enum Categorias{
-        Plastico,
-        Cartón,
-        Vidrio_cerámica,
-        Metal,
-}
-    private Categorias categoria;
+    private String categoria;
     private int contadorReuso;
 
 
@@ -45,11 +39,11 @@ public class Envase {
     }
    
 
-    public Categorias getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categorias categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
     

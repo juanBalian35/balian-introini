@@ -86,7 +86,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </JFXButton>
-                                                <ImageView fx:id="imageViewImagen" fitHeight="245.0" fitWidth="367.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="imageViewImagen" fitHeight="245.0" fitWidth="367.0" pickOnBounds="true">
                                                    <image>
                                                       <Image url="@recursos/empty-image.png" />
                                                    </image>

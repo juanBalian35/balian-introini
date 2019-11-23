@@ -56,6 +56,7 @@ public class AdminEnvasesController implements Initializable {
     @FXML private JFXTextField TBId;
     @FXML private ImageView imageViewImagen;
     @FXML private JFXComboBox BoxCategoria;
+    
     @FXML private TableView<Envase> tableViewBorrar;
     @FXML private TableColumn<Envase, String> columnId;
     @FXML private TableColumn<Envase, String> columnNombre;
@@ -109,6 +110,8 @@ public class AdminEnvasesController implements Initializable {
         validarCampo(BoxCategoria,
                 new String[]{"Campo obligatorio"},
                 new ValidatorBase[]{new RequiredFieldValidator()});
+        
+        actualizarDatos();
     }
  
     private void validarCampo(IFXLabelFloatControl campo, 
@@ -178,7 +181,7 @@ public class AdminEnvasesController implements Initializable {
                     envase.setId(Integer.parseInt(entry.getValue()));
                     break;
                 case "categoria":
-                    envase.setNombre(entry.getValue());
+                    envase.setCategoria(entry.getValue());
                     break;
                 case "imagen":
                     envase.setImagen(entry.getValue());

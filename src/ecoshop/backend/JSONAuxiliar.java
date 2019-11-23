@@ -169,7 +169,8 @@ public class JSONAuxiliar {
             JSONArray a = (JSONArray)JSONAuxiliar.leer(nombreArchivo);
             al = procesarJSONArray(a,convertidor);
         }
-        catch(Exception e){ }
+        catch(Exception e){
+        }
         
         return al;
     }
