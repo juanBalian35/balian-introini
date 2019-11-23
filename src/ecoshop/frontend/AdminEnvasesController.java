@@ -23,6 +23,7 @@ import java.util.Set;
 import java.util.function.UnaryOperator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,6 +38,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
@@ -135,8 +137,6 @@ public class AdminEnvasesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   
-        
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columnMaterial.setCellValueFactory(new PropertyValueFactory<>("material"));
@@ -145,11 +145,8 @@ public class AdminEnvasesController implements Initializable {
         columnEnvases.setCellValueFactory(new PropertyValueFactory<>("envases"));
         columnImagen.setCellValueFactory(new PropertyValueFactory<>("imagen"));
         
-       
         
         //Formato de los textfields
-        
-      
         TFBuscar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
@@ -157,18 +154,11 @@ public class AdminEnvasesController implements Initializable {
                 botonBuscar.disableProperty().setValue(newValue.length() == 0);
             }
         });
-        
-        
           
-       validarCampo(TBId, "recursos/attention.png", "Campo obligatorio");
-       validarCampo(TBNombre, "recursos/attention.png", "Campo obligatorio");
-
-
-
+        validarCampo(TBId, "recursos/attention.png", "Campo obligatorio");
+        validarCampo(TBNombre, "recursos/attention.png", "Campo obligatorio");
     }
  
-    
-    
     @FXML
      private void validarCampo(JFXTextField campo, String rutaImagen, String mensaje){
             RequiredFieldValidator var = new RequiredFieldValidator();
@@ -203,40 +193,13 @@ public class AdminEnvasesController implements Initializable {
     private void clickBotonBuscar(ActionEvent event){
         String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
         
-        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON);
+        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, true);
         
-        Set<Map.Entry<String, String>> entrySet = objeto.entrySet();
+        //Set<Map.Entry<String, String>> entrySet = objeto.entrySet();
         
         ArrayList<Producto> productos = new ArrayList<>();
-        Producto producto = new Producto();
-        for(Map.Entry<String,String> entry : entrySet){
-            switch(entry.getKey().toLowerCase()){
-                case "nombre":
-                    producto.setNombre(entry.getValue());
-                    break;
-                case "id":
-                    producto.setId(Integer.parseInt(entry.getValue()));
-                    break;
-                case "precio":
-                    producto.setPrecio(Double.parseDouble(entry.getValue()));
-                    break;
-                case "material":
-                    producto.setMaterial(entry.getValue());
-                    break;
-                case "descripcion":
-                    producto.setDescripcion(entry.getValue());
-                    break;
-                case "imagen":
-                    producto.setImagen(entry.getValue());
-                    break; 
-                //case "envases":
-                    //producto.setEnvases(entry.getValue());
-                default:
-                    // TODO: Preguntar si es necesario siempre poner un default?
-            }
-        }
         
-        productos.add(producto);
+        //productos.add(productoDesdeEntrySet(objeto.entrySet()));
         
         tableViewBorrar.getItems().setAll(productos);
     }

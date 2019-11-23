@@ -78,7 +78,7 @@
                                        <children>
                                           <Pane layoutX="5.0" layoutY="46.0" prefHeight="286.0" prefWidth="367.0" styleClass="panelFondo" stylesheets="@estilos/estilos.css">
                                              <children>
-                                                <JFXButton layoutX="226.0" layoutY="245.0" prefHeight="40.0" prefWidth="141.0" ripplerFill="#a5d268" text="AGREGAR IMAGEN" textFill="#5eadd8">
+                                                <JFXButton onMouseClicked="#clickImagen" layoutX="226.0" layoutY="245.0" prefHeight="40.0" prefWidth="141.0" ripplerFill="#a5d268" text="AGREGAR IMAGEN" textFill="#5eadd8">
                                                    <font>
                                                       <Font name="Roboto Condensed" size="16.0" />
                                                    </font>
@@ -86,7 +86,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </JFXButton>
-                                                <ImageView fitHeight="245.0" fitWidth="367.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="imageViewImagen" fitHeight="245.0" fitWidth="367.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@recursos/empty-image.png" />
                                                    </image>
@@ -101,7 +101,7 @@
                                                 <DropShadow color="#0000003f" height="16.45" offsetX="3.0" offsetY="3.0" radius="8.1025" width="17.96" />
                                              </effect>
                                           </Pane>
-                                          <Label layoutX="5.0" layoutY="10.0" prefHeight="36.0" text="Imagen del envase">
+                                          <Label  layoutX="5.0" layoutY="10.0" prefHeight="36.0" text="Imagen del envase">
                                              <font>
                                                 <Font name="Roboto Light" size="16.0" />
                                              </font>
@@ -152,7 +152,7 @@
                                  <children>
                                     <StackPane layoutX="-32.0" layoutY="380.0" prefWidth="1041.0">
                                        <children>
-                                          <JFXButton buttonType="RAISED" layoutX="344.0" layoutY="391.0" prefHeight="67.0" ripplerFill="RED" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar producto" textFill="WHITE">
+                                          <JFXButton fx:id="botonEliminarProducto" buttonType="RAISED" disable="true" layoutX="344.0" layoutY="391.0" prefHeight="67.0" ripplerFill="RED" onAction="#clickBotonEliminar" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar producto" textFill="WHITE">
                                              <font>
                                                 <Font size="22.0" />
                                              </font>
