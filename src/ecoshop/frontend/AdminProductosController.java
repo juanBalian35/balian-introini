@@ -314,9 +314,18 @@ public class AdminProductosController implements Initializable {
     
     @FXML
     private  void accionBoxBuscarPor(ActionEvent event) {
-        Object seleccion = BoxBuscarPor.getValue();
-        TFBuscar.disableProperty().setValue(Boolean.FALSE);
-        TFBuscar.promptTextProperty().setValue((String) seleccion);
+        String seleccion = ((String)BoxBuscarPor.getValue()).toLowerCase();
+        if("todos".equals(seleccion)){
+            TFBuscar.disableProperty().setValue(true);
+            TFBuscar.promptTextProperty().setValue(null);
+            TFBuscar.clear();
+            actualizarTableView();
+        }
+        else{
+            TFBuscar.disableProperty().setValue(false);
+            TFBuscar.promptTextProperty().setValue((String) seleccion);
+        }
+    
     }
     
     @FXML
@@ -360,12 +369,13 @@ public class AdminProductosController implements Initializable {
     private void clickBotonBuscar(ActionEvent event){
         String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
         
-        JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, columna=="id");
+        JSONArray resultado = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, columna.equals("id"));
         
         ArrayList<Producto> productos = new ArrayList<>();
         
-        if(objeto != null)
-            productos.add(productoDesdeEntrySet(objeto.entrySet()));
+        for(int i = 0; i < resultado.size(); ++i){
+            productos.add(productoDesdeEntrySet(((JSONObject)resultado.get(i)).entrySet()));
+        }
         
         tableViewBorrar.getItems().setAll(productos);
     }
@@ -396,7 +406,7 @@ public class AdminProductosController implements Initializable {
     @FXML
     private void clickBotonEliminar(ActionEvent event){
         Producto producto = tableViewBorrar.getSelectionModel().getSelectedItem();
-        JSONObject o = JSONAuxiliar.conseguirConColumna(producto.getId() + "", "id", NOMBRE_JSON, true);
+        JSONObject o = (JSONObject) JSONAuxiliar.conseguirConColumna(producto.getId() + "", "id", NOMBRE_JSON, true).get(0);
         JSONAuxiliar.borrar(NOMBRE_JSON, o);
             
         actualizarTableView();

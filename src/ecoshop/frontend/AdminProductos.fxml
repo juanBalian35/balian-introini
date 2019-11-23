@@ -209,6 +209,7 @@
                                       <FXCollections fx:factory="observableArrayList">                                    
                                           <String fx:value="ID" />
                                           <String fx:value="Nombre" />
+                                          <String fx:value="Todos" />
                                       </FXCollections>
                                   </items>    
                                     
