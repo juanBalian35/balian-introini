@@ -1,7 +1,12 @@
 package ecoshop.backend;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 
 /**
  *
@@ -9,7 +14,6 @@ import java.util.Set;
  * @author Juan Balian
  */
 public class Envase {
-    
     private String nombre;
     private int id;
     private String imagen;
@@ -40,8 +44,7 @@ public class Envase {
     public void setContadorReuso(int contadorReuso) {
         this.contadorReuso = contadorReuso;
     }
-   
-
+                
     public String getCategoria() {
         return categoria;
     }
@@ -74,8 +77,6 @@ public class Envase {
                 case "imagen":
                     envase.setImagen(entry.getValue());
                     break; 
-                //case "envases":
-                    //producto.setEnvases(entry.getValue());
                 default:
                     // TODO: Preguntar si es necesario siempre poner un default?
             }

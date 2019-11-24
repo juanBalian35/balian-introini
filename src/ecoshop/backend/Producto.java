@@ -3,6 +3,8 @@ package ecoshop.backend;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -16,7 +18,7 @@ public class Producto {
     private String descripcion;
     private String imagen;
     private String nombre;
-    private ArrayList<Envase> envases;
+    private ArrayList<Integer> envases;
    
     public Producto(){
         this(-1,-1,"","","","");
@@ -79,38 +81,45 @@ public class Producto {
         this.imagen = imagen;
     }
 
-    public ArrayList<Envase> getEnvases() {
+    public ArrayList<Integer> getEnvases() {
         return envases;
     }
 
-    public void setEnvases(ArrayList<Envase> envases) {
+    public void setEnvases(ArrayList<Integer> envases) {
         this.envases = envases;
     }
     
-    public static Producto parsearEntrySet(Set<Map.Entry<String, String>> entrySet){
+    public static <T> Producto parsearEntrySet(Set<Map.Entry<String, T>> entrySet){
         Producto producto = new Producto();
-        for(Map.Entry<String,String> entry : entrySet){
+        for(Map.Entry<String,T> entry : entrySet){
             switch(entry.getKey().toLowerCase()){
                 case "nombre":
-                    producto.setNombre(entry.getValue());
+                    producto.setNombre((String)entry.getValue());
                     break;
                 case "id":
-                    producto.setId(Integer.parseInt(entry.getValue()));
+                    producto.setId(Integer.parseInt((String)entry.getValue()));
                     break;
                 case "precio":
-                    producto.setPrecio(Double.parseDouble(entry.getValue()));
+                    producto.setPrecio(Double.parseDouble((String)entry.getValue()));
                     break;
                 case "material":
-                    producto.setMaterial(entry.getValue());
+                    producto.setMaterial((String)entry.getValue());
                     break;
                 case "descripcion":
-                    producto.setDescripcion(entry.getValue());
+                    producto.setDescripcion((String)entry.getValue());
                     break;
                 case "imagen":
-                    producto.setImagen(entry.getValue());
+                    producto.setImagen((String)entry.getValue());
                     break; 
-                //case "envases":
-                    //producto.setEnvases(entry.getValue());
+                case "envases":
+                    JSONArray envasesArray = (JSONArray)entry.getValue();
+                    ArrayList<Integer> al = new ArrayList<>();
+                    for(int i = 0; i < envasesArray.size(); ++i){
+                        JSONObject o = (JSONObject)envasesArray.get(i);
+                        al.add(Integer.parseInt((String)o.get("id")));
+                    }
+                    
+                    producto.setEnvases(al);
                 default:
                     // TODO: Preguntar si es necesario siempre poner un default?
             }
