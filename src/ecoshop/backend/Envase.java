@@ -1,5 +1,8 @@
 package ecoshop.backend;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  *
  * @author Agustín Introini
@@ -47,8 +50,6 @@ public class Envase {
         this.categoria = categoria;
     }
     
-    
-    
     public String getNombre() {
         return nombre;
     }
@@ -56,5 +57,30 @@ public class Envase {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-   
+    
+    public static Envase parsearEntrySet(Set<Map.Entry<String, String>> entrySet){
+        Envase envase = new Envase();
+        for(Map.Entry<String,String> entry : entrySet){
+            switch(entry.getKey().toLowerCase()){
+                case "nombre":
+                    envase.setNombre(entry.getValue());
+                    break;
+                case "id":
+                    envase.setId(Integer.parseInt(entry.getValue()));
+                    break;
+                case "categoria":
+                    envase.setCategoria(entry.getValue());
+                    break;
+                case "imagen":
+                    envase.setImagen(entry.getValue());
+                    break; 
+                //case "envases":
+                    //producto.setEnvases(entry.getValue());
+                default:
+                    // TODO: Preguntar si es necesario siempre poner un default?
+            }
+        }
+        
+        return envase;
+    }
 }

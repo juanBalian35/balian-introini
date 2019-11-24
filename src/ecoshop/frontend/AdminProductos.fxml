@@ -134,7 +134,7 @@
                                                 <Font name="Roboto Light" size="16.0" />
                                              </font>
                                           </Label>
-                                          <JFXListView depth="10" layoutX="1.0" layoutY="46.0" prefHeight="210.0" prefWidth="200.0" showTooltip="true" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" verticalGap="1.0" />
+                                          <JFXListView fx:id="listViewEnvases" depth="10" layoutX="1.0" layoutY="46.0" prefHeight="210.0" prefWidth="200.0" showTooltip="true" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" verticalGap="1.0" />
                                           <StackPane id="paneChipEnvases" fx:id="paneChipEnvases" layoutX="8.0" layoutY="265.0" prefHeight="150.0" prefWidth="200.0" styleClass="jfx-chip-view" stylesheets="@estilos/estilos.css" />
                                        </children>
                                     </Pane>

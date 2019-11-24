@@ -5,12 +5,16 @@ import com.jfoenix.controls.JFXChip;
 import com.jfoenix.controls.JFXChipView;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDefaultChip;
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.skins.JFXChipViewSkin;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RegexValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.base.ValidatorBase;
+import com.sun.javafx.scene.control.skin.LabeledText;
+import ecoshop.backend.Envase;
 import ecoshop.backend.ImagenesAuxiliar;
 import ecoshop.backend.JSONAuxiliar;
 import ecoshop.backend.Producto;
@@ -37,6 +41,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -55,6 +60,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelFormat;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritablePixelFormat;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
@@ -83,6 +90,7 @@ public class AdminProductosController implements Initializable {
     @FXML private ImageView imageViewImagen;
     @FXML private JFXButton botonAgregarProducto;
     @FXML private StackPane paneChipEnvases;
+    @FXML private JFXListView listViewEnvases;
     
     @FXML private TableView<Producto> tableViewBorrar;
     @FXML private TableColumn<Producto, String> columnId;
@@ -128,25 +136,6 @@ public class AdminProductosController implements Initializable {
         columnPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
         columnEnvases.setCellValueFactory(new PropertyValueFactory<>("envases"));
         columnImagen.setCellValueFactory(new PropertyValueFactory<>("imagen"));
-        
-        //Inicializa los ChipViews  
-        JFXChipView<String> chipView = new JFXChipView<>();
-        chipView.getChips().addAll("WEF", "WWW", "JD");
-        chipView.getSuggestions().addAll("HELLO", "TROLL", "WFEWEF", "WEF");
-        chipView.setStyle("-fx-background-color:#eaf3f9;");
-        
-        chipView.getChips().forEach((tab)-> {
-            System.out.println("stuff with" + tab);
-        });
-        
-        chipView.setChipFactory( (view, item) -> {
-            JFXChip<String> chip = new JFXDefaultChip<>(view, item);
-            chip.setOnMouseClicked(event -> chip.setStyle("-fx-background-color: RED;"));
-            return chip;
-        });
-       
-        paneChipEnvases.getChildren().add(chipView);
-        paneChipEnvases.setMargin(chipView, new Insets(10));
         
         //Formato de los textfields
         TBPrecio.setTextFormatter(new TextFormatter<>(FILTRO));    
@@ -206,47 +195,41 @@ public class AdminProductosController implements Initializable {
         validarCampo(TBNombre, 
                new String[]{"Campo obligatorio"}, 
                new ValidatorBase[]{new RequiredFieldValidator()});
+        
+        ArrayList<Envase> envases = 
+                JSONAuxiliar.procesarArchivo("envases", Envase::parsearEntrySet);
+        JFXChipView<String> chipView = new JFXChipView<>();
+        chipView.setFocusTraversable(false);
+        chipView.setStyle("-fx-background-color:#eaf3f9;");
+        
+        chipView.setChipFactory( (view, item) -> {
+            JFXChip<String> chip = new JFXDefaultChip<>(view, item);
+            chip.setOnMouseClicked(event -> chip.setStyle("-fx-background-color: RED;"));
+            return chip;
+        });
        
+        paneChipEnvases.getChildren().add(chipView);
+        paneChipEnvases.setMargin(chipView, new Insets(10));
+        
+        listViewEnvases.getItems().setAll(envases.stream().map(x -> x.getNombre()).collect(Collectors.toList()));
+        
+        listViewEnvases.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+                    chipView.getChips().add((String)listViewEnvases.getSelectionModel().getSelectedItem());
+                }   
+            }
+        });
+        
         actualizarDatos();
     }
     
     private void actualizarDatos(){
         ArrayList<Producto> productos = 
-                JSONAuxiliar.procesarArchivo(NOMBRE_JSON, AdminProductosController::productoDesdeEntrySet);
+                JSONAuxiliar.procesarArchivo(NOMBRE_JSON, Producto::parsearEntrySet);
         validadorRepeticionId.setExistentes((ArrayList<String>)(productos.stream().map(x -> x.getId() + "").collect(Collectors.toList())));
         tableViewBorrar.getItems().setAll(productos);
-    }
-    
-    public static Producto productoDesdeEntrySet(Set<Map.Entry<String, String>> entrySet){
-        Producto producto = new Producto();
-        for(Map.Entry<String,String> entry : entrySet){
-            switch(entry.getKey().toLowerCase()){
-                case "nombre":
-                    producto.setNombre(entry.getValue());
-                    break;
-                case "id":
-                    producto.setId(Integer.parseInt(entry.getValue()));
-                    break;
-                case "precio":
-                    producto.setPrecio(Double.parseDouble(entry.getValue()));
-                    break;
-                case "material":
-                    producto.setMaterial(entry.getValue());
-                    break;
-                case "descripcion":
-                    producto.setDescripcion(entry.getValue());
-                    break;
-                case "imagen":
-                    producto.setImagen(entry.getValue());
-                    break; 
-                //case "envases":
-                    //producto.setEnvases(entry.getValue());
-                default:
-                    // TODO: Preguntar si es necesario siempre poner un default?
-            }
-        }
-        
-        return producto;
     }
     
     private void validarCampo(JFXTextField campo, 
@@ -301,7 +284,7 @@ public class AdminProductosController implements Initializable {
         ArrayList<Producto> productos = new ArrayList<>();
         
         for(int i = 0; i < resultado.size(); ++i){
-            productos.add(productoDesdeEntrySet(((JSONObject)resultado.get(i)).entrySet()));
+            productos.add(Producto.parsearEntrySet(((JSONObject)resultado.get(i)).entrySet()));
         }
         
         tableViewBorrar.getItems().setAll(productos);

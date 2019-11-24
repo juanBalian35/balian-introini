@@ -170,35 +170,10 @@ public class AdminEnvasesController implements Initializable {
         tableViewBorrar.getItems().setAll(envases);
     }
     
-    public static Envase envaseDesdeEntrySet(Set<Map.Entry<String, String>> entrySet){
-        Envase envase = new Envase();
-        for(Map.Entry<String,String> entry : entrySet){
-            switch(entry.getKey().toLowerCase()){
-                case "nombre":
-                    envase.setNombre(entry.getValue());
-                    break;
-                case "id":
-                    envase.setId(Integer.parseInt(entry.getValue()));
-                    break;
-                case "categoria":
-                    envase.setCategoria(entry.getValue());
-                    break;
-                case "imagen":
-                    envase.setImagen(entry.getValue());
-                    break; 
-                //case "envases":
-                    //producto.setEnvases(entry.getValue());
-                default:
-                    // TODO: Preguntar si es necesario siempre poner un default?
-            }
-        }
-        
-        return envase;
-    }
     
     private void actualizarDatos(){
         ArrayList<Envase> envases = 
-                JSONAuxiliar.procesarArchivo(NOMBRE_JSON, AdminEnvasesController::envaseDesdeEntrySet);
+                JSONAuxiliar.procesarArchivo(NOMBRE_JSON, Envase::parsearEntrySet);
         validadorRepeticionId.setExistentes((ArrayList<String>)(envases.stream().map(x -> x.getId() + "").collect(Collectors.toList())));
         tableViewBorrar.getItems().setAll(envases);
     }

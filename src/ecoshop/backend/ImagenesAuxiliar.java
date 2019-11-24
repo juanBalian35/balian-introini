@@ -60,7 +60,6 @@ public class ImagenesAuxiliar {
             return SwingFXUtils.toFXImage(bufferedImage, null);
         } catch (IOException ex) {
         }
-        
         return null;
     }
 }

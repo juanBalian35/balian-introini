@@ -1,6 +1,8 @@
 package ecoshop.backend;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -86,4 +88,35 @@ public class Producto {
         this.envases = envases;
     }
     
+    public static Producto parsearEntrySet(Set<Map.Entry<String, String>> entrySet){
+        Producto producto = new Producto();
+        for(Map.Entry<String,String> entry : entrySet){
+            switch(entry.getKey().toLowerCase()){
+                case "nombre":
+                    producto.setNombre(entry.getValue());
+                    break;
+                case "id":
+                    producto.setId(Integer.parseInt(entry.getValue()));
+                    break;
+                case "precio":
+                    producto.setPrecio(Double.parseDouble(entry.getValue()));
+                    break;
+                case "material":
+                    producto.setMaterial(entry.getValue());
+                    break;
+                case "descripcion":
+                    producto.setDescripcion(entry.getValue());
+                    break;
+                case "imagen":
+                    producto.setImagen(entry.getValue());
+                    break; 
+                //case "envases":
+                    //producto.setEnvases(entry.getValue());
+                default:
+                    // TODO: Preguntar si es necesario siempre poner un default?
+            }
+        }
+        
+        return producto;
+    }
 }
