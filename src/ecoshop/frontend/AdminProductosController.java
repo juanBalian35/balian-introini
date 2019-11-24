@@ -52,6 +52,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import org.json.simple.JSONObject;
 import javafx.geometry.Insets;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -89,7 +91,7 @@ public class AdminProductosController implements Initializable {
     @FXML private JFXButton botonEliminarProducto;
     @FXML private ImageView imageViewImagen;
     @FXML private JFXButton botonAgregarProducto;
-    @FXML private JFXListView listViewEnvases;
+    @FXML private ListView listViewEnvases;
     
     @FXML private TableView<Producto> tableViewBorrar;
     @FXML private TableColumn<Producto, String> columnId;
@@ -199,9 +201,8 @@ public class AdminProductosController implements Initializable {
                 JSONAuxiliar.procesarArchivo("envases", Envase::parsearEntrySet);
        
        
-       
-        
         listViewEnvases.getItems().setAll(envases.stream().map(x -> x.getNombre()).collect(Collectors.toList()));
+        listViewEnvases.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         
         listViewEnvases.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

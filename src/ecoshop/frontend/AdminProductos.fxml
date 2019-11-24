@@ -146,7 +146,7 @@
                                                 <Font name="Roboto Light" size="16.0" />
                                              </font>
                                           </Label>
-                                          <JFXListView fx:id="listViewEnvases" depth="10" layoutX="1.0" layoutY="46.0" prefHeight="287.0" prefWidth="200.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" verticalGap="1.0" />
+                                          <ListView fx:id="listViewEnvases" layoutX="1.0" layoutY="46.0" prefHeight="287.0" prefWidth="200.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" />
                                           <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="160.0" layoutY="10.0" prefHeight="27.0" prefWidth="18.0">
                                              <graphic>
                                                 <ImageView fitHeight="37.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
