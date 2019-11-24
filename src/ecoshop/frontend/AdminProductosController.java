@@ -29,6 +29,7 @@ import java.net.URL;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.ResourceBundle;
@@ -107,6 +108,7 @@ public class AdminProductosController implements Initializable {
     private boolean controlSignoPeso = false;
     
     private boolean imagenSeleccionada = false;
+    private ArrayList<Envase> envases;
     
     private static final UnaryOperator<TextFormatter.Change> FILTRO = (TextFormatter.Change t) -> {
         if (t.isReplaced())
@@ -197,20 +199,10 @@ public class AdminProductosController implements Initializable {
                new String[]{"Campo obligatorio"}, 
                new ValidatorBase[]{new RequiredFieldValidator()});
         
-        ArrayList<Envase> envases = 
-                JSONAuxiliar.procesarArchivo("envases", Envase::parsearEntrySet);
-       
+        envases = JSONAuxiliar.procesarArchivo("envases", Envase::parsearEntrySet);
        
         listViewEnvases.getItems().setAll(envases.stream().map(x -> x.getNombre()).collect(Collectors.toList()));
         listViewEnvases.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        
-        listViewEnvases.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
-                }   
-            }
-        });
         
         actualizarDatos();
     }
@@ -256,7 +248,6 @@ public class AdminProductosController implements Initializable {
             TFBuscar.disableProperty().setValue(false);
             TFBuscar.promptTextProperty().setValue((String) seleccion);
         }
-    
     }
     
     @FXML
@@ -303,6 +294,17 @@ public class AdminProductosController implements Initializable {
         
         nuevo.put("imagen", rutaImagen);
         
+        JSONArray envasesArray = new JSONArray();
+        List l = listViewEnvases.getSelectionModel().getSelectedIndices();
+        for(int i = 0; i < l.size(); ++i){
+            int id = envases.get((int)l.get(i)).getId();
+            JSONObject envaseId = new JSONObject();
+            envaseId.put("id", id + "");
+            envasesArray.add(envaseId);
+        }
+        
+        nuevo.put("envases", envasesArray);
+        
         JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
         
         volverEstadoInicial();
@@ -313,8 +315,10 @@ public class AdminProductosController implements Initializable {
         TBId.clear();
         TBNombre.clear();
         TBMaterial.clear();
-        TBPrecio.clear();
+        TBPrecio.setText("    ");
         TBDescripcion.clear();
+        
+        listViewEnvases.selectionModelProperty().set(null);
         
         imagenSeleccionada = false;
         try{
@@ -333,5 +337,4 @@ public class AdminProductosController implements Initializable {
             
         actualizarDatos();
     }
-         
 }

@@ -39,6 +39,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
@@ -200,7 +201,23 @@ public class AdminEnvasesController implements Initializable {
         nuevo.put("imagen", rutaImagen);
         
         JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
-        //volverEstadoInicial();
-        //actualizarDatos();
+        volverEstadoInicial();
+        actualizarDatos();
+    }
+    
+    private void volverEstadoInicial(){
+        TBId.clear();
+        TBNombre.clear();
+        BoxCategoria.getSelectionModel().clearSelection();
+        
+        //listViewEnvases.selectionModelProperty().set(null);
+        
+        imagenSeleccionada = false;
+        try{
+            imageViewImagen.setImage(new Image(getClass().getResourceAsStream("recursos/empty-image.png")));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

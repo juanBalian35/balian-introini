@@ -91,14 +91,7 @@ public class InterfazController implements Initializable {
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                cargarPane(paneAdministrarProducto, "AdminProductos.fxml");
-                cargarPane(panePreVenta, "PreVentas.fxml");
-                cargarPane(paneRegistrarVenta, "RegistrarVenta.fxml");
-                cargarPane(panePuntosDeVenta, "PuntosDeVenta.fxml");
-                cargarPane(paneAdministrarEnvase, "AdminEnvases.fxml");
-                cargarPane(paneEstadistica, "Estadisticas.fxml");   
-                
-
+        cargarPane(paneAdministrarProducto, "AdminProductos.fxml");
     }    
   
     @FXML
@@ -148,8 +141,8 @@ public class InterfazController implements Initializable {
     
     private void esconderPanes(){
         paneRegistrarVenta.setVisible(false);
-       panePreVenta.setVisible(false);
-       paneAdministrarProducto.setVisible(false);
+        panePreVenta.setVisible(false);
+        paneAdministrarProducto.setVisible(false);
         panePuntosDeVenta.setVisible(false);
         paneAdministrarEnvase.setVisible(false);
         paneEstadistica.setVisible(false);
@@ -157,31 +150,37 @@ public class InterfazController implements Initializable {
     
    @FXML
     private void clickBotonAdministrarProductos(MouseEvent event) {
+        cargarPane(paneAdministrarProducto, "AdminProductos.fxml");
         controlarClick(botonAdministrarProductos, paneAdministrarProducto, imagenAdministrarProductos,"recursos/AdminProductosAZUL.png");
     }
     
     @FXML
     private void clickBotonAdministrarEnvases(MouseEvent event) {
+        cargarPane(paneAdministrarEnvase, "AdminEnvases.fxml");
         controlarClick(botonAdministrarEnvases, paneAdministrarEnvase, imagenAdministrarEnvases,"recursos/AdminEnvaseAZUL.png");
     }
     
     @FXML
     private void clickBotonPuntosDeVenta(MouseEvent event) {
+        cargarPane(panePuntosDeVenta, "PuntosDeVenta.fxml");
         controlarClick(botonPuntosDeVenta, panePuntosDeVenta, imagenPuntosDeVenta,"recursos/pdvAZUL.png");
     }
     
     @FXML
     private void clickBotonRegistrarVentas(MouseEvent event) {
+        cargarPane(paneRegistrarVenta, "RegistrarVenta.fxml");
         controlarClick(botonRegistrarVentas, paneRegistrarVenta, imagenRegistrarVentas,"recursos/RegistrarVentaAZUL.png");
     }
     
     @FXML
     private void clickBotonPreVentas(MouseEvent event) {
+        cargarPane(panePreVenta, "PreVentas.fxml");
         controlarClick(botonPreVentas, panePreVenta, imagenPreVentas,"recursos/PreventasAZUL.png");
     }
     
     @FXML
     private void clickBotonEstadisticas(MouseEvent event) {
+        cargarPane(paneEstadistica, "Estadisticas.fxml");
         controlarClick(botonEstadisticas, paneEstadistica, imagenEstadisticas,"recursos/EstadisticasAZUL.png");
     }
     
@@ -189,9 +188,6 @@ public class InterfazController implements Initializable {
     private void hoverAdminEnvases(MouseEvent event) {
        // cambiarImagenBoton(imagenAdministrarEnvases,"recursos/AdminEnvaseAZUL.png");
     }
-    
-     
- 
     
     /**
      * @param boton boton recien clickeado

@@ -17,7 +17,6 @@ public class Producto {
     private String imagen;
     private String nombre;
     private ArrayList<Envase> envases;
-    
    
     public Producto(){
         this(-1,-1,"","","","");
