@@ -39,7 +39,7 @@
                                                       <Font size="16.0" />
                                                    </font>
                                                 </JFXTextField>
-                                                <JFXComboBox fx:id="BoxDepartamentos" focusColor="#a5d268" labelFloat="true" layoutX="140.0" layoutY="180.0" prefHeight="36.0" prefWidth="174.0" promptText="Departamento" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567" visibleRowCount="4">
+                                                <JFXComboBox fx:id="BoxDepartamento" focusColor="#a5d268" labelFloat="true" layoutX="140.0" layoutY="180.0" prefHeight="36.0" prefWidth="174.0" promptText="Departamento" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567" visibleRowCount="4">
                                                    <items>
                                                       <FXCollections fx:factory="observableArrayList">
                                                          <Label text="Montevideo">

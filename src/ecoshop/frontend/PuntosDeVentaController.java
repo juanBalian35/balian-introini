@@ -8,6 +8,10 @@ package ecoshop.frontend;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.base.IFXLabelFloatControl;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
+import com.jfoenix.validation.base.ValidatorBase;
 import ecoshop.backend.Envase;
 import ecoshop.backend.JSONAuxiliar;
 import ecoshop.backend.PuntoDeVenta;
@@ -30,6 +34,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
@@ -54,13 +60,14 @@ public class PuntosDeVentaController implements Initializable {
     @FXML private JFXTextField TFId;
     @FXML private JFXTextField TFNombre;
     @FXML private JFXTextField TFCiudad;
-    @FXML private JFXComboBox BoxDepartamentos;
+    @FXML private JFXComboBox BoxDepartamento;
 
     @FXML private TableView tableViewBorrar;
     @FXML private TableColumn<PuntoDeVenta, String> columnId;
     @FXML private TableColumn<PuntoDeVenta, String> columnNombre;
     @FXML private TableColumn<PuntoDeVenta, String> columnDireccion;
     
+    private RepetidoValidator validadorRepeticionId;
     /**
      * Initializes the controller class.
      */
@@ -73,6 +80,27 @@ public class PuntosDeVentaController implements Initializable {
         MyBrowser myBrowser = new MyBrowser();
         
         paneWebView.getChildren().add(myBrowser);
+        
+        validadorRepeticionId = new RepetidoValidator();
+                
+        validarCampo(TFId, 
+               new String[]{"Campo obligatorio", "Campo debe ser un entero", "Esa ID ya esta en uso"}, 
+               new ValidatorBase[]{new RequiredFieldValidator(), new NumberValidator(), validadorRepeticionId});
+        validarCampo(TFNombre, 
+               new String[]{"Campo obligatorio"}, 
+               new ValidatorBase[]{new RequiredFieldValidator()});
+        validarCampo(TFCiudad, 
+               new String[]{"Campo obligatorio"}, 
+               new ValidatorBase[]{new RequiredFieldValidator()});
+        validarCampo(TFNumero, 
+               new String[]{"Campo obligatorio", "Campo debe ser un entero"}, 
+               new ValidatorBase[]{new RequiredFieldValidator(), new NumberValidator()});
+        validarCampo(TFCalle, 
+               new String[]{"Campo obligatorio"}, 
+               new ValidatorBase[]{new RequiredFieldValidator()});
+        validarCampo(BoxDepartamento, 
+               new String[]{"Campo obligatorio"}, 
+               new ValidatorBase[]{new RequiredFieldValidator()});
     }    
     
     private void actualizarDatos(){
@@ -82,8 +110,36 @@ public class PuntosDeVentaController implements Initializable {
             agregarMarcador(puntos.get(i).getCalle(), puntos.get(i).getNumero(), 
                     puntos.get(i).getCiudad(), puntos.get(i).getDepartamento());
         }
-        //validadorRepeticionId.setExistentes((ArrayList<String>)(envases.stream().map(x -> x.getId() + "").collect(Collectors.toList())));
+        validadorRepeticionId.setExistentes((ArrayList<String>)(puntos.stream().map(x -> x.getId() + "").collect(Collectors.toList())));
         tableViewBorrar.getItems().setAll(puntos);
+    }
+    
+    private void validarCampo(IFXLabelFloatControl campo, 
+            String[] mensajes,
+            ValidatorBase[] validators){
+        for(int i = 0; i < validators.length; ++i){
+            validators[i].setMessage(mensajes[i]);
+            campo.getValidators().add(validators[i]);
+            
+            Image image = new Image(getClass().getResourceAsStream("recursos/attention.png"));
+            ImageView icono = new ImageView(image);
+            icono.setFitHeight(13);
+            icono.setFitWidth(13);
+            validators[i].setIcon(icono);
+        }
+      
+        if(campo instanceof JFXTextField){
+            ((JFXTextField)campo).focusedProperty().addListener((o, oldVal, newVal) -> {
+                if (!newVal && campo.validate())
+                    ((JFXTextField)campo).getStyleClass().add("error");
+            });
+        }
+        else if(campo instanceof JFXComboBox){
+            ((JFXComboBox)campo).focusedProperty().addListener((o, oldVal, newVal) -> {
+                if (!newVal && campo.validate())
+                    ((JFXComboBox)campo).getStyleClass().add("error");
+            });
+        }
     }
     
     class MyBrowser extends Pane {
@@ -111,7 +167,17 @@ public class PuntosDeVentaController implements Initializable {
     
     @FXML
     private void agregarPuntoDeVenta(ActionEvent event){
-        String departamento = ((Label)BoxDepartamentos.getValue()).getText();
+        boolean idValida = TFId.validate();
+        boolean nombreValido = TFNombre.validate();
+        boolean deptoValido = BoxDepartamento.validate();
+        boolean calleValida = TFCalle.validate();
+        boolean numeroValido = TFNumero.validate();
+        boolean ciudadValida = TFCiudad.validate();
+        if(!(idValida && nombreValido && deptoValido && calleValida && numeroValido && ciudadValida)){
+            return;
+        }
+        
+        String departamento = ((Label)BoxDepartamento.getValue()).getText();
         
         agregarMarcador(TFCalle.getText(), TFNumero.getText(), TFCiudad.getText(), departamento);
                 
