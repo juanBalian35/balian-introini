@@ -27,9 +27,9 @@
                 };
                 var map = new google.maps.Map(document.getElementById("mapcanvas"), Options);
                 
-                var positions = [new google.maps.LatLng(35.857908, 10.598997),new google.maps.LatLng(35.86, 10.599)];
+                var markers = [];
                 
-                for(var i = 0; i < positions.length; ++i){
+                /*for(var i = 0; i < positions.length; ++i){
                     new google.maps.Marker({
                         position: positions[i],
                         map: map,
@@ -37,11 +37,25 @@
                         title: "",
                         autoPan: true
                     });
-                }
+                }*/
                 
-              
+                document.goToLocation = function(direccion) {
+                    geocoder.geocode( { 'address': direccion}, function(results, status) {
+                        if (status === 'OK') {
+                          map.setCenter(results[0].geometry.location);
+                          markers.push(new google.maps.Marker({
+                              map: map,
+                              position: results[0].geometry.location
+                          }));
+                          alert('snoop dogg');
+                        } else {
+                          alert('Geocode was not successful for the following reason: ' + status);
+                        }
+                    });
+                }
+            
                 geocoder = new google.maps.Geocoder();  
-                function codeAddress() {
+                /*function codeAddress() {
                   var address = 'Coronel Peiran 1325, Sauce, Canelones, Uruguay';
                   geocoder.geocode( { 'address': address}, function(results, status) {
                     if (status == 'OK') {
@@ -57,7 +71,7 @@
                   });
                 }
                 
-                codeAddress();
+                codeAddress();*/
             </script>
         </div>
     </body>

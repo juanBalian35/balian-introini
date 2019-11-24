@@ -105,7 +105,7 @@
                                           </Pane>
                                           <StackPane layoutX="-17.0" layoutY="380.0" prefHeight="67.0" prefWidth="398.0">
                                              <children>
-                                                <JFXButton fx:id="botonAgregarProducto" buttonType="RAISED" layoutX="34.0" layoutY="388.0" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar punto de venta" textFill="WHITE">
+                                                <JFXButton buttonType="RAISED" layoutX="34.0" layoutY="388.0" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar punto de venta" onAction="#agregarPuntoDeVenta" textFill="WHITE">
                                                    <font>
                                                       <Font name="Roboto Light" size="23.0" />
                                                    </font>
@@ -183,7 +183,7 @@
                                              <columns>
                                                 <TableColumn fx:id="columnId" prefWidth="40.7003173828125" text="ID" />
                                                 <TableColumn fx:id="columnNombre" prefWidth="114.172119140625" text="Nombre" />
-                                                <TableColumn fx:id="columnMaterial" prefWidth="161.827880859375" text="Dirección" />
+                                                <TableColumn fx:id="columnDireccion" prefWidth="161.827880859375" text="Direccion" />
                                              </columns>
                                              <stylesheets>
                                                 <URL value="@estilos/tableview.css" />
