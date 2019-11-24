@@ -64,7 +64,7 @@ public class InterfazUsuarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
                 cargarPane(paneTienda, "Tienda.fxml");
-               // cargarPane(paneCarrito, "PreVentas.fxml");
+                cargarPane(paneCarrito, "Carrito.fxml");
                 //cargarPane(panePreCompras, "RegistrarVenta.fxml");
                 //cargarPane(panePuntosDeVenta, "PuntosDeVenta.fxml");
               

@@ -24,6 +24,8 @@ public class Toast {
             final Popup popup = new Popup();
             popup.setAutoFix(true);
             Label label = new Label(mensaje);
+            label.setMaxWidth(500);
+            label.setWrapText(true);
             JFXButton btn = new JFXButton();
             HBox hbox = new HBox();
             hbox.setAlignment(Pos.CENTER);
@@ -43,42 +45,40 @@ public class Toast {
             return popup;
         }
 
-        public static void show(final String mensaje, final String mensajeBtn, final int tiempo, final Control control) {
-            Stage stage = (Stage) control.getScene().getWindow();
-            final Popup popup = createPopup(mensaje, mensajeBtn);
-            popup.setOnShown(e -> {
-                popup.setX(stage.getX() + stage.getWidth() / 2 - popup.getWidth() / 2);
-                popup.setY(stage.getHeight());
-                
-                
-                final DoubleProperty yProperty = new SimpleDoubleProperty(popup.getY());
-        yProperty.addListener((ob,n,n1)->popup.setY(n1.doubleValue()));
+    public static void show(final String mensaje, final String mensajeBtn, final int tiempo, final Control control) {
+        Stage stage = (Stage) control.getScene().getWindow();
+        final Popup popup = createPopup(mensaje, mensajeBtn);
+        popup.setOnShown(e -> {
+            popup.setX(stage.getX() + stage.getWidth() / 2 - popup.getWidth() / 2);
+            popup.setY(stage.getHeight()-10);
 
-        Timeline timeIn = new Timeline();
-        timeIn.getKeyFrames().add(
-            new KeyFrame(Duration.seconds(0.5),
-                 new KeyValue(yProperty, popup.getY() - 23, Interpolator.EASE_BOTH)));
-        timeIn.play();
-                
-            });
-            popup.show(stage);
-           
-            
-            new Timeline(new KeyFrame(
-                    Duration.seconds(tiempo-0.5),
-                    ae -> {
-                         final DoubleProperty yProperty = new SimpleDoubleProperty(popup.getY());
-        yProperty.addListener((ob,n,n1)->popup.setY(n1.doubleValue()));
+            final DoubleProperty yProperty = new SimpleDoubleProperty(popup.getY());
+            yProperty.addListener((ob, n, n1) -> popup.setY(n1.doubleValue()));
 
-        Timeline timeIn = new Timeline();
-        timeIn.getKeyFrames().add(
-            new KeyFrame(Duration.seconds(0.4),
-                 new KeyValue(yProperty, popup.getY() + 23, Interpolator.EASE_BOTH)));
-        timeIn.play(); })).play();
+            Timeline timeIn = new Timeline();
+            timeIn.getKeyFrames().add(
+                    new KeyFrame(Duration.seconds(0.5),
+                            new KeyValue(yProperty, popup.getY() - 23, Interpolator.EASE_BOTH)));
+            timeIn.play();
 
-             
-            new Timeline(new KeyFrame(
-                    Duration.seconds(tiempo),
-                    ae -> popup.hide())).play();
-        }
+        });
+        popup.show(stage);
+
+        new Timeline(new KeyFrame(
+                Duration.seconds(tiempo - 0.5),
+                ae -> {
+                    final DoubleProperty yProperty = new SimpleDoubleProperty(popup.getY());
+                    yProperty.addListener((ob, n, n1) -> popup.setY(n1.doubleValue()));
+
+                    Timeline timeIn = new Timeline();
+                    timeIn.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(0.4),
+                                    new KeyValue(yProperty, popup.getY() + 23, Interpolator.EASE_BOTH)));
+                    timeIn.play();
+                })).play();
+
+        new Timeline(new KeyFrame(
+                Duration.seconds(tiempo),
+                ae -> popup.hide())).play();
+    }
 }

@@ -276,7 +276,8 @@ public class AdminProductosController implements Initializable {
     
     @FXML
     private void clickBotonAgregarProducto(MouseEvent event){
-                Toast.show("El producto se agregó correctamente", "OK", 5, label);
+       Toast.show("El producto se agregó correctamente", "OK", 5, label);
+
 
         boolean idValida = TBId.validate();
         boolean nombreValido = TBNombre.validate();
@@ -311,7 +312,6 @@ public class AdminProductosController implements Initializable {
         nuevo.put("envases", envasesArray);
         
         JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
-        Toast.show("El producto se agregó correctamente", "OK", 5, label);
 
         
         volverEstadoInicial();

@@ -49,7 +49,7 @@ import javafx.util.Duration;
  */
 public class VistaDeProductosController implements Initializable {
 @FXML
-    private AnchorPane pane;
+    private AnchorPane paneVistaProducto;
 @FXML
     private VBox COL1;
 @FXML

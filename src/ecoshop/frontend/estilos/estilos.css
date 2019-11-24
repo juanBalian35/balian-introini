@@ -20,6 +20,12 @@
     -fx-background-color: -fx-color-fondo;
 }
 
+.fondo-carrito{
+    -fx-background-color: white;
+
+  
+}
+
 .barraArriba{
     -fx-background-color :  -fx-celeste;
     -fx-background-radius: 20 20 0 0;
@@ -278,6 +284,15 @@
 .jfx-controles {
     -fx-font-family: "Roboto Light";
     -fx-font-size: 16px;
+}
+
+.jfx-controles-carrito {
+    -fx-font-family: "Roboto Light";
+    -fx-font-size: 16px;
+}
+.jfx-barra-carrito {
+    -fx-font-family: "Roboto Light";
+    -fx-font-size: 17px;
 }
 
 .jfx-text-field:error, .jfx-combo-box:error  {

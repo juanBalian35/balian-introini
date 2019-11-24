@@ -102,7 +102,7 @@
       </Pane>
       <Pane layoutX="275.0" prefHeight="598.0" prefWidth="766.0" styleClass="paneSeleccionado">
          <children>
-            <Pane layoutX="12.0" prefHeight="582.0" prefWidth="733.0" stylesheets="@estilos/estilos.css">
+            <Pane layoutX="-9.0" prefHeight="582.0" prefWidth="754.0" stylesheets="@estilos/estilos.css">
                <children>
                   <Pane layoutX="18.0" layoutY="13.0">
                      <children>
@@ -137,6 +137,33 @@
                      </children>
                   </Pane>
                   <Pane fx:id="paneProductos" layoutX="2.0" layoutY="59.0" prefHeight="521.0" prefWidth="732.0" />
+                  <AnchorPane id="AnchorPane" fx:id="paneVistaProducto" layoutX="10.0" layoutY="71.0" prefHeight="489.0" prefWidth="763.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css">
+                     <children>
+                        <ScrollPane fitToWidth="true" pannable="true" prefHeight="502.0" prefWidth="756.0" styleClass="fondo" stylesheets="@estilos/estilos.css">
+                           <content>
+                              <HBox prefWidth="749.0" spacing="7.0" styleClass="fondo" stylesheets="@estilos/estilos.css">
+                                 <children>
+                                    <VBox fx:id="COL1" fillWidth="false" spacing="7.0" styleClass="fondo" stylesheets="@estilos/estilos.css">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox fx:id="COL2" spacing="7.0" styleClass="fondo" stylesheets="@estilos/estilos.css">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox fx:id="COL3" spacing="7.0" styleClass="fondo" stylesheets="@estilos/estilos.css">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
                </children>
             </Pane>
          </children>
