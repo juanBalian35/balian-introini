@@ -133,7 +133,7 @@
                                        <children>
                                           <StackPane layoutX="-17.0" layoutY="379.0" prefWidth="398.0">
                                              <children>
-                                                <JFXButton fx:id="botonAgregarProducto1" buttonType="RAISED" layoutX="34.0" layoutY="390.0" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar punto de venta" textFill="WHITE">
+                                                <JFXButton fx:id="botonEliminarPunto" disable="true" buttonType="RAISED" layoutX="34.0" layoutY="390.0" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar punto de venta" textFill="WHITE" onAction="#eliminarPunto">
                                                    <font>
                                                       <Font name="Roboto Condensed" size="22.0" />
                                                    </font>
@@ -151,11 +151,12 @@
                                     </Pane>
                                     <Pane layoutX="33.0" layoutY="45.0" prefHeight="353.0" prefWidth="319.0">
                                        <children>
-                                          <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutY="4.0" prefHeight="32.0" prefWidth="124.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                          <JFXComboBox fx:id="BoxBuscarPor" onAction="#accionBoxBuscarPor"  focusColor="#a5d268" labelFloat="true" layoutY="4.0" prefHeight="32.0" prefWidth="124.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
                                              <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                    <String fx:value="ID" />
                                                    <String fx:value="Nombre" />
+                                                   <String fx:value="Todos" />
                                                 </FXCollections>
                                              </items>
                                           </JFXComboBox>
@@ -164,7 +165,7 @@
                                                 <Font size="16.0" />
                                              </font>
                                           </JFXTextField>
-                                          <JFXButton fx:id="botonBuscar" contentDisplay="CENTER" disable="true" ellipsisString="" layoutX="277.0" layoutY="2.0" prefHeight="38.0" prefWidth="38.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                          <JFXButton fx:id="botonBuscar" onAction="#clickBotonBuscar" contentDisplay="CENTER" disable="true" ellipsisString="" layoutX="277.0" layoutY="2.0" prefHeight="38.0" prefWidth="38.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>

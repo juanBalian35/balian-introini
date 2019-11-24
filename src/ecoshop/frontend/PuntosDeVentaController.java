@@ -14,6 +14,7 @@ import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.base.ValidatorBase;
 import ecoshop.backend.Envase;
 import ecoshop.backend.JSONAuxiliar;
+import ecoshop.backend.Producto;
 import ecoshop.backend.PuntoDeVenta;
 import java.net.URL;
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
@@ -61,8 +63,13 @@ public class PuntosDeVentaController implements Initializable {
     @FXML private JFXTextField TFNombre;
     @FXML private JFXTextField TFCiudad;
     @FXML private JFXComboBox BoxDepartamento;
+    
+    @FXML private JFXTextField TFBuscar;
+    @FXML private JFXComboBox BoxBuscarPor;
+    @FXML private Button botonBuscar;
+    @FXML private Button botonEliminarPunto;
 
-    @FXML private TableView tableViewBorrar;
+    @FXML private TableView<PuntoDeVenta> tableViewBorrar;
     @FXML private TableColumn<PuntoDeVenta, String> columnId;
     @FXML private TableColumn<PuntoDeVenta, String> columnNombre;
     @FXML private TableColumn<PuntoDeVenta, String> columnDireccion;
@@ -73,6 +80,18 @@ public class PuntosDeVentaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        TFBuscar.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                String oldValue, String newValue) {
+                botonBuscar.disableProperty().setValue(newValue.length() == 0);
+            }
+        });
+        
+        tableViewBorrar.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            botonEliminarPunto.setDisable(newSelection == null);
+        });
+        
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columnDireccion.setCellValueFactory(features -> new SimpleStringProperty(features.getValue().getDireccion()));
@@ -103,12 +122,32 @@ public class PuntosDeVentaController implements Initializable {
                new ValidatorBase[]{new RequiredFieldValidator()});
     }    
     
-    private void actualizarDatos(){
+    @FXML
+    private  void accionBoxBuscarPor(ActionEvent event) {
+        String seleccion = ((String)BoxBuscarPor.getValue()).toLowerCase();
+        if("todos".equals(seleccion)){
+            TFBuscar.disableProperty().setValue(true);
+            TFBuscar.promptTextProperty().setValue(null);
+            TFBuscar.clear();
+            actualizarDatos(false);
+        }
+        else{
+            TFBuscar.disableProperty().setValue(false);
+            TFBuscar.promptTextProperty().setValue((String) seleccion);
+        }
+    }
+    
+    private void actualizarDatos(boolean actualizarMapa){
+        System.out.println("actualizando");
+        
         ArrayList<PuntoDeVenta> puntos = 
                 JSONAuxiliar.procesarArchivo(NOMBRE_JSON, PuntoDeVenta::parsearEntrySet);
-        for(int i = 0 ; i < puntos.size(); ++i){
-            agregarMarcador(puntos.get(i).getCalle(), puntos.get(i).getNumero(), 
-                    puntos.get(i).getCiudad(), puntos.get(i).getDepartamento());
+            
+        if(actualizarMapa){
+            for(int i = 0 ; i < puntos.size(); ++i){
+                agregarMarcador(puntos.get(i).getCalle(), puntos.get(i).getNumero(), 
+                        puntos.get(i).getCiudad(), puntos.get(i).getDepartamento());
+            }
         }
         validadorRepeticionId.setExistentes((ArrayList<String>)(puntos.stream().map(x -> x.getId() + "").collect(Collectors.toList())));
         tableViewBorrar.getItems().setAll(puntos);
@@ -159,7 +198,7 @@ public class PuntosDeVentaController implements Initializable {
             webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
                 public void changed(@SuppressWarnings("rawtypes") ObservableValue ov, State oldState, State newState){
                     System.out.println(newState);
-                    actualizarDatos();  
+                    actualizarDatos(true);  
                 }
             });
         }
@@ -167,6 +206,14 @@ public class PuntosDeVentaController implements Initializable {
     
     @FXML
     private void agregarPuntoDeVenta(ActionEvent event){
+        TFBuscar.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                String oldValue, String newValue) {
+                botonBuscar.disableProperty().setValue(newValue.length() == 0);
+            }
+        });
+        
         boolean idValida = TFId.validate();
         boolean nombreValido = TFNombre.validate();
         boolean deptoValido = BoxDepartamento.validate();
@@ -190,6 +237,23 @@ public class PuntosDeVentaController implements Initializable {
         puntoDeVenta.put("numero", TFNumero.getText());
         
         JSONAuxiliar.agregar(puntoDeVenta, NOMBRE_JSON);
+        
+        actualizarDatos(false);
+    }
+    
+    @FXML
+    private void clickBotonBuscar(ActionEvent event){
+        String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
+        
+        JSONArray resultado = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, columna.equals("id"));
+        
+        ArrayList<PuntoDeVenta> puntos = new ArrayList<>();
+        
+        for(int i = 0; i < resultado.size(); ++i){
+            puntos.add(PuntoDeVenta.parsearEntrySet(((JSONObject)resultado.get(i)).entrySet()));
+        }
+        
+        tableViewBorrar.getItems().setAll(puntos);
     }
     
     private void agregarMarcador(String calle, String numero, 
@@ -201,6 +265,15 @@ public class PuntosDeVentaController implements Initializable {
             "window.direccion = '" + direccion + "';" +
             "document.goToLocation(window.direccion);"
         );
+    }
+    
+    @FXML
+    private void eliminarPunto(ActionEvent event){
+        PuntoDeVenta punto = tableViewBorrar.getSelectionModel().getSelectedItem();
+        JSONObject o = (JSONObject) JSONAuxiliar.conseguirConColumna(punto.getId() + "", "id", NOMBRE_JSON, true).get(0);
+        JSONAuxiliar.borrar(NOMBRE_JSON, o);
+        
+        actualizarDatos(true);
     }
 
 }
