@@ -89,7 +89,6 @@ public class AdminProductosController implements Initializable {
     @FXML private JFXButton botonEliminarProducto;
     @FXML private ImageView imageViewImagen;
     @FXML private JFXButton botonAgregarProducto;
-    @FXML private StackPane paneChipEnvases;
     @FXML private JFXListView listViewEnvases;
     
     @FXML private TableView<Producto> tableViewBorrar;
@@ -198,18 +197,9 @@ public class AdminProductosController implements Initializable {
         
         ArrayList<Envase> envases = 
                 JSONAuxiliar.procesarArchivo("envases", Envase::parsearEntrySet);
-        JFXChipView<String> chipView = new JFXChipView<>();
-        chipView.setFocusTraversable(false);
-        chipView.setStyle("-fx-background-color:#eaf3f9;");
-        
-        chipView.setChipFactory( (view, item) -> {
-            JFXChip<String> chip = new JFXDefaultChip<>(view, item);
-            chip.setOnMouseClicked(event -> chip.setStyle("-fx-background-color: RED;"));
-            return chip;
-        });
        
-        paneChipEnvases.getChildren().add(chipView);
-        paneChipEnvases.setMargin(chipView, new Insets(10));
+       
+       
         
         listViewEnvases.getItems().setAll(envases.stream().map(x -> x.getNombre()).collect(Collectors.toList()));
         
@@ -217,7 +207,6 @@ public class AdminProductosController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
-                    chipView.getChips().add((String)listViewEnvases.getSelectionModel().getSelectedItem());
                 }   
             }
         });

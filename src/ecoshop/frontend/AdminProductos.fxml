@@ -72,13 +72,25 @@
                                                 <Font size="19.0" />
                                              </font>
                                           </Label>
+                                          <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="201.0" layoutY="170.0" prefHeight="27.0" prefWidth="18.0">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/information.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <tooltip>
+                                                <Tooltip prefWidth="215.0" styleClass="tooltips-menu" text="Para agregar varios materiales, separe con una coma.  Ej.: &quot;Orgánico, Reciclado&quot;." width="215.0" wrapText="true" />
+                                             </tooltip>
+                                          </JFXButton>
                                        </children>
                                     </Pane>
                                     <Pane layoutX="318.0" prefHeight="353.0" prefWidth="382.0">
                                        <children>
                                           <Pane layoutX="5.0" layoutY="46.0" prefHeight="286.0" prefWidth="367.0" styleClass="panelFondo" stylesheets="@estilos/estilos.css">
                                              <children>
-                                                <JFXButton onMouseClicked="#clickImagen" layoutX="226.0" layoutY="245.0" prefHeight="40.0" prefWidth="141.0" ripplerFill="#a5d268" text="AGREGAR IMAGEN" textFill="#5eadd8">
+                                                <JFXButton layoutX="226.0" layoutY="245.0" onMouseClicked="#clickImagen" prefHeight="40.0" prefWidth="141.0" ripplerFill="#a5d268" text="AGREGAR IMAGEN" textFill="#5eadd8">
                                                    <font>
                                                       <Font name="Roboto Condensed" size="16.0" />
                                                    </font>
@@ -101,7 +113,7 @@
                                                 <DropShadow color="#0000003f" height="16.45" offsetX="3.0" offsetY="3.0" radius="8.1025" width="17.96" />
                                              </effect>
                                           </Pane>
-                                          <Label  layoutX="5.0" layoutY="10.0" prefHeight="36.0" text="Imagen del envase">
+                                          <Label layoutX="5.0" layoutY="10.0" prefHeight="36.0" text="Imagen del envase">
                                              <font>
                                                 <Font name="Roboto Light" size="16.0" />
                                              </font>
@@ -127,15 +139,26 @@
                                           </JFXButton>
                                        </children>
                                     </StackPane>
-                                    <Pane layoutX="745.0" prefHeight="417.0" prefWidth="213.0">
+                                    <Pane layoutX="745.0" prefHeight="376.0" prefWidth="213.0">
                                        <children>
                                           <Label layoutY="10.0" prefHeight="36.0" prefWidth="133.0" text="Lista de envases">
                                              <font>
                                                 <Font name="Roboto Light" size="16.0" />
                                              </font>
                                           </Label>
-                                          <JFXListView fx:id="listViewEnvases" depth="10" layoutX="1.0" layoutY="46.0" prefHeight="210.0" prefWidth="200.0" showTooltip="true" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" verticalGap="1.0" />
-                                          <StackPane id="paneChipEnvases" fx:id="paneChipEnvases" layoutX="8.0" layoutY="265.0" prefHeight="150.0" prefWidth="200.0" styleClass="jfx-chip-view" stylesheets="@estilos/estilos.css" />
+                                          <JFXListView fx:id="listViewEnvases" depth="10" layoutX="1.0" layoutY="46.0" prefHeight="287.0" prefWidth="200.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" verticalGap="1.0" />
+                                          <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="160.0" layoutY="10.0" prefHeight="27.0" prefWidth="18.0">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/information.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <tooltip>
+                                                <Tooltip prefWidth="215.0" styleClass="tooltips-menu" text="Mantenga presionado ⌘ (MacOS) o ctrl (Windows) para seleccionar múltiples envases" width="215.0" wrapText="true" />
+                                             </tooltip>
+                                          </JFXButton>
                                        </children>
                                     </Pane>
                                  </children>
@@ -152,7 +175,7 @@
                                  <children>
                                     <StackPane layoutX="-32.0" layoutY="380.0" prefWidth="1041.0">
                                        <children>
-                                          <JFXButton fx:id="botonEliminarProducto" buttonType="RAISED" disable="true" layoutX="344.0" layoutY="391.0" prefHeight="67.0" ripplerFill="RED" onAction="#clickBotonEliminar" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar producto" textFill="WHITE">
+                                          <JFXButton fx:id="botonEliminarProducto" buttonType="RAISED" disable="true" layoutX="344.0" layoutY="391.0" onAction="#clickBotonEliminar" prefHeight="67.0" ripplerFill="RED" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar producto" textFill="WHITE">
                                              <font>
                                                 <Font size="22.0" />
                                              </font>
