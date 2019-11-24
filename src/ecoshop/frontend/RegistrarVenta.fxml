@@ -29,7 +29,7 @@
                                        <children>
                                           <StackPane layoutX="-29.0" layoutY="398.0" prefWidth="398.0">
                                              <children>
-                                                <JFXButton fx:id="botonAgregarProducto1" buttonType="RAISED" layoutX="62.0" layoutY="402.0" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar a la venta" textFill="WHITE">
+                                                <JFXButton fx:id="botonAgregarProducto1" onAction="#clickBotonAgregarProducto" disable="true" buttonType="RAISED" layoutX="62.0" layoutY="402.0" prefHeight="67.0" ripplerFill="#8bd02a" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Agregar a la venta" textFill="WHITE">
                                                    <font>
                                                       <Font name="Roboto Condensed" size="22.0" />
                                                    </font>
@@ -47,11 +47,12 @@
                                     </Pane>
                                     <Pane layoutX="33.0" layoutY="45.0" prefHeight="353.0" prefWidth="319.0">
                                        <children>
-                                          <JFXComboBox fx:id="BoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutY="4.0" prefHeight="32.0" prefWidth="124.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                          <JFXComboBox fx:id="BoxBuscarPor" onAction="#accionBoxBuscarPor" focusColor="#a5d268" labelFloat="true" layoutY="4.0" prefHeight="32.0" prefWidth="124.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
                                              <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                    <String fx:value="ID" />
                                                    <String fx:value="Fecha" />
+                                                   <String fx:value="Todos" />
                                                 </FXCollections>
                                              </items>
                                           </JFXComboBox>
@@ -60,7 +61,7 @@
                                                 <Font size="16.0" />
                                              </font>
                                           </JFXTextField>
-                                          <JFXButton fx:id="botonBuscar" contentDisplay="CENTER" disable="true" ellipsisString="" layoutX="277.0" layoutY="2.0" prefHeight="38.0" prefWidth="38.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                          <JFXButton fx:id="botonBuscar" onAction="#clickBotonBuscar" contentDisplay="CENTER" disable="true" ellipsisString="" layoutX="277.0" layoutY="2.0" prefHeight="38.0" prefWidth="38.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -75,7 +76,7 @@
                                                 </ImageView>
                                              </graphic>
                                           </JFXButton>
-                                          <TableView fx:id="tableViewBorrar" layoutY="72.0" prefHeight="269.0" prefWidth="319.0" styleClass="jfx-controles">
+                                          <TableView fx:id="tableViewBuscar" layoutY="72.0" prefHeight="269.0" prefWidth="319.0" styleClass="jfx-controles">
                                              <columns>
                                                 <TableColumn fx:id="columnId" prefWidth="55.33051300048828" text="ID" />
                                                 <TableColumn fx:id="columnNombre" prefWidth="77.66108703613281" text="Nombre" />
@@ -99,7 +100,7 @@
             </Pane>
          </children>
       </Pane>
-      <Pane layoutX="410.0" prefHeight="598.0" prefWidth="631.0" styleClass="paneSeleccionado">
+      <Pane fx:id="paneDetallesVenta" disable="true"  layoutX="410.0" prefHeight="598.0" prefWidth="631.0" styleClass="paneSeleccionado">
          <children>
             <Pane layoutX="12.0" prefHeight="582.0" prefWidth="619.0" stylesheets="@estilos/estilos.css">
                <children>
@@ -114,14 +115,14 @@
                                        <children>
                                           <Pane layoutY="113.0" prefHeight="265.0" prefWidth="576.0">
                                              <children>
-                                                <TableView fx:id="tableViewBorrar1" layoutY="23.0" prefHeight="196.0" prefWidth="576.0" style="-fx-background-color: #eaf3f9;" styleClass="jfx-controles">
+                                                <TableView fx:id="tableViewProductos" layoutY="23.0" prefHeight="196.0" prefWidth="576.0" style="-fx-background-color: #eaf3f9;" styleClass="jfx-controles">
                                                    <columns>
                                                       <TableColumn fx:id="columnId1" prefWidth="55.33051300048828" text="ID" />
                                                       <TableColumn fx:id="columnNombre1" prefWidth="77.66108703613281" text="Nombre" />
-                                                      <TableColumn fx:id="columnPrecio1" prefWidth="86.0" text="Precio unit." />
+                                                      <TableColumn fx:id="columnPrecioUnit" prefWidth="86.0" text="Precio unit." />
                                                       <TableColumn fx:id="columnEnvases1" prefWidth="104.0" text="Envase" />
-                                                      <TableColumn fx:id="columnEnvases11" prefWidth="107.0" text="Cantidad" />
-                                                      <TableColumn fx:id="columnPrecio11" prefWidth="109.0" text="Precio total" />
+                                                      <TableColumn fx:id="columnCantidad" prefWidth="107.0" text="Cantidad" />
+                                                      <TableColumn fx:id="columnPrecioTotal" prefWidth="109.0" text="Precio total" />
                                                    </columns>
                                                    <stylesheets>
                                                       <URL value="@estilos/tableview.css" />
