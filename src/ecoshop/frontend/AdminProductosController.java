@@ -76,6 +76,9 @@ import org.json.simple.JSONArray;
  * @author Agustín Introini
  * @author Juan Balian
  */
+
+
+
 public class AdminProductosController implements Initializable {
     private static final String NOMBRE_JSON = "productos";
     
@@ -88,7 +91,7 @@ public class AdminProductosController implements Initializable {
     @FXML private JFXTextField TBNombre;
     @FXML private JFXTextField TBId;
     @FXML private Label signoPeso;
-    @FXML private Pane pane;
+    @FXML private Label label;
     @FXML private JFXButton botonEliminarProducto;
     @FXML private ImageView imageViewImagen;
     @FXML private JFXButton botonAgregarProducto;
@@ -273,6 +276,8 @@ public class AdminProductosController implements Initializable {
     
     @FXML
     private void clickBotonAgregarProducto(MouseEvent event){
+                Toast.show("El producto se agregó correctamente", "OK", 5, label);
+
         boolean idValida = TBId.validate();
         boolean nombreValido = TBNombre.validate();
         boolean materialValido = TBMaterial.validate();
@@ -306,6 +311,8 @@ public class AdminProductosController implements Initializable {
         nuevo.put("envases", envasesArray);
         
         JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
+        Toast.show("El producto se agregó correctamente", "OK", 5, label);
+
         
         volverEstadoInicial();
         actualizarDatos();
@@ -334,7 +341,8 @@ public class AdminProductosController implements Initializable {
         Producto producto = tableViewBorrar.getSelectionModel().getSelectedItem();
         JSONObject o = (JSONObject) JSONAuxiliar.conseguirConColumna(producto.getId() + "", "id", NOMBRE_JSON, true).get(0);
         JSONAuxiliar.borrar(NOMBRE_JSON, o);
-            
+        Toast.show("El producto se eliminó correctamente", "OK", 5, label);
+
         actualizarDatos();
     }
 }

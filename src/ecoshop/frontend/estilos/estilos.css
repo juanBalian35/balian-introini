@@ -241,6 +241,34 @@
  ---------------------------------
 */
 
+.popup {
+    -fx-background-color: rgba(0, 0, 0, 0.644);
+    -fx-padding: 5;
+    -fx-background-radius: 10;
+    
+}
+.popup-texto {
+    -fx-padding: 0 0 0 10;
+    -fx-font-family: "Roboto Regular";
+    -fx-text-fill: white;
+    -fx-font-size: 17;
+}
+
+.popup-boton{
+    -fx-background-color: transparent; 
+    
+   -fx-font-family: "Roboto Regular";
+   -fx-font-size: 17px;
+   -fx-cursor: HAND;
+
+   -fx-text-fill: -fx-verde-claro;
+
+
+}
+.popup-boton .jfx-rippler{
+    -jfx-rippler-fill:transparent;
+}
+
 .jfx-slider {
     -jfx-default-thumb:-fx-verde-claro;
     -jfx-default-track: #CCCCCC;

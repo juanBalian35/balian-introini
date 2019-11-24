@@ -184,6 +184,8 @@ public class AdminEnvasesController implements Initializable {
         Envase envase = tableViewBorrar.getSelectionModel().getSelectedItem();
         JSONObject o = (JSONObject) JSONAuxiliar.conseguirConColumna(envase.getId() + "", "id", NOMBRE_JSON, true).get(0);
         JSONAuxiliar.borrar(NOMBRE_JSON, o);
+        Toast.show("El envase se eliminó correctamente", "OK", 5, TFBuscar);
+
             
         actualizarDatos();
     }
@@ -217,6 +219,8 @@ public class AdminEnvasesController implements Initializable {
         nuevo.put("imagen", rutaImagen);
         
         JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
+        Toast.show("El envase "+ TBNombre.getText()+ " se agregó correctamente", "OK", 5, TFBuscar);
+
         volverEstadoInicial();
         actualizarDatos();
     }
