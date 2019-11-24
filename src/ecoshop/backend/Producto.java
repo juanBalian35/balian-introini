@@ -120,8 +120,9 @@ public class Producto {
                     }
                     
                     producto.setEnvases(al);
+                    break;
                 default:
-                    // TODO: Preguntar si es necesario siempre poner un default?
+                    throw new IllegalArgumentException("Argumento invalido en entry set");
             }
         }
         
