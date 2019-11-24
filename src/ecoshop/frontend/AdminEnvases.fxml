@@ -167,7 +167,7 @@
                                  <children>
                                     <StackPane layoutX="-32.0" layoutY="380.0" prefHeight="67.0" prefWidth="1041.0">
                                        <children>
-                                          <JFXButton buttonType="RAISED" layoutX="344.0" layoutY="391.0" prefHeight="67.0" ripplerFill="RED" styleClass="botonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar envase" textFill="WHITE">
+                                          <JFXButton fx:id="botonEliminarEnvase" buttonType="RAISED" layoutX="344.0" layoutY="391.0" prefHeight="67.0" ripplerFill="RED" styleClass="botonEliminar" onAction="#clickBotonEliminar" stylesheets="@estilos/estilos.css" text="Eliminar envase" textFill="WHITE">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -221,6 +221,7 @@
                                           <FXCollections fx:factory="observableArrayList">
                                              <String fx:value="ID" />
                                              <String fx:value="Nombre" />
+                                             <String fx:value="Todos" />
                                           </FXCollections>
                                        </items>
                                     </JFXComboBox>

@@ -151,26 +151,42 @@ public class AdminEnvasesController implements Initializable {
     
     @FXML
     private  void accionBoxBuscarPor(ActionEvent event) {
-        Object seleccion = BoxBuscarPor.getValue();
-        TFBuscar.disableProperty().setValue(Boolean.FALSE);
-        TFBuscar.promptTextProperty().setValue((String) seleccion);
+        String seleccion = ((String)BoxBuscarPor.getValue()).toLowerCase();
+        if("todos".equals(seleccion)){
+            TFBuscar.disableProperty().setValue(true);
+            TFBuscar.promptTextProperty().setValue(null);
+            TFBuscar.clear();
+            actualizarDatos();
+        }
+        else{
+            TFBuscar.disableProperty().setValue(false);
+            TFBuscar.promptTextProperty().setValue((String) seleccion);
+        }
     }
     
     @FXML
     private void clickBotonBuscar(ActionEvent event){
         String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
         
-        //JSONObject objeto = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, true);
-        
-        //Set<Map.Entry<String, String>> entrySet = objeto.entrySet();
+        JSONArray resultado = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, columna.equals("id"));
         
         ArrayList<Envase> envases = new ArrayList<>();
         
-        //productos.add(productoDesdeEntrySet(objeto.entrySet()));
+        for(int i = 0; i < resultado.size(); ++i){
+            envases.add(Envase.parsearEntrySet(((JSONObject)resultado.get(i)).entrySet()));
+        }
         
         tableViewBorrar.getItems().setAll(envases);
     }
     
+    @FXML
+    private void clickBotonEliminar(ActionEvent event){
+        Envase envase = tableViewBorrar.getSelectionModel().getSelectedItem();
+        JSONObject o = (JSONObject) JSONAuxiliar.conseguirConColumna(envase.getId() + "", "id", NOMBRE_JSON, true).get(0);
+        JSONAuxiliar.borrar(NOMBRE_JSON, o);
+            
+        actualizarDatos();
+    }
     
     private void actualizarDatos(){
         ArrayList<Envase> envases = 
