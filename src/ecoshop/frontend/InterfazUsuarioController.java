@@ -63,12 +63,7 @@ public class InterfazUsuarioController implements Initializable {
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                cargarPane(paneTienda, "Tienda.fxml");
-                cargarPane(paneCarrito, "Carrito.fxml");
-                //cargarPane(panePreCompras, "RegistrarVenta.fxml");
-                //cargarPane(panePuntosDeVenta, "PuntosDeVenta.fxml");
-              
-
+        cargarPane(paneTienda, "Tienda.fxml");
     }    
   
     @FXML
@@ -125,11 +120,13 @@ public class InterfazUsuarioController implements Initializable {
     
    @FXML
     private void clickBotonTienda(MouseEvent event) {
+        cargarPane(paneTienda, "Tienda.fxml");
         controlarClick(botonTienda, paneTienda);
     }
     
     @FXML
     private void clickBotonCarrito(MouseEvent event) {
+        cargarPane(paneCarrito, "Carrito.fxml");
         controlarClick(botonCarrito, paneCarrito);
     }
     

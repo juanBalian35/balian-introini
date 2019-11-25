@@ -6,6 +6,7 @@
 package ecoshop.frontend;
 
 import com.jfoenix.controls.JFXButton;
+import ecoshop.backend.CarritoSingleton;
 import ecoshop.backend.ImagenesAuxiliar;
 import ecoshop.backend.Producto;
 import java.io.File;
@@ -133,10 +134,11 @@ public class PanelProductoController implements Initializable {
     private Producto producto;
     
     public void setProducto(Producto producto){
+        this.producto = producto;
+        
         lblDescripcionProperty.setValue(producto.getDescripcion());
         lblPrecioProperty.setValue("$ " + producto.getPrecio());
         lblNombreProperty.setValue(producto.getNombre());
-        
         
         Image image;
         if("".equals(producto.getImagen())){
@@ -152,5 +154,13 @@ public class PanelProductoController implements Initializable {
 
         lblMaterialProperty.setValue("•" + producto.getMaterial());
         paneImagen.setBackground(new Background(myBI));
+    }
+    
+    @FXML
+    public void agregarACarrito(ActionEvent event){  
+        CarritoSingleton carritoSingleton = CarritoSingleton.getInstancia();
+        carritoSingleton.agregarAlCarrito(producto);
+        System.out.println("agregado");
+        //Toast.show(producto.getNombre() + " agregado al carrito exitosamente.", "OK", 5, lblPrecio);
     }
 }

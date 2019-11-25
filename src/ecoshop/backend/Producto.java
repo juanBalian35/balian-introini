@@ -128,4 +128,19 @@ public class Producto {
         
         return producto;
     }
+    
+    @Override
+    public boolean equals(Object other){
+        if (other == null) 
+            return false;
+        
+        if (other == this) 
+            return true;
+        
+        if (!(other instanceof Producto))
+            return false;
+        
+        Producto otro = (Producto)other;
+        return getId() == otro.getId();
+    }
 }

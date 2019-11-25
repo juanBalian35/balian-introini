@@ -172,38 +172,17 @@ public class RegistrarVentaController implements Initializable {
         paneDetallesVenta.setDisable(false);
         
         Producto producto = tableViewBuscar.getSelectionModel().getSelectedItem();
-        /*s
-        boolean yaExistia = false;
-        for(int i = 0 ; i < ces.size(); ++i){
-            if(ces.get(i).id == producto.getId()){
-                ces.get(i).setCantidad(ces.get(i).cantidad + 1);
-                yaExistia = true;
-            }
-        }*/
+
         Pane panelNuevo;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PanelProductoCarrito.fxml")); 
             panelNuevo = fxmlLoader.load();
             PanelProductoCarritoController controller = fxmlLoader.<PanelProductoCarritoController>getController();
             controller.setProducto(producto);
-            //controller.clickBotonSalir();
             vBoxRegistrar.getChildren().add(panelNuevo);
         } catch (IOException ex) {
             Logger.getLogger(EstadisticasController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        /*
-        if(!yaExistia){
-            C c = new C(producto.getId(),producto.getPrecio(),producto.getMaterial(),
-                producto.getDescripcion(),producto.getImagen(),producto.getNombre(),
-                producto.getEnvases());
-            ces.add(c);
-        }
-        
-        double total = this.ces.stream().mapToDouble(x -> x.precioTotal).sum();
-        
-        TFTotal.setText(total + "");*/
-        //tableViewProductos.getItems().setAll(ces);
     }
     
     
