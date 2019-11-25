@@ -8,7 +8,9 @@
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+
 <?import com.jfoenix.controls.JFXDatePicker?>
+
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -41,18 +43,19 @@
                                           <VBox fx:id="COL1" spacing="2.0" styleClass="fondo" stylesheets="@estilos/estilos.css" />
                                        </content>
                                     </ScrollPane>
+                                    <Pane layoutX="10.0" layoutY="33.0" prefHeight="49.0" prefWidth="625.0">
+                                       <children>
+                                          <Label layoutX="123.0" prefHeight="50.0" prefWidth="159.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Detalles del producto" />
+                                          <Label layoutX="577.0" prefHeight="51.0" prefWidth="45.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Quitar" />
+                                          <Label contentDisplay="CENTER" layoutX="32.0" prefHeight="50.0" prefWidth="67.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Imagen" textAlignment="CENTER" />
+                                          <Label layoutX="412.0" prefHeight="46.0" prefWidth="64.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Precio total" textAlignment="CENTER" wrapText="true" />
+                                          <Label layoutX="287.0" prefHeight="50.0" prefWidth="64.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Precio unit." textAlignment="CENTER" wrapText="true" />
+                                          <Label layoutX="357.0" prefHeight="50.0" prefWidth="42.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Cant." textAlignment="CENTER" />
+                                          <Label layoutX="494.0" prefHeight="46.0" prefWidth="74.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Envase" wrapText="true" />
+                                       </children>
+                                    </Pane>
                                  </children>
                               </AnchorPane>
-                              <Pane layoutX="10.0" layoutY="33.0" prefHeight="49.0" prefWidth="625.0">
-                                 <children>
-                                    <Label layoutX="133.0" prefHeight="50.0" prefWidth="173.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Detalles del producto" />
-                                    <Label layoutX="577.0" prefHeight="51.0" prefWidth="45.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Quitar" />
-                                    <Label contentDisplay="CENTER" layoutX="32.0" prefHeight="50.0" prefWidth="67.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Imagen" textAlignment="CENTER" />
-                                    <Label layoutX="480.0" prefHeight="46.0" prefWidth="79.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Precio total" textAlignment="CENTER" wrapText="true" />
-                                    <Label layoutX="315.0" prefHeight="50.0" prefWidth="74.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Precio unitario" textAlignment="CENTER" wrapText="true" />
-                                    <Label layoutX="401.0" prefHeight="50.0" prefWidth="77.0" styleClass="jfx-barra-carrito" stylesheets="@estilos/estilos.css" text="Cantidad" textAlignment="CENTER" />
-                                 </children>
-                              </Pane>
                            </children>
                         </AnchorPane>
                      </content>
@@ -106,11 +109,7 @@
                                           <JFXComboBox focusColor="#a5d268" layoutX="6.0" layoutY="126.0" prefHeight="36.0" prefWidth="230.0" promptText="Punto de venta para retiro" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567" />
                                           <Label layoutX="145.0" layoutY="316.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="Total:" textFill="#949494" />
                                        </children>
-<!--
- ACA VA EL DATE PICKER
--->
                                           <JFXDatePicker defaultColor="#a5d268" layoutX="6.0" layoutY="191.0" prefHeight="36.0" prefWidth="266.0" promptText="Fecha de retiro" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" />
-
                                     </Pane>
                                     <StackPane layoutX="-13.0" layoutY="420.0" prefHeight="67.0" prefWidth="336.0">
                                        <children>

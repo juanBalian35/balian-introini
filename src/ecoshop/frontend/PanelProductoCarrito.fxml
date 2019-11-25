@@ -13,7 +13,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="633.0" styleClass="fondo-carrito" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="635.0" spacing="20.0" styleClass="fondo-carrito" stylesheets="@estilos/estilos.css">
+      <HBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="635.0" spacing="7.0" styleClass="fondo-carrito" stylesheets="@estilos/estilos.css">
          <children>
             <StackPane>
                <children>
@@ -27,9 +27,9 @@
                   </ImageView>
                </children>
             </StackPane>
-            <VBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="163.0" spacing="6.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="163.0" spacing="7.0">
                <children>
-                  <Label stylesheets="@estilos/estilos.css" text="Semillas de chia 100g por bolsa" wrapText="true">
+                  <Label stylesheets="@estilos/estilos.css" text="Semillas de chia 100g" wrapText="true">
                      <font>
                         <Font name="Roboto Light" size="21.0" />
                      </font>
@@ -39,26 +39,32 @@
                         <Font name="Roboto" size="14.0" />
                      </font>
                   </Label>
-                  <Label styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="Organico, reciclado, semillas, natural" textFill="#8a8484" wrapText="true">
+                  <Label styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="Organico, reciclado" textFill="#8a8484" wrapText="true">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="140.0" prefWidth="248.0" spacing="20.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="197.0" spacing="10.0">
                <children>
                   <Label styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="\$1233">
                      <font>
                         <Font name="Roboto" size="22.0" />
                      </font>
+                     <tooltip>
+                        <Tooltip styleClass="tooltips-menu" text="Precio por unidad" />
+                     </tooltip>
                   </Label>
                   <Label styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="x" textFill="#8a8484">
                      <font>
                         <Font name="Roboto" size="22.0" />
                      </font>
                   </Label>
-                  <JFXTextField maxWidth="25.0" prefHeight="27.0" prefWidth="62.0" styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="2" />
+                  <JFXTextField maxWidth="25.0" prefHeight="27.0" prefWidth="62.0" styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="2">
+                     <tooltip>
+                        <Tooltip styleClass="tooltips-menu" text="Cantidad" />
+                     </tooltip></JFXTextField>
                   <Label styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="=" textFill="#8a8484">
                      <font>
                         <Font name="Roboto" size="22.0" />
@@ -68,9 +74,23 @@
                      <font>
                         <Font name="Roboto" size="22.0" />
                      </font>
+                     <tooltip>
+                        <Tooltip styleClass="tooltips-menu" text="Precio total" />
+                     </tooltip>
                   </Label>
                </children>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
             </HBox>
+            <JFXComboBox prefHeight="27.0" prefWidth="82.0" promptText="Envase">
+               <HBox.margin>
+                  <Insets left="-20.0" />
+               </HBox.margin>
+               <tooltip>
+                  <Tooltip styleClass="tooltips-menu" text="Envase " />
+               </tooltip>
+            </JFXComboBox>
             <JFXButton contentDisplay="GRAPHIC_ONLY">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -80,8 +100,11 @@
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets left="-20.0" />
+                  <Insets />
                </HBox.margin>
+               <tooltip>
+                  <Tooltip styleClass="tooltips-menu" text="Quitar producto del carrito" />
+               </tooltip>
             </JFXButton>
          </children>
       </HBox>

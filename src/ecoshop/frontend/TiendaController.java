@@ -55,7 +55,7 @@ public class TiendaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try{
             ArrayList<Producto> p = JSONAuxiliar.procesarArchivo(NOMBRE_JSON, Producto::parsearEntrySet);
-            int columna = 0;
+            int columna = 1;
             for(int i = 0; i < p.size(); ++i){
                 cargarVistaProductos(columna == 1 ? COL1 : (columna == 2 ? COL2 : COL3), p.get(i));
                 
