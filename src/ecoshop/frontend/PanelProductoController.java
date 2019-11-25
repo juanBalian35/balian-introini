@@ -141,6 +141,8 @@ public class PanelProductoController implements Initializable {
     private Producto producto;
     
     public void setProducto(Producto producto){
+        this.producto = producto;
+        
         lblDescripcionProperty.setValue(producto.getDescripcion());
         lblPrecioProperty.setValue("$ " + producto.getPrecio());
         lblNombreProperty.setValue(producto.getNombre());
@@ -177,13 +179,7 @@ public class PanelProductoController implements Initializable {
     @FXML
     public void botonCarrito(ActionEvent event){
         CarritoSingleton.getInstancia().agregarAlCarrito(producto);
+        Toast.show(producto.getNombre() + " agregado al carrito exitosamente.", "OK", 5, lblPrecio);
     }
     
-    @FXML
-    public void agregarACarrito(ActionEvent event){  
-        CarritoSingleton carritoSingleton = CarritoSingleton.getInstancia();
-        carritoSingleton.agregarAlCarrito(producto);
-        System.out.println("agregado");
-        //Toast.show(producto.getNombre() + " agregado al carrito exitosamente.", "OK", 5, lblPrecio);
-    }
 }

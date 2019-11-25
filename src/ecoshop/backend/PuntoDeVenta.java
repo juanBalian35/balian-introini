@@ -64,6 +64,7 @@ public class PuntoDeVenta {
         this.nombre = nombre;
     }
     
+    // Devuelve la direccion escrita para ser procesada por google maps.
     public String getDireccion(){
         return calle + " " + numero + ", " + ciudad + ", " + departamento;
     }

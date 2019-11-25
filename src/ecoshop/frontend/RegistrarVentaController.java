@@ -243,14 +243,13 @@ public class RegistrarVentaController implements Initializable {
 	Date date = new Date();
         
         registro.put("fecha",dateFormat.format(date));
-        //registro.put("total", )
         
         JSONAuxiliar.agregar(registro, NOMBRE_JSON);
         
         Document document = new Document();
         
         try{
-           PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("carlitostevez.pdf"));
+           PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("documento.pdf"));
            document.open();
            
            PdfPTable table = new PdfPTable(5); // 3 columns.

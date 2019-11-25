@@ -170,8 +170,6 @@ public class InterfazUsuarioController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(InterfazUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-     
     }
     
     private void moverTriangulo(double y){

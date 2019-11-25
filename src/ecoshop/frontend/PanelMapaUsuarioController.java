@@ -42,7 +42,9 @@ public class PanelMapaUsuarioController implements Initializable {
         MyBrowser myBrowser = new MyBrowser();
         
         paneWebView.getChildren().add(myBrowser);
-        
+    }
+    
+    private void actualizarDatos(){
         ArrayList<PuntoDeVenta> puntos =
                 JSONAuxiliar.procesarArchivo(NOMBRE_JSON, PuntoDeVenta::parsearEntrySet);
         
@@ -82,6 +84,7 @@ public class PanelMapaUsuarioController implements Initializable {
             getChildren().add(webView);
             webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
                 public void changed(@SuppressWarnings("rawtypes") ObservableValue ov, Worker.State oldState, Worker.State newState){
+                    actualizarDatos();
                 }
             });
         }
