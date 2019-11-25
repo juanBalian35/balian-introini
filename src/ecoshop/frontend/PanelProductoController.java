@@ -6,6 +6,9 @@
 package ecoshop.frontend;
 
 import com.jfoenix.controls.JFXButton;
+import ecoshop.backend.ImagenesAuxiliar;
+import ecoshop.backend.Producto;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.ScaleTransition;
@@ -21,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -56,7 +60,15 @@ public class PanelProductoController implements Initializable {
   
       @FXML
     private JFXButton botonVerMas;
-   private StringProperty labelString = new SimpleStringProperty();
+      
+   @FXML private Label lblPrecio;
+   @FXML private Label lblNombre;
+   @FXML private Label lblMaterial;
+      
+   private StringProperty lblDescripcionProperty = new SimpleStringProperty();
+   private StringProperty lblPrecioProperty = new SimpleStringProperty();
+   private StringProperty lblNombreProperty = new SimpleStringProperty();
+   private StringProperty lblMaterialProperty = new SimpleStringProperty();
     /**
      * Initializes the controller class.
      */
@@ -64,15 +76,14 @@ public class PanelProductoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        labelString.setValue("Semillas de chia traidas de china (china: pais del conintente asiatico, de donde provienen los CHINOS) son muy ricas. Semillas de chia traidas de china (china: pais del conintente asiatico, de donde provienen los CHINOS) son muy ricas . Semillas de chia traidas de china (china: pais del conintente asiatico, de donde provienen los CHINOS) son muy ricas "
-                + "Semillas de chia traidas de china (china: pais del conintente asiatico, de donde provienen los CHINOS) son muy ricas."
-                + "Semillas de chia traidas de china (china: pais del conintente asiatico, de donde provienen los CHINOS) son muy ricas."
-                + "Semillas de chia traidas de china (china: pais del conintente asiatico, de donde provienen los CHINOS) son muy ricas.");
-        lblDescripcion.textProperty().bind(labelString);
+        lblDescripcion.textProperty().bind(lblDescripcionProperty);
+        lblPrecio.textProperty().bind(lblPrecioProperty);
+        lblNombre.textProperty().bind(lblNombreProperty);
+        lblMaterial.textProperty().bind(lblMaterialProperty);
         
         BackgroundImage myBI= new BackgroundImage(new Image(getClass().getResourceAsStream("recursos/imagenes/chia.jpg")),
-        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-          new BackgroundSize(100, 100,true, true, true,true));
+            BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+            new BackgroundSize(100, 100,true, true, true,true));
         //then you set to your node
         paneImagen.setBackground(new Background(myBI));
         
@@ -119,6 +130,27 @@ public class PanelProductoController implements Initializable {
         }
     }
     
+    private Producto producto;
     
-    
+    public void setProducto(Producto producto){
+        lblDescripcionProperty.setValue(producto.getDescripcion());
+        lblPrecioProperty.setValue("$ " + producto.getPrecio());
+        lblNombreProperty.setValue(producto.getNombre());
+        
+        
+        Image image;
+        if("".equals(producto.getImagen())){
+            image = new Image(getClass().getResourceAsStream("recursos/empty-image.png"));
+        }
+        else{
+            File f = new File(producto.getImagen());
+            image = ImagenesAuxiliar.archivoAImagen(f);
+        }
+        BackgroundImage myBI = new BackgroundImage(image,
+            BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+            new BackgroundSize(100, 100,true, true, true,true));
+
+        lblMaterialProperty.setValue("•" + producto.getMaterial());
+        paneImagen.setBackground(new Background(myBI));
+    }
 }

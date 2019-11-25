@@ -8,6 +8,8 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
@@ -33,6 +35,27 @@ public class Toast {
             btn.setText(mensajeBtn);
             btn.setButtonType(JFXButton.ButtonType.FLAT);
             btn.setFocusTraversable(false);
+            btn.setOnAction(new EventHandler<ActionEvent>(){
+                @Override
+                public void handle(ActionEvent event){
+                new Timeline(new KeyFrame(
+                        Duration.seconds( 0.4),
+                        ae -> {
+                            final DoubleProperty yProperty = new SimpleDoubleProperty(popup.getY());
+                            yProperty.addListener((ob, n, n1) -> popup.setY(n1.doubleValue()));
+
+                            Timeline timeIn = new Timeline();
+                            timeIn.getKeyFrames().add(
+                                    new KeyFrame(Duration.seconds(0.4),
+                                            new KeyValue(yProperty, popup.getY() + 23, Interpolator.EASE_BOTH)));
+                            timeIn.play();
+                        })).play();
+
+                new Timeline(new KeyFrame(
+                        Duration.seconds(1),
+                        ae -> popup.hide())).play();
+                        }
+                });
             hbox.getStylesheets().add("/ecoshop/frontend/estilos/estilos.css");
             label.getStylesheets().add("/ecoshop/frontend/estilos/estilos.css");
             label.getStyleClass().add("popup-texto");

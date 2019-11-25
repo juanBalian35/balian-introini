@@ -19,7 +19,7 @@
                <children>
                   <BorderPane prefHeight="165.0" prefWidth="230.0" styleClass="barra-abajo-abierta" stylesheets="@estilos/estilos.css">
                      <top>
-                        <Label maxWidth="277.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="•Orgánico " wrapText="true" BorderPane.alignment="CENTER_LEFT">
+                        <Label fx:id="lblMaterial" maxWidth="277.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="" wrapText="true" BorderPane.alignment="CENTER_LEFT">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
@@ -64,7 +64,7 @@
                      <bottom>
                         <BorderPane fx:id="barraAbajo" prefHeight="38.0" prefWidth="260.0" styleClass="barra-abajo-abierta" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
                            <left>
-                              <Label graphicTextGap="0.0" maxWidth="245.0" prefHeight="28.0" stylesheets="@estilos/estilos.css" text="\$ 1213.34 kg" BorderPane.alignment="CENTER">
+                              <Label fx:id="lblPrecio" graphicTextGap="0.0" maxWidth="245.0" prefHeight="28.0" stylesheets="@estilos/estilos.css" text="\$ 1213.34 kg" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font name="Roboto" size="22.0" />
                                  </font>
@@ -92,7 +92,7 @@
                      <top>
                         <StackPane alignment="CENTER_LEFT" prefHeight="46.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label graphicTextGap="0.0" maxWidth="245.0" prefWidth="245.0" stylesheets="@estilos/estilos.css" text="Semillas de Chía" BorderPane.alignment="CENTER">
+                              <Label fx:id="lblNombre" graphicTextGap="0.0" maxWidth="245.0" prefWidth="245.0" stylesheets="@estilos/estilos.css" text="Semillas de Chía" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font name="Roboto" size="22.0" />
                                  </font>

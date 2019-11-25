@@ -5,32 +5,27 @@
  */
 package ecoshop.frontend;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.base.IFXLabelFloatControl;
-import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.base.ValidatorBase;
 import ecoshop.backend.JSONAuxiliar;
 import ecoshop.backend.Producto;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -39,22 +34,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
-import org.apache.fontbox.ttf.TrueTypeCollection;
-import org.apache.pdfbox.cos.COSName;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.PDResources;
-import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType0Font;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.apache.fontbox.ttf.TrueTypeFont;
-import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
-import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 
 /**
  * FXML Controller class
@@ -232,41 +213,19 @@ public class RegistrarVentaController implements Initializable {
             return;
         }
         
+        Document document = new Document();
+        
         try{
-            PDDocument document = new PDDocument();
-            document = PDDocument.load(new File("template.pdf"));
-            
-            PDAcroForm pDAcroForm = document.getDocumentCatalog().getAcroForm();
-            // Create a new font object selecting one of the PDF base fonts
-            //PDFont font = PDType1Font.TIMES_BOLD;
-            // Start a new content stream which will "hold" the to be created content
-            //PDPageContentStream contentStream = new PDPageContentStream(document, page,true,true);
-            
-            InputStream starWarsFontStream = RegistrarVentaController.class.getResourceAsStream("rob.ttf");
-            PDType0Font font = PDType0Font.load(document, starWarsFontStream, true);
-            
-            PDField field = pDAcroForm.getField("txt_1");
-            field.setValue("This is a first field printed by Java");
-            //URI ruta = getClass().getResource("\\estilos\\fuentes").toURI();
-            //System.out.println(ruta);
-            //PDType0Font font = PDType0Font.load(document, new File(ruta));
-
-            // Define a text content stream using the selected font, moving the cursor and drawing the text "Hello World"
-            /*contentStream.beginText();
-            contentStream.setFont( font, 12 );
-            contentStream.moveTextPositionByAmount( 100, 700 );
-            contentStream.drawString( "Hello World" );
-            contentStream.endText();
-
-            // Make sure that the content stream is closed:
-            contentStream.close();*/
-
-            // Save the results and ensure that the document is properly closed:
-            document.save( "Hello World.pdf");
-            document.close();
-        }
-        catch(Exception e){
-            e.printStackTrace();
+           PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("carlitostevez.pdf"));
+           document.open();
+           document.add(new Paragraph("A Hello World PDF document."));
+           document.close();
+           writer.close();
+        } 
+        catch (DocumentException e){
+           e.printStackTrace();
+        } catch (FileNotFoundException e){
+           e.printStackTrace();
         }
     }
     
