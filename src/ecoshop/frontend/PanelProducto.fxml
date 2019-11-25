@@ -11,13 +11,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane fx:id="paneFondot" prefHeight="231.0" prefWidth="250.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PanelProductoController">
+<Pane fx:id="paneFondot" prefWidth="250.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PanelProductoController">
    <children>
       <Pane fx:id="paneFondo" layoutX="8.0" layoutY="11.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10;">
          <children>
-            <Pane fx:id="paneSecundario" layoutY="55.0" prefHeight="165.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 0 0 10 10;" visible="false">
+            <Pane fx:id="paneSecundario" layoutY="55.0" maxHeight="165.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 0 0 10 10;" visible="false">
                <children>
-                  <BorderPane prefHeight="165.0" prefWidth="230.0" styleClass="barra-abajo-abierta" stylesheets="@estilos/estilos.css">
+                  <BorderPane maxHeight="165.0" prefWidth="230.0" styleClass="barra-abajo-abierta" stylesheets="@estilos/estilos.css">
                      <top>
                         <Label fx:id="lblMaterial" maxWidth="277.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="" wrapText="true" BorderPane.alignment="CENTER_LEFT">
                            <font>
@@ -32,7 +32,7 @@
                         </Label>
                      </top>
                      <center>
-                        <Label fx:id="lblDescripcion" alignment="TOP_LEFT" graphicTextGap="10.0" lineSpacing="1.0" prefHeight="113.0" prefWidth="285.0" textAlignment="JUSTIFY" textFill="#8a8484" wrapText="true" BorderPane.alignment="CENTER">
+                        <Label fx:id="lblDescripcion" alignment="TOP_LEFT" graphicTextGap="10.0" lineSpacing="1.0" maxHeight="113.0" prefWidth="285.0" textAlignment="JUSTIFY" textFill="#8a8484" wrapText="true" BorderPane.alignment="CENTER">
                            <font>
                               <Font name="Roboto" size="12.0" />
                            </font>

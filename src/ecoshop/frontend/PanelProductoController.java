@@ -124,7 +124,7 @@ public class PanelProductoController implements Initializable {
         barraAbajo.getStyleClass().remove("barra-abajo-abierta");
         botonVerMas.getStyleClass().add("boton-abajo-cerrada");
         barraAbajo.getStyleClass().add("barra-abajo-cerrada");
-        paneFondot.setPrefHeight(390);
+        paneFondot.setPrefHeight(220 + paneSecundario.getHeight());
         // Hay que agrandar la ventana a tamaño pane fondo + tamaño sombra de ventana
       //  paneFondo.getScene().getWindow().setHeight(465);
         }
