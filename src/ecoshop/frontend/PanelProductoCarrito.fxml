@@ -83,7 +83,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </HBox>
-            <JFXComboBox prefHeight="27.0" prefWidth="82.0" promptText="Envase">
+             <JFXComboBox prefHeight="27.0" promptText="Envase" styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" visibleRowCount="4">
                <HBox.margin>
                   <Insets left="-20.0" />
                </HBox.margin>

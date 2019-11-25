@@ -57,19 +57,10 @@ public class RegistrarVentaController implements Initializable {
     @FXML private TableColumn<Producto, String> columnId;
     @FXML private TableColumn<Producto, String> columnNombre;
     @FXML private TableColumn<Producto, String> columnPrecio;
-    @FXML private TableColumn<Producto, String> columnEnvases;
     
     @FXML private JFXButton botonAgregarProducto1;
     @FXML private Pane paneDetallesVenta;
     @FXML private JFXButton botonBuscar;
-    
-    @FXML TableView<C> tableViewProductos;
-    @FXML private TableColumn<C, String> columnId1;
-    @FXML private TableColumn<C, String> columnNombre1;
-    @FXML private TableColumn<C, String> columnPrecioUnit;
-    @FXML private TableColumn<C, String> columnEnvases1;
-    @FXML private TableColumn<C, String> columnCantidad;
-    @FXML private TableColumn<C, String> columnPrecioTotal;
     
     @FXML private JFXTextField TFTotal;
     @FXML private JFXTextField TFEmail;
@@ -95,15 +86,6 @@ public class RegistrarVentaController implements Initializable {
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columnPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        columnEnvases.setCellValueFactory(new PropertyValueFactory<>("envases"));
-        
-        columnId1.setCellValueFactory(new PropertyValueFactory<>("id"));
-        columnNombre1.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        columnPrecioUnit.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        columnEnvases1.setCellValueFactory(new PropertyValueFactory<>("envases"));
-        columnCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
-        columnPrecioTotal.setCellValueFactory(new PropertyValueFactory<>("precioTotal"));
-        columnCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         
         validarCampo(TFEmail, 
                new String[]{"Campo obligatorio"}, 
@@ -204,7 +186,7 @@ public class RegistrarVentaController implements Initializable {
         double total = this.ces.stream().mapToDouble(x -> x.precioTotal).sum();
         
         TFTotal.setText(total + "");
-        tableViewProductos.getItems().setAll(ces);
+        //tableViewProductos.getItems().setAll(ces);
     }
     
     
