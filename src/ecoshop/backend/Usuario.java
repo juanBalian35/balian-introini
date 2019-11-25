@@ -6,7 +6,6 @@ package ecoshop.backend;
  * @author Juan Balian
  */
 public class Usuario {
-    
     private String nombreUsuario;
     private String email;
     private boolean esAdministrador;

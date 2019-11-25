@@ -44,6 +44,10 @@ public class Envase {
     public void setContadorReuso(int contadorReuso) {
         this.contadorReuso = contadorReuso;
     }
+    
+    public int sumarUnoContadorReuso(){
+        return ++this.contadorReuso;
+    }
                 
     public String getCategoria() {
         return categoria;
@@ -77,8 +81,12 @@ public class Envase {
                 case "imagen":
                     envase.setImagen(entry.getValue());
                     break; 
+                case "contadorreuso":
+                    int i = Integer.parseInt(entry.getValue());
+                    envase.setContadorReuso(i);
+                    break;
                 default:
-                    throw new IllegalArgumentException("Argumento invalido en entry set");
+                    throw new IllegalArgumentException("Argumento invalido " + entry.getKey());
             }
         }
         

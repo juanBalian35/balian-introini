@@ -139,7 +139,7 @@ public class Producto {
                     producto.setDescuento(Integer.parseInt((String)entry.getValue()));
                     break;
                 default:
-                    throw new IllegalArgumentException("Argumento invalido en entry set");
+                    throw new IllegalArgumentException("Argumento invalido en entry set " + entry.getKey());
             }
         }
         

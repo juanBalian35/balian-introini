@@ -15,6 +15,7 @@ public class Preventa {
    private Usuario usuario;
    private Envase envase;
    private String idVenta;
+   private PuntoDeVenta puntoDeVentaRetiro;
 
     public Preventa(ArrayList<Producto> productos, Date fecha, Usuario usuario) {
         this.productos = productos;

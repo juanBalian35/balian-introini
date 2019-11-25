@@ -217,6 +217,7 @@ public class AdminEnvasesController implements Initializable {
             rutaImagen = ImagenesAuxiliar.guardarImagen(imageViewImagen.getImage());
         
         nuevo.put("imagen", rutaImagen);
+        nuevo.put("contadorReuso","0");
         
         JSONAuxiliar.agregar(nuevo,NOMBRE_JSON);
         Toast.show("El envase "+ TBNombre.getText()+ " se agregó correctamente", "OK", 5, TFBuscar);

@@ -27,7 +27,10 @@ import ecoshop.backend.Producto;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
@@ -52,7 +55,9 @@ import org.json.simple.JSONObject;
  * @author agustinintroini
  */
 public class RegistrarVentaController implements Initializable {
-    private static final String NOMBRE_JSON = "productos";
+    private static final String NOMBRE_JSON = "registrosVenta";
+    private static final String PRODUCTOS_JSON = "productos";
+    private static final String ENVASES_JSON = "envases";
     
     @FXML JFXButton botonConfirmarCompra;
     @FXML JFXComboBox BoxBuscarPor;
@@ -133,7 +138,7 @@ public class RegistrarVentaController implements Initializable {
     
     private void actualizarDatos(){
         ArrayList<Producto> productos = 
-                JSONAuxiliar.procesarArchivo(NOMBRE_JSON, Producto::parsearEntrySet);
+                JSONAuxiliar.procesarArchivo(PRODUCTOS_JSON, Producto::parsearEntrySet);
         tableViewBuscar.getItems().setAll(productos);
     }
     
@@ -156,7 +161,7 @@ public class RegistrarVentaController implements Initializable {
     private void clickBotonBuscar(ActionEvent event){
         String columna = ((String)BoxBuscarPor.getValue()).toLowerCase();
         
-        JSONArray resultado = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, NOMBRE_JSON, columna.equals("id"));
+        JSONArray resultado = JSONAuxiliar.conseguirConColumna(TFBuscar.getText(), columna, PRODUCTOS_JSON, columna.equals("id"));
         
         ArrayList<Producto> productos = new ArrayList<>();
         
@@ -167,18 +172,22 @@ public class RegistrarVentaController implements Initializable {
         tableViewBuscar.getItems().setAll(productos);
     }
     
+    ArrayList<Producto> productosAgregados = new ArrayList<>();
+    ArrayList<PanelProductoCarritoController> controladoresCarrito = new ArrayList<>();
     @FXML
     private void clickBotonAgregarProducto(ActionEvent event){
         paneDetallesVenta.setDisable(false);
         
         Producto producto = tableViewBuscar.getSelectionModel().getSelectedItem();
-
+        productosAgregados.add(producto);
+        
         Pane panelNuevo;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PanelProductoCarrito.fxml")); 
             panelNuevo = fxmlLoader.load();
             PanelProductoCarritoController controller = fxmlLoader.<PanelProductoCarritoController>getController();
             controller.setProducto(producto);
+            controladoresCarrito.add(controller);
             vBoxRegistrar.getChildren().add(panelNuevo);
         } catch (IOException ex) {
             Logger.getLogger(EstadisticasController.class.getName()).log(Level.SEVERE, null, ex);
@@ -194,6 +203,49 @@ public class RegistrarVentaController implements Initializable {
         if(!(emailValido && nombreValido)){
             return;
         }
+        
+        Toast.show("Registor de venta creado exitosamente","OK",
+                5,TFEmail);
+        
+        JSONArray jsonProductos = new JSONArray();
+        for(int i = 0; i < productosAgregados.size(); ++i){
+            JSONObject producto = new JSONObject();
+            producto.put("id", productosAgregados.get(i).getId() + "");
+            producto.put("nombre", productosAgregados.get(i).getNombre());
+            producto.put("material", productosAgregados.get(i).getMaterial());
+            producto.put("precio", productosAgregados.get(i).getPrecio() + "");
+            producto.put("descripcion", productosAgregados.get(i).getDescripcion());
+            producto.put("descuento", "0");
+        
+            jsonProductos.add(producto);
+        }
+        
+        for(int i = 0; i < controladoresCarrito.size(); ++i){
+            Integer idEnvase = controladoresCarrito.get(i).getEnvaseSeleccionado();
+            if(idEnvase != null){
+                JSONObject o =  
+                    (JSONObject)JSONAuxiliar.conseguirConColumna(idEnvase + "", 
+                            "id", ENVASES_JSON, true).get(0);
+            
+                JSONAuxiliar.borrar(ENVASES_JSON, o);
+
+                int contadorReuso = o.get("contadorReuso") != null ? Integer.parseInt((String)o.get("contadorReuso")) : 0;
+
+                o.put("contadorReuso", (contadorReuso + 1) + "");
+                JSONAuxiliar.agregar(o, ENVASES_JSON);
+            }
+        }
+        
+        JSONObject registro = new JSONObject();
+        registro.put("productos",jsonProductos);
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Date date = new Date();
+        
+        registro.put("fecha",dateFormat.format(date));
+        //registro.put("total", )
+        
+        JSONAuxiliar.agregar(registro, NOMBRE_JSON);
         
         Document document = new Document();
         

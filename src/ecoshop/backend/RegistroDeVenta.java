@@ -9,14 +9,11 @@ import java.util.Date;
  * @author Juan Balian
  */
 public class RegistroDeVenta {
-    
-    private Preventa preventa;
-    private Date fechaVenta; 
     private ArrayList<Producto> productos;
-    private double total;
     private Usuario usuario;
-    private Envase envase;
-    private String idVenta;
+    private double total;
+    private Date fechaVenta; 
+    private Preventa preventa;
 
     public RegistroDeVenta(Preventa preventa, Date fechaVenta) {
         this.preventa = preventa;
@@ -38,8 +35,28 @@ public class RegistroDeVenta {
     public void setFechaVenta(Date fechaVenta) {
         this.fechaVenta = fechaVenta;
     }
-  
-    
- 
-    
+
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

@@ -37,6 +37,7 @@ public class PanelProductoCarritoController implements Initializable {
     @FXML private JFXComboBox boxEnvases;
     @FXML private ImageView imageView;
     @FXML private TextField TFCant;
+    private int cantidad;
     
    private StringProperty lblPrecioTotalProperty = new SimpleStringProperty();
    private StringProperty lblNombreProperty = new SimpleStringProperty();
@@ -53,11 +54,13 @@ public class PanelProductoCarritoController implements Initializable {
         lblMaterial.textProperty().bind(lblMaterialProperty);
         lblPrecioUnitario.textProperty().bind(lblPrecioUnitarioProperty);
         lblId.textProperty().bind(lblIdProperty);
+        cantidad = 1;
         
         TFCant.textProperty().addListener((observable, oldValue, newValue) -> {
             try{
                 int val = Integer.parseInt(newValue);
                 lblPrecioTotalProperty.set((producto.getPrecio() * val) + "");
+                cantidad = val;
             }
             catch(Exception e){
                 //e.printStackTrace();
@@ -85,6 +88,18 @@ public class PanelProductoCarritoController implements Initializable {
         imageView.setImage(image);
         
         boxEnvases.getItems().setAll(producto.getEnvases());
+    }
+    
+    public int getCantidad(){
+        return cantidad;
+    }
+    
+    public Integer getEnvaseSeleccionado(){
+        Object o = boxEnvases.getSelectionModel().getSelectedItem();
+        if(o == null)
+            return null;
+        
+        return (Integer)o;
     }
     
     public void clickBotonQuit(ActionEvent event){
