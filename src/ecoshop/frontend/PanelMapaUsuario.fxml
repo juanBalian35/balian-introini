@@ -13,14 +13,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="598.0" prefWidth="1041.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PanelMapaUsuarioController">
-    <Pane prefHeight="598.0" prefWidth="1041.0" stylesheets="@estilos/estilos.css">
+<Pane id="AdministrarProducto" fx:id="PaneAdministrarProducto" prefHeight="598.0" prefWidth="1041.0" styleClass="paneSeleccionado" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PanelMapaUsuarioController">
+   <children>
+      <Pane layoutX="14.0" prefHeight="582.0" prefWidth="1007.0" stylesheets="@estilos/estilos.css">
          <children>
-            <Pane fx:id="paneWebView" prefHeight="598.0" prefWidth="1041.0">
-               <children>
-                  <WebView fx:id="webView" prefHeight="598.0" prefWidth="1041.0" />
-               </children>
-            </Pane>
+            <JFXTabPane layoutX="2.0" layoutY="1.0" prefHeight="582.0" prefWidth="1003.0" stylesheets="@estilos/estilos.css" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab style="-fx-alignment: BOTTOM_CENTER;" text="Mapa de puntos de venta">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Pane fx:id="paneWebView" layoutX="10.0" layoutY="10.0" prefHeight="495.0" prefWidth="990.0">
+                                 <children>
+                                    <WebView fx:id="webView" prefHeight="498.0" prefWidth="992.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
          </children>
       </Pane>
-</AnchorPane>
+   </children>
+</Pane>

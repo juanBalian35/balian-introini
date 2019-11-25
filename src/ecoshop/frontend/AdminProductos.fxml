@@ -244,6 +244,89 @@
                         </AnchorPane>
                      </content>
                   </Tab>
+                  <Tab closable="false" text="Descuento">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Pane layoutX="15.0" layoutY="22.0" prefHeight="497.0" prefWidth="988.0">
+                                 <children>
+                                    <StackPane layoutX="539.0" layoutY="281.0" prefHeight="81.0" prefWidth="449.0">
+                                       <children>
+                                          <JFXButton fx:id="botonEliminarProducto1" buttonType="RAISED" disable="true" layoutX="344.0" layoutY="391.0" onAction="#clickBotonEliminar" prefHeight="67.0" ripplerFill="#07e803" styleClass="botonAgregar" stylesheets="@estilos/estilos.css" text="Modificar descuento" textFill="WHITE">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="35.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@recursos/edit.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </StackPane>
+                                    <JFXButton fx:id="botonBuscar1" disable="true" layoutX="421.0" layoutY="55.0" onAction="#clickBotonBuscar" prefHeight="38.0" prefWidth="113.0" ripplerFill="#a5d268" style="-fx-background-color: #5EADD8; -fx-background-radius: 10;" text="Buscar" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="Roboto Condensed" size="19.0" />
+                                       </font>
+                                       <graphic>
+                                          <ImageView fitHeight="22.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@recursos/baseline_search_white_18dp.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <TableView fx:id="tableViewBorrar1" layoutX="57.0" layoutY="122.0" prefHeight="239.0" prefWidth="485.0" styleClass="jfx-controles">
+                                       <columns>
+                                          <TableColumn fx:id="columnId1" prefWidth="40.7003173828125" text="ID" />
+                                          <TableColumn fx:id="columnNombre1" prefWidth="73.76080322265625" text="Nombre" />
+                                          <TableColumn fx:id="columnDescripcion1" prefWidth="146.904052734375" text="Descripción" />
+                                          <TableColumn fx:id="columnPrecio1" prefWidth="92.978759765625" text="Precio" />
+                                          <TableColumn fx:id="columnImagen1" prefWidth="123.54248046875" text="Descuento" />
+                                       </columns>
+                                       <stylesheets>
+                                          <URL value="@estilos/tableview.css" />
+                                          <URL value="@estilos/estilos.css" />
+                                       </stylesheets>
+                                    </TableView>
+                                    <JFXTextField fx:id="TFBuscar1" disable="true" focusColor="#a5d268" labelFloat="true" layoutX="194.0" layoutY="52.0" prefHeight="36.0" prefWidth="215.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXComboBox fx:id="BoxBuscarPor1" focusColor="#a5d268" labelFloat="true" layoutX="57.0" layoutY="56.0" onAction="#accionBoxBuscarPor" prefHeight="32.0" prefWidth="123.0" promptText="Buscar por" styleClass="jfx-controles" stylesheets="@estilos/estilos.css">
+                                       <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                             <String fx:value="ID" />
+                                             <String fx:value="Nombre" />
+                                             <String fx:value="Todos" />
+                                          </FXCollections>
+                                       </items>
+                                    </JFXComboBox>
+                                    <JFXTextField fx:id="TBId1" editable="false" focusColor="#a5d268" labelFloat="true" layoutX="644.0" layoutY="126.0" prefHeight="36.0" prefWidth="215.0" promptText="Descuento actual" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                       <font>
+                                          <Font name="Roboto Light" size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="TBId11" focusColor="#a5d268" labelFloat="true" layoutX="646.0" layoutY="206.0" prefHeight="36.0" prefWidth="215.0" promptText="Nuevo descuento" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" unFocusColor="#839567">
+                                       <font>
+                                          <Font name="Roboto Light" size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
                </tabs>
             </JFXTabPane>
          </children>

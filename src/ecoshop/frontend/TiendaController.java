@@ -63,7 +63,7 @@ public class TiendaController implements Initializable {
             }
         }
         catch(Exception e){
-            e.printStackTrace();;
+            e.printStackTrace();
         }
     }
 

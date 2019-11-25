@@ -34,6 +34,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 /**
@@ -61,6 +62,8 @@ public class PanelProductoController implements Initializable {
   
       @FXML
     private JFXButton botonVerMas;
+      @FXML
+      private VBox precios;
       
    @FXML private Label lblPrecio;
    @FXML private Label lblNombre;
@@ -122,7 +125,7 @@ public class PanelProductoController implements Initializable {
            
         }else{
         paneSecundario.setVisible(true);
-        tt.setToY(130);
+        tt.setToY(120);
         tt.play();
         botonVerMas.getStyleClass().remove("boton-abajo-abierto");
         barraAbajo.getStyleClass().remove("barra-abajo-abierta");
@@ -134,12 +137,21 @@ public class PanelProductoController implements Initializable {
         }
     }
     
+    
     private Producto producto;
     
     public void setProducto(Producto producto){
         lblDescripcionProperty.setValue(producto.getDescripcion());
         lblPrecioProperty.setValue("$ " + producto.getPrecio());
         lblNombreProperty.setValue(producto.getNombre());
+        if(producto.getDescuento() != 0){
+            Label lblPrecioAntes= new Label("$" + producto.getPrecio());
+            lblPrecioAntes.getStyleClass().add(getClass().getResource("estilos/estilos.css").toExternalForm());
+            lblPrecioAntes.getStyleClass().add("label1");
+            precios.getChildren().add(lblPrecioAntes);
+            lblPrecioAntes.toBack();
+            lblPrecioProperty.setValue("$ " + (producto.getPrecio()-(producto.getPrecio()*producto.getDescuento()/100)));
+        }
         
         Image image;
         if("".equals(producto.getImagen())){
@@ -156,8 +168,15 @@ public class PanelProductoController implements Initializable {
         lblMaterialProperty.setValue("•" + producto.getMaterial());
         paneImagen.setBackground(new Background(myBI));
         
+        
+        paneDescuento.setVisible(producto.getDescuento() != 0);
         paneDescuento.setVisible(producto.getDescuento() != 0);
         lblDescuentoProperty.set(producto.getDescuento() + "%");
+    }
+    
+    @FXML
+    public void botonCarrito(ActionEvent event){
+        CarritoSingleton.getInstancia().agregarAlCarrito(producto);
     }
     
     @FXML

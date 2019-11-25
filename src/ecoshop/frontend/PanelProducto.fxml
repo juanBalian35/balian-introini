@@ -15,7 +15,7 @@
    <children>
       <Pane fx:id="paneFondo" layoutX="8.0" layoutY="11.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10;">
          <children>
-            <Pane fx:id="paneSecundario" layoutY="191.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 0 0 10 10;" visible="false">
+            <Pane fx:id="paneSecundario" layoutY="200.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 0 0 10 10;" visible="false">
                <children>
                   <BorderPane prefWidth="230.0" styleClass="barra-abajo-abierta" stylesheets="@estilos/estilos.css">
                      <top>
@@ -62,16 +62,20 @@
                         <Pane fx:id="paneImagen" prefHeight="230.0" prefWidth="230.0" BorderPane.alignment="CENTER" />
                      </center>
                      <bottom>
-                        <BorderPane fx:id="barraAbajo" prefHeight="38.0" prefWidth="260.0" styleClass="barra-abajo-abierta" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
+                        <BorderPane fx:id="barraAbajo" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" prefWidth="260.0" styleClass="barra-abajo-abierta" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
                            <left>
-                              <Label fx:id="lblPrecio" graphicTextGap="0.0" maxWidth="245.0" prefHeight="28.0" stylesheets="@estilos/estilos.css" text="\$ 1213.34 kg" BorderPane.alignment="CENTER">
-                                 <font>
-                                    <Font name="Roboto" size="22.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets left="10.0" />
-                                 </padding>
-                              </Label>
+                              <VBox fx:id="precios" alignment="CENTER" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" BorderPane.alignment="BOTTOM_CENTER">
+                                 <children>
+                                    <Label fx:id="lblPrecio" graphicTextGap="0.0" maxWidth="245.0" prefHeight="28.0" stylesheets="@estilos/estilos.css" text="\$ 1213.34">
+                                       <font>
+                                          <Font name="Roboto" size="22.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </VBox>
                            </left>
                            <right>
                               <JFXButton fx:id="botonVerMas" contentDisplay="GRAPHIC_ONLY" ellipsisString="" onMouseClicked="#BotonApretado" prefHeight="46.0" prefWidth="42.0" ripplerFill="WHITE" styleClass="boton-abajo-abierto" stylesheets="@estilos/estilos.css" textOverrun="CENTER_ELLIPSIS" BorderPane.alignment="CENTER">
@@ -106,7 +110,7 @@
                   </BorderPane>
                </children>
             </VBox>
-            <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="170.0" layoutY="215.0" prefHeight="57.0" prefWidth="57.0" ripplerFill="#41e832" style="-fx-background-color: #A5D268; -fx-background-radius: 50;">
+            <JFXButton onAction="#botonCarrito" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="170.0" layoutY="215.0" prefHeight="57.0" prefWidth="57.0" ripplerFill="#41e832" style="-fx-background-color: #A5D268; -fx-background-radius: 50;">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>

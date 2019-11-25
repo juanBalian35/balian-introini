@@ -10,6 +10,7 @@ import ecoshop.backend.ImagenesAuxiliar;
 import ecoshop.backend.Producto;
 import java.io.File;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -21,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -37,6 +39,7 @@ public class PanelProductoCarritoController implements Initializable {
     @FXML private JFXComboBox boxEnvases;
     @FXML private ImageView imageView;
     @FXML private TextField TFCant;
+    @FXML private VBox precios;
     private int cantidad;
     
    private StringProperty lblPrecioTotalProperty = new SimpleStringProperty();
@@ -56,6 +59,37 @@ public class PanelProductoCarritoController implements Initializable {
         lblId.textProperty().bind(lblIdProperty);
         cantidad = 1;
         
+    }    
+    
+    public void setProducto(Producto producto){
+        if(producto == null)
+            return;
+        
+        this.producto = producto;
+
+        lblMaterialProperty.set(producto.getMaterial());
+        lblNombreProperty.set(producto.getNombre());
+        lblPrecioUnitarioProperty.set(producto.getPrecio() + "");
+        lblIdProperty.set("#ID: " + producto.getId());
+         if(producto.getDescuento() != 0){
+         Label lblPrecioAntes= new Label("$" + producto.getPrecio());
+         lblPrecioAntes.getStyleClass().add(getClass().getResource("estilos/estilos.css").toExternalForm());
+         lblPrecioAntes.getStyleClass().add("label1-carrito");
+         precios.getChildren().add(lblPrecioAntes);
+         lblPrecioAntes.toBack();
+         DecimalFormat formatter = new DecimalFormat();
+            formatter.setMaximumFractionDigits(1);
+            double precioConDescuento = (producto.getPrecio()-(producto.getPrecio()*producto.getDescuento()/100));
+         lblPrecioUnitarioProperty.setValue("$ " + formatter.format(precioConDescuento));
+         lblPrecioTotalProperty.set(precioConDescuento + "");
+
+         }
+         
+        DecimalFormat formatter = new DecimalFormat();
+        formatter.setMaximumFractionDigits(1);
+        double descuento = producto.getPrecio()*producto.getDescuento()/100;
+        double precioConDescuento = (producto.getPrecio()-descuento);
+        
         TFCant.textProperty().addListener((observable, oldValue, newValue) -> {
             try{
                 int val = Integer.parseInt(newValue);
@@ -66,17 +100,7 @@ public class PanelProductoCarritoController implements Initializable {
                 //e.printStackTrace();
             }
         });
-    }    
-    
-    public void setProducto(Producto producto){
-        this.producto = producto;
-
-        lblMaterialProperty.set(producto.getMaterial());
-        lblNombreProperty.set(producto.getNombre());
-        lblPrecioTotalProperty.set(producto.getPrecio() + "");
-        lblPrecioUnitarioProperty.set(producto.getPrecio() + "");
-        lblIdProperty.set("#ID: " + producto.getId());
-        
+         
         Image image;
         if("".equals(producto.getImagen())){
             image = new Image(getClass().getResourceAsStream("recursos/empty-image.png"));
