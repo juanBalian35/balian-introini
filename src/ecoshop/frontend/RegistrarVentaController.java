@@ -17,7 +17,6 @@ import com.jfoenix.controls.base.IFXLabelFloatControl;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.base.ValidatorBase;
-import com.lowagie.text.pdf.PdfWriter;
 import ecoshop.backend.JSONAuxiliar;
 import ecoshop.backend.Producto;
 import java.io.File;
