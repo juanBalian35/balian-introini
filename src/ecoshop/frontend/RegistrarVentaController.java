@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -52,6 +53,8 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.apache.fontbox.ttf.TrueTypeFont;
+import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
+import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 
 /**
  * FXML Controller class
@@ -229,33 +232,34 @@ public class RegistrarVentaController implements Initializable {
             return;
         }
         
-        String dest = "a.pdf";
-
         try{
             PDDocument document = new PDDocument();
-            PDPage page = new PDPage();
-            document.addPage( page );
-
+            document = PDDocument.load(new File("template.pdf"));
+            
+            PDAcroForm pDAcroForm = document.getDocumentCatalog().getAcroForm();
             // Create a new font object selecting one of the PDF base fonts
             //PDFont font = PDType1Font.TIMES_BOLD;
             // Start a new content stream which will "hold" the to be created content
-            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+            //PDPageContentStream contentStream = new PDPageContentStream(document, page,true,true);
             
             InputStream starWarsFontStream = RegistrarVentaController.class.getResourceAsStream("rob.ttf");
             PDType0Font font = PDType0Font.load(document, starWarsFontStream, true);
+            
+            PDField field = pDAcroForm.getField("txt_1");
+            field.setValue("This is a first field printed by Java");
             //URI ruta = getClass().getResource("\\estilos\\fuentes").toURI();
             //System.out.println(ruta);
             //PDType0Font font = PDType0Font.load(document, new File(ruta));
 
             // Define a text content stream using the selected font, moving the cursor and drawing the text "Hello World"
-            contentStream.beginText();
+            /*contentStream.beginText();
             contentStream.setFont( font, 12 );
             contentStream.moveTextPositionByAmount( 100, 700 );
             contentStream.drawString( "Hello World" );
             contentStream.endText();
 
             // Make sure that the content stream is closed:
-            contentStream.close();
+            contentStream.close();*/
 
             // Save the results and ensure that the document is properly closed:
             document.save( "Hello World.pdf");
