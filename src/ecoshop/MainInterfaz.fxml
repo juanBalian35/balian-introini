@@ -28,7 +28,7 @@
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" layoutX="-10.0" layoutY="23.0" prefHeight="189.0" prefWidth="629.0" spacing="20.0">
+                  <HBox alignment="TOP_CENTER" layoutX="-4.0" layoutY="23.0" prefHeight="189.0" prefWidth="603.0" spacing="20.0">
                      <children>
                         <JFXButton fx:id="botonAdmin" contentDisplay="TOP" layoutX="45.0" layoutY="23.0" onMouseClicked="#clickBotonAdmin" prefHeight="172.0" styleClass="botonAgregar" stylesheets="@frontend/estilos/estilos.css" text="Usuario administrador" textFill="WHITE">
                            <graphic>
@@ -49,9 +49,6 @@
                            </graphic>
                         </JFXButton>
                      </children>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
                   </HBox>
                   <Label layoutX="100.0" layoutY="248.0" prefHeight="56.0" prefWidth="450.0" styleClass="jfx-controles" stylesheets="@frontend/estilos/estilos.css" text="Este panel no es un login, se utiliza solo en el  inicio para poder seleccionar desde que tipo de usuario se quiere utilizar la app. " wrapText="true" />
                   <ImageView fitHeight="50.0" fitWidth="44.0" layoutX="45.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">

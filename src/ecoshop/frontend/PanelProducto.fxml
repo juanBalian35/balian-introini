@@ -15,11 +15,11 @@
    <children>
       <Pane fx:id="paneFondo" layoutX="8.0" layoutY="11.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10;">
          <children>
-            <Pane fx:id="paneSecundario" layoutY="55.0" maxHeight="165.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 0 0 10 10;" visible="false">
+            <Pane fx:id="paneSecundario" layoutY="55.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 0 0 10 10;" visible="false">
                <children>
-                  <BorderPane maxHeight="165.0" prefWidth="230.0" styleClass="barra-abajo-abierta" stylesheets="@estilos/estilos.css">
+                  <BorderPane prefWidth="230.0" styleClass="barra-abajo-abierta" stylesheets="@estilos/estilos.css">
                      <top>
-                        <Label fx:id="lblMaterial" maxWidth="277.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="" wrapText="true" BorderPane.alignment="CENTER_LEFT">
+                        <Label fx:id="lblMaterial" maxWidth="277.0" styleClass="jfx-controles" stylesheets="@estilos/estilos.css" text="" BorderPane.alignment="CENTER_LEFT">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
@@ -106,7 +106,7 @@
                   </BorderPane>
                </children>
             </VBox>
-            <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="183.0" layoutY="136.0" prefHeight="40.0" prefWidth="40.0" ripplerFill="#41e832" style="-fx-background-color: #A5D268; -fx-background-radius: 50;">
+            <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="182.0" layoutY="130.0" prefHeight="40.0" prefWidth="40.0" ripplerFill="#41e832" style="-fx-background-color: #A5D268; -fx-background-radius: 50;">
                <graphic>
                   <ImageView fitHeight="42.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
