@@ -182,7 +182,7 @@ public class PuntosDeVentaController implements Initializable {
         }
     }
     
-    class MyBrowser extends Pane {
+    private class MyBrowser extends Pane {
         WebEngine webEngine = webView.getEngine();
 
         public MyBrowser() {

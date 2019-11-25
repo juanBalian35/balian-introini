@@ -65,22 +65,26 @@ public class PanelProductoController implements Initializable {
    @FXML private Label lblPrecio;
    @FXML private Label lblNombre;
    @FXML private Label lblMaterial;
+   
+   @FXML private Pane paneDescuento;
+   @FXML private Label lblDescuento;
+  
       
    private StringProperty lblDescripcionProperty = new SimpleStringProperty();
    private StringProperty lblPrecioProperty = new SimpleStringProperty();
    private StringProperty lblNombreProperty = new SimpleStringProperty();
    private StringProperty lblMaterialProperty = new SimpleStringProperty();
+   private StringProperty lblDescuentoProperty = new SimpleStringProperty();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
         lblDescripcion.textProperty().bind(lblDescripcionProperty);
         lblPrecio.textProperty().bind(lblPrecioProperty);
         lblNombre.textProperty().bind(lblNombreProperty);
         lblMaterial.textProperty().bind(lblMaterialProperty);
+        lblDescuento.textProperty().bind(lblDescuentoProperty);
         
         BackgroundImage myBI= new BackgroundImage(new Image(getClass().getResourceAsStream("recursos/imagenes/chia.jpg")),
             BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -94,7 +98,6 @@ public class PanelProductoController implements Initializable {
                 System.out.println("aaaa " + n);
             }
         });
-
     }    
     
     @FXML
@@ -104,12 +107,12 @@ public class PanelProductoController implements Initializable {
         //paneFondo.setPrefHeight(430);
         if(paneSecundario.isVisible()){
              
-           tt.setToY(10);
+           tt.setToY(120);
            tt.play();
           // paneFondo.setPrefHeight(220);
             tt.setOnFinished((ActionEvent evento) -> {
             paneSecundario.setVisible(false);
-           paneFondot.setPrefHeight(220);
+           paneFondot.setPrefHeight(320);
            botonVerMas.getStyleClass().remove("boton-abajo-cerrada");
         barraAbajo.getStyleClass().remove("barra-abajo-cerrada");
            botonVerMas.getStyleClass().add("boton-abajo-abierto");
@@ -119,13 +122,13 @@ public class PanelProductoController implements Initializable {
            
         }else{
         paneSecundario.setVisible(true);
-        tt.setToY(164);
+        tt.setToY(130);
         tt.play();
         botonVerMas.getStyleClass().remove("boton-abajo-abierto");
         barraAbajo.getStyleClass().remove("barra-abajo-abierta");
         botonVerMas.getStyleClass().add("boton-abajo-cerrada");
         barraAbajo.getStyleClass().add("barra-abajo-cerrada");
-        paneFondot.setPrefHeight(220 + paneSecundario.getHeight());
+        paneFondot.setPrefHeight(320 + paneSecundario.getHeight());
         // Hay que agrandar la ventana a tamaño pane fondo + tamaño sombra de ventana
       //  paneFondo.getScene().getWindow().setHeight(465);
         }
@@ -134,8 +137,6 @@ public class PanelProductoController implements Initializable {
     private Producto producto;
     
     public void setProducto(Producto producto){
-        this.producto = producto;
-        
         lblDescripcionProperty.setValue(producto.getDescripcion());
         lblPrecioProperty.setValue("$ " + producto.getPrecio());
         lblNombreProperty.setValue(producto.getNombre());
@@ -149,11 +150,14 @@ public class PanelProductoController implements Initializable {
             image = ImagenesAuxiliar.archivoAImagen(f);
         }
         BackgroundImage myBI = new BackgroundImage(image,
-            BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+            BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER,
             new BackgroundSize(100, 100,true, true, true,true));
 
         lblMaterialProperty.setValue("•" + producto.getMaterial());
         paneImagen.setBackground(new Background(myBI));
+        
+        paneDescuento.setVisible(producto.getDescuento() != 0);
+        lblDescuentoProperty.set(producto.getDescuento() + "%");
     }
     
     @FXML

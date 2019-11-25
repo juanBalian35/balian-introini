@@ -278,8 +278,7 @@ public class AdminProductosController implements Initializable {
     
     @FXML
     private void clickBotonAgregarProducto(MouseEvent event){
-       Toast.show("El producto se agregó correctamente", "OK", 5, label);
-
+        Toast.show("El producto se agregó correctamente", "OK", 5, label);
 
         boolean idValida = TBId.validate();
         boolean nombreValido = TBNombre.validate();
@@ -295,6 +294,7 @@ public class AdminProductosController implements Initializable {
         nuevo.put("material", TBMaterial.getText());
         nuevo.put("precio", TBPrecio.getText().substring(4));
         nuevo.put("descripcion", TBDescripcion.getText());
+        nuevo.put("descuento", "0");
         
         String rutaImagen =  "";
         if(imagenSeleccionada)

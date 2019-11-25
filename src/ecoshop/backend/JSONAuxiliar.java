@@ -170,6 +170,7 @@ public class JSONAuxiliar {
             al = procesarJSONArray(a,convertidor);
         }
         catch(Exception e){
+            e.printStackTrace();
         }
         
         return al;

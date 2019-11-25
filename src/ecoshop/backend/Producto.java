@@ -19,18 +19,32 @@ public class Producto {
     private String imagen;
     private String nombre;
     private ArrayList<Integer> envases;
+    private int descuento;
    
+
+    
     public Producto(){
-        this(-1,-1,"","","","");
+        this(-1,-1,"","","","",0);
     }
     
-    public Producto(int id, double precio, String nombre, String material, String descripcion, String imagen) {
+    public Producto(int id, double precio, String nombre, 
+            String material, String descripcion, String image,
+            int descuento){
         this.id = id;
         this.precio = precio;
         this.material = material;
         this.descripcion = descripcion;
         this.imagen= imagen;
         this.envases= new ArrayList();
+        this.descuento = descuento;
+    }
+    
+    public int getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(int descuento) {
+        this.descuento = descuento;
     }
     
     public String getNombre() {
@@ -120,6 +134,9 @@ public class Producto {
                     }
                     
                     producto.setEnvases(al);
+                    break;
+                case "descuento":
+                    producto.setDescuento(Integer.parseInt((String)entry.getValue()));
                     break;
                 default:
                     throw new IllegalArgumentException("Argumento invalido en entry set");

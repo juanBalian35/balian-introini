@@ -132,21 +132,14 @@ public class InterfazUsuarioController implements Initializable {
     
     @FXML
     private void clickBotonPuntosDeVenta(MouseEvent event) {
+        cargarPane(panePuntosDeVenta, "PanelMapaUsuario.fxml");
         controlarClick(botonPuntosDeVenta, panePuntosDeVenta);
     }
-    
-   
     
     @FXML
     private void clickBotonPreCompras(MouseEvent event) {
         controlarClick(botonPreCompras, panePreCompras);
     }
-   
-    
-  
-    
-     
- 
     
     /**
      * @param boton boton recien clickeado

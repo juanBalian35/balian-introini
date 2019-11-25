@@ -11,11 +11,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane fx:id="paneFondot" prefWidth="250.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PanelProductoController">
+<Pane fx:id="paneFondot" prefHeight="333.0" prefWidth="251.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecoshop.frontend.PanelProductoController">
    <children>
       <Pane fx:id="paneFondo" layoutX="8.0" layoutY="11.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 10;">
          <children>
-            <Pane fx:id="paneSecundario" layoutY="55.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 0 0 10 10;" visible="false">
+            <Pane fx:id="paneSecundario" layoutY="191.0" prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 0 0 10 10;" visible="false">
                <children>
                   <BorderPane prefWidth="230.0" styleClass="barra-abajo-abierta" stylesheets="@estilos/estilos.css">
                      <top>
@@ -55,11 +55,11 @@
                   </BorderPane>
                </children>
             </Pane>
-            <VBox prefHeight="219.0" prefWidth="230.0">
+            <VBox prefHeight="322.0" prefWidth="230.0">
                <children>
                   <BorderPane>
                      <center>
-                        <Pane fx:id="paneImagen" prefHeight="140.0" prefWidth="260.0" BorderPane.alignment="CENTER" />
+                        <Pane fx:id="paneImagen" prefHeight="230.0" prefWidth="230.0" BorderPane.alignment="CENTER" />
                      </center>
                      <bottom>
                         <BorderPane fx:id="barraAbajo" prefHeight="38.0" prefWidth="260.0" styleClass="barra-abajo-abierta" stylesheets="@estilos/estilos.css" BorderPane.alignment="CENTER">
@@ -90,9 +90,9 @@
                         </BorderPane>
                      </bottom>
                      <top>
-                        <StackPane alignment="CENTER_LEFT" prefHeight="46.0" BorderPane.alignment="CENTER">
+                        <StackPane alignment="CENTER_LEFT" maxWidth="188.0" prefHeight="46.0" BorderPane.alignment="CENTER_LEFT">
                            <children>
-                              <Label fx:id="lblNombre" graphicTextGap="0.0" maxWidth="245.0" prefWidth="245.0" stylesheets="@estilos/estilos.css" text="Semillas de Chía" BorderPane.alignment="CENTER">
+                              <Label fx:id="lblNombre" graphicTextGap="0.0" maxWidth="230.0" prefWidth="230.0" stylesheets="@estilos/estilos.css" text="Semillas de Chía lala" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font name="Roboto" size="22.0" />
                                  </font>
@@ -106,9 +106,9 @@
                   </BorderPane>
                </children>
             </VBox>
-            <JFXButton onAction="#agregarACarrito" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="182.0" layoutY="130.0" prefHeight="40.0" prefWidth="40.0" ripplerFill="#41e832" style="-fx-background-color: #A5D268; -fx-background-radius: 50;">
+            <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="170.0" layoutY="215.0" prefHeight="57.0" prefWidth="57.0" ripplerFill="#41e832" style="-fx-background-color: #A5D268; -fx-background-radius: 50;">
                <graphic>
-                  <ImageView fitHeight="42.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@recursos/002-cart-1.png" />
                      </image>
@@ -118,6 +118,27 @@
                   <DropShadow color="#0000009c" height="10.0" radius="4.5" spread="0.02" width="10.0" />
                </effect>
             </JFXButton>
+            <Pane fx:id="paneDescuento" layoutX="188.0" layoutY="4.0">
+               <children>
+                  <ImageView fitHeight="77.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@recursos/sale.png" />
+                     </image>
+                  </ImageView>
+                  <StackPane layoutY="23.0" prefHeight="21.0" prefWidth="49.0">
+                     <children>
+                        <Label fx:id="lblDescuento" layoutX="11.0" layoutY="25.0" prefHeight="21.0" prefWidth="28.0" text="15%" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Roboto Light" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </StackPane>
+               </children>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" color="#00000091" height="14.93" radius="6.205" width="11.89" />
+               </effect>
+            </Pane>
          </children>
          <effect>
             <DropShadow color="#00000040" height="20.0" radius="9.5" width="20.0" />
