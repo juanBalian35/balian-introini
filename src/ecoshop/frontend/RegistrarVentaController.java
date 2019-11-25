@@ -26,11 +26,15 @@ import ecoshop.backend.JSONAuxiliar;
 import ecoshop.backend.Producto;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -38,6 +42,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -65,6 +70,8 @@ public class RegistrarVentaController implements Initializable {
     @FXML private JFXTextField TFTotal;
     @FXML private JFXTextField TFEmail;
     @FXML private JFXTextField TFNombre;
+            
+    @FXML private VBox vBoxRegistrar;
     
     /**
      * Initializes the controller class.
@@ -160,22 +167,32 @@ public class RegistrarVentaController implements Initializable {
         tableViewBuscar.getItems().setAll(productos);
     }
     
-    ArrayList<C> ces = new ArrayList<>();
-    
     @FXML
     private void clickBotonAgregarProducto(ActionEvent event){
         paneDetallesVenta.setDisable(false);
         
         Producto producto = tableViewBuscar.getSelectionModel().getSelectedItem();
-
+        /*s
         boolean yaExistia = false;
         for(int i = 0 ; i < ces.size(); ++i){
             if(ces.get(i).id == producto.getId()){
                 ces.get(i).setCantidad(ces.get(i).cantidad + 1);
                 yaExistia = true;
             }
+        }*/
+        Pane panelNuevo;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PanelProductoCarrito.fxml")); 
+            panelNuevo = fxmlLoader.load();
+            PanelProductoCarritoController controller = fxmlLoader.<PanelProductoCarritoController>getController();
+            controller.setProducto(producto);
+            //controller.clickBotonSalir();
+            vBoxRegistrar.getChildren().add(panelNuevo);
+        } catch (IOException ex) {
+            Logger.getLogger(EstadisticasController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        /*
         if(!yaExistia){
             C c = new C(producto.getId(),producto.getPrecio(),producto.getMaterial(),
                 producto.getDescripcion(),producto.getImagen(),producto.getNombre(),
@@ -185,7 +202,7 @@ public class RegistrarVentaController implements Initializable {
         
         double total = this.ces.stream().mapToDouble(x -> x.precioTotal).sum();
         
-        TFTotal.setText(total + "");
+        TFTotal.setText(total + "");*/
         //tableViewProductos.getItems().setAll(ces);
     }
     
@@ -289,105 +306,6 @@ public class RegistrarVentaController implements Initializable {
            e.printStackTrace();
         } catch (FileNotFoundException e){
            e.printStackTrace();
-        }
-    }
-    
-    public class C{
-        private int id;
-        private double precio;
-        private String material;
-        private String descripcion;
-        private String imagen;
-        private String nombre;
-        private ArrayList<Integer> envases;
-        private int cantidad;
-        private double precioTotal;
-        
-        public C(int id, double precio, String material, String descripcion,
-                String imagen,String nombre, ArrayList<Integer> envases){
-            this.id = id;
-            this.precio = precio;
-            this.material = material;
-            this.descripcion = descripcion;
-            this.imagen = imagen;
-            this.nombre = nombre;
-            this.envases = envases;
-            
-            this.cantidad = 1;
-            this.precioTotal = precio;
-        }
-        
-        public void setCantidad(int c){
-            this.cantidad = c;
-            this.precioTotal = precio * c;
-        }
-        
-        public int getCantidad(){
-            return this.cantidad;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public double getPrecio() {
-            return precio;
-        }
-
-        public void setPrecio(double precio) {
-            this.precio = precio;
-        }
-
-        public String getMaterial() {
-            return material;
-        }
-
-        public void setMaterial(String material) {
-            this.material = material;
-        }
-
-        public String getDescripcion() {
-            return descripcion;
-        }
-
-        public void setDescripcion(String descripcion) {
-            this.descripcion = descripcion;
-        }
-
-        public String getImagen() {
-            return imagen;
-        }
-
-        public void setImagen(String imagen) {
-            this.imagen = imagen;
-        }
-
-        public String getNombre() {
-            return nombre;
-        }
-
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
-
-        public ArrayList<Integer> getEnvases() {
-            return envases;
-        }
-
-        public void setEnvases(ArrayList<Integer> envases) {
-            this.envases = envases;
-        }
-
-        public double getPrecioTotal() {
-            return precioTotal;
-        }
-
-        public void setPrecioTotal(double precioTotal) {
-            this.precioTotal = precioTotal;
         }
     }
 }

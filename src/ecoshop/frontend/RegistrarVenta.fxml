@@ -162,7 +162,7 @@
                                              <children>
                                                 <ScrollPane fitToWidth="true" layoutY="51.0" pannable="true" prefHeight="211.0" prefWidth="655.0" styleClass="fondo" stylesheets="@estilos/estilos.css">
                                                    <content>
-                                                      <VBox fx:id="COL1" spacing="2.0" styleClass="fondo" stylesheets="@estilos/estilos.css" />
+                                                      <VBox fx:id="vBoxRegistrar" spacing="2.0" styleClass="fondo" stylesheets="@estilos/estilos.css" />
                                                    </content>
                                                 </ScrollPane>
                                                 <Pane layoutX="7.0" prefHeight="49.0" prefWidth="625.0">

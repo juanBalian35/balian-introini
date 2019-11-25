@@ -11,13 +11,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="633.0" styleClass="fondo-carrito" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
+      minWidth="-Infinity" prefHeight="128.0" prefWidth="633.0" 
+      styleClass="fondo-carrito" stylesheets="@estilos/estilos.css" 
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ecoshop.frontend.PanelProductoCarritoController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="635.0" spacing="7.0" styleClass="fondo-carrito" stylesheets="@estilos/estilos.css">
          <children>
             <StackPane>
                <children>
-                  <ImageView fitHeight="128.0" fitWidth="128.0" pickOnBounds="true">
+                  <ImageView fx:id="imageView" fitHeight="128.0" fitWidth="128.0" pickOnBounds="true">
                      <HBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </HBox.margin>
@@ -29,17 +33,17 @@
             </StackPane>
             <VBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="163.0" spacing="7.0">
                <children>
-                  <Label stylesheets="@estilos/estilos.css" text="Semillas de chia 100g" wrapText="true">
+                  <Label fx:id="lblNombre" stylesheets="@estilos/estilos.css" text="Semillas de chia 100g" wrapText="true">
                      <font>
                         <Font name="Roboto Light" size="21.0" />
                      </font>
                   </Label>
-                  <Label styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="#ID: 121671" textFill="#8a8484" wrapText="true">
+                  <Label fx:id="lblId" styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="#ID: 121671" textFill="#8a8484" wrapText="true">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font>
                   </Label>
-                  <Label styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="Organico, reciclado" textFill="#8a8484" wrapText="true">
+                  <Label fx:id="lblMaterial" styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="Organico, reciclado" textFill="#8a8484" wrapText="true">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font>
@@ -48,7 +52,7 @@
             </VBox>
             <HBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="197.0" spacing="10.0">
                <children>
-                  <Label styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="\$1233">
+                  <Label fx:id="lblPrecioUnitario" styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="\$1233">
                      <font>
                         <Font name="Roboto" size="22.0" />
                      </font>
@@ -61,7 +65,7 @@
                         <Font name="Roboto" size="22.0" />
                      </font>
                   </Label>
-                  <JFXTextField maxWidth="25.0" prefHeight="27.0" prefWidth="62.0" styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="2">
+                  <JFXTextField fx:id="TFCant" maxWidth="25.0" prefHeight="27.0" prefWidth="62.0" styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="1">
                      <tooltip>
                         <Tooltip styleClass="tooltips-menu" text="Cantidad" />
                      </tooltip></JFXTextField>
@@ -70,7 +74,7 @@
                         <Font name="Roboto" size="22.0" />
                      </font>
                   </Label>
-                  <Label styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="\$2466">
+                  <Label fx:id="lblPrecioTotal" styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" text="\$2466">
                      <font>
                         <Font name="Roboto" size="22.0" />
                      </font>
@@ -83,7 +87,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </HBox>
-             <JFXComboBox prefHeight="27.0" promptText="Envase" styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" visibleRowCount="4">
+             <JFXComboBox fx:id="boxEnvases" prefHeight="27.0" promptText="Envase" styleClass="jfx-controles-carrito" stylesheets="@estilos/estilos.css" visibleRowCount="4">
                <HBox.margin>
                   <Insets left="-20.0" />
                </HBox.margin>
@@ -91,7 +95,7 @@
                   <Tooltip styleClass="tooltips-menu" text="Envase " />
                </tooltip>
             </JFXComboBox>
-            <JFXButton contentDisplay="GRAPHIC_ONLY">
+            <JFXButton fx:id="botonQuit" onAction="#clickBotonQuit" contentDisplay="GRAPHIC_ONLY">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
