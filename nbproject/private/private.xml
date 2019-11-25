@@ -3,20 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/AdminEnvasesController.java</file>
             <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/backend/Producto.java</file>
+            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/backend/RegistroDeVenta.java</file>
+            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/Toast.java</file>
             <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/backend/Envase.java</file>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/backend/JSONAuxiliar.java</file>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/estilos/estilos.css</file>
+            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/PuntosDeVenta.fxml</file>
             <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/AdminProductos.fxml</file>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/RepetidoValidator.java</file>
             <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/Main.java</file>
+            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/backend/PuntoDeVenta.java</file>
             <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/PuntosDeVentaController.java</file>
             <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/AdminProductosController.java</file>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/EstadisticasController.java</file>
+            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/RegistrarVentaController.java</file>
             <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/backend/ImagenesAuxiliar.java</file>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/AdminEnvases.fxml</file>
-            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/InterfazController.java</file>
+            <file>file:/C:/Users/Juanchi/Desktop/balian-introini/src/ecoshop/frontend/RegistrarVenta.fxml</file>
         </group>
     </open-files>
 </project-private>
