@@ -18,6 +18,8 @@ import ecoshop.backend.Envase;
 import ecoshop.backend.ImagenesAuxiliar;
 import ecoshop.backend.JSONAuxiliar;
 import ecoshop.backend.Producto;
+import ecoshop.frontend.RepetidoValidator;
+import ecoshop.frontend.Toast;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
@@ -325,7 +327,7 @@ public class AdminProductosController implements Initializable {
         TBPrecio.setText("    ");
         TBDescripcion.clear();
         
-        listViewEnvases.selectionModelProperty().set(null);
+        listViewEnvases.getSelectionModel().clearSelection();
         
         imagenSeleccionada = false;
         try{
