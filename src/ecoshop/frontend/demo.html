@@ -16,8 +16,6 @@
     <body>
         <div id="mapcanvas">
             <script type="text/javascript">
-                //key=AIzaSyBjRrRt_TFaEVBf33hOTgCfLUJo_Q9zMag
-
                 document.map = new google.maps.Map(document.getElementById("mapcanvas"));
                 
                 var Options = {
@@ -28,18 +26,9 @@
                 var map = new google.maps.Map(document.getElementById("mapcanvas"), Options);
                 
                 var markers = [];
+                var ids = [];
                 
-                /*for(var i = 0; i < positions.length; ++i){
-                    new google.maps.Marker({
-                        position: positions[i],
-                        map: map,
-                        draggable: false,
-                        title: "",
-                        autoPan: true
-                    });
-                }*/
-                
-                document.goToLocation = function(direccion) {
+                document.goToLocation = function(direccion, id, inicializando) {
                     geocoder.geocode( { 'address': direccion}, function(results, status) {
                         if (status === 'OK') {
                           map.setCenter(results[0].geometry.location);
@@ -47,31 +36,26 @@
                               map: map,
                               position: results[0].geometry.location
                           }));
-                          alert('snoop dogg');
+                          ids.push(id);
+                          
+                          if(inicializando == 0)
+                            alert("AGREGADO_CORRECTAMENTE " + id)
                         } else {
-                          alert('Geocode was not successful for the following reason: ' + status);
+                          alert('GEOCODING_ERROR:  ' + status);
                         }
                     });
                 }
+                
+                document.borrar = function(id){
+                    var i = ids.indexOf(id);
+                    if(i != -1){
+                        ids.splice(i,1)
+                        markers[i].setMap(null)
+                        markers.splice(i,1);
+                    }
+                }
             
                 geocoder = new google.maps.Geocoder();  
-                /*function codeAddress() {
-                  var address = 'Coronel Peiran 1325, Sauce, Canelones, Uruguay';
-                  geocoder.geocode( { 'address': address}, function(results, status) {
-                    if (status == 'OK') {
-                      map.setCenter(results[0].geometry.location);
-                      var marker = new google.maps.Marker({
-                          map: map,
-                          position: results[0].geometry.location
-                      });
-                      alert('snoop dogg');
-                    } else {
-                      alert('Geocode was not successful for the following reason: ' + status);
-                    }
-                  });
-                }
-                
-                codeAddress();*/
             </script>
         </div>
     </body>

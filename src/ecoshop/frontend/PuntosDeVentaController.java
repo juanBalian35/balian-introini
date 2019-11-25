@@ -146,7 +146,8 @@ public class PuntosDeVentaController implements Initializable {
         if(actualizarMapa){
             for(int i = 0 ; i < puntos.size(); ++i){
                 agregarMarcador(puntos.get(i).getCalle(), puntos.get(i).getNumero(), 
-                        puntos.get(i).getCiudad(), puntos.get(i).getDepartamento());
+                        puntos.get(i).getCiudad(), puntos.get(i).getDepartamento(),
+                        puntos.get(i).getId(), true);
             }
         }
         validadorRepeticionId.setExistentes((ArrayList<String>)(puntos.stream().map(x -> x.getId() + "").collect(Collectors.toList())));
@@ -191,6 +192,27 @@ public class PuntosDeVentaController implements Initializable {
                 @Override
                 public void handle(WebEvent<String> e) {
                     System.out.println(e.toString());
+                    
+                    if(e.getData().contains("GEOCODING_ERROR")){
+                        Toast.show("Error creando punto de venta", "OK", 5, TFId);
+                    }
+                    else if (e.getData().contains("AGREGADO_CORRECTAMENTE")){
+                        String departamento = ((Label)BoxDepartamento.getValue()).getText();
+                        JSONObject puntoDeVenta = new JSONObject();
+                        puntoDeVenta.put("id", TFId.getText());
+                        puntoDeVenta.put("nombre", TFNombre.getText());
+                        puntoDeVenta.put("departamento", departamento);
+                        puntoDeVenta.put("ciudad", TFCiudad.getText());
+                        puntoDeVenta.put("calle", TFCalle.getText());
+                        puntoDeVenta.put("numero", TFNumero.getText());
+
+                        JSONAuxiliar.agregar(puntoDeVenta, NOMBRE_JSON);
+
+                        actualizarDatos(false);
+                        limpiarCampos();
+                        
+                        Toast.show("Punto de venta creado exitosamente", "OK", 5, TFId);
+                    }
                 }
             });
 
@@ -226,19 +248,8 @@ public class PuntosDeVentaController implements Initializable {
         
         String departamento = ((Label)BoxDepartamento.getValue()).getText();
         
-        agregarMarcador(TFCalle.getText(), TFNumero.getText(), TFCiudad.getText(), departamento);
-                
-        JSONObject puntoDeVenta = new JSONObject();
-        puntoDeVenta.put("id", TFId.getText());
-        puntoDeVenta.put("nombre", TFNombre.getText());
-        puntoDeVenta.put("departamento", departamento);
-        puntoDeVenta.put("ciudad", TFCiudad.getText());
-        puntoDeVenta.put("calle", TFCalle.getText());
-        puntoDeVenta.put("numero", TFNumero.getText());
-        
-        JSONAuxiliar.agregar(puntoDeVenta, NOMBRE_JSON);
-        
-        actualizarDatos(false);
+        agregarMarcador(TFCalle.getText(), TFNumero.getText(), 
+                TFCiudad.getText(), departamento, Integer.parseInt(TFId.getText()), false);
     }
     
     @FXML
@@ -257,23 +268,41 @@ public class PuntosDeVentaController implements Initializable {
     }
     
     private void agregarMarcador(String calle, String numero, 
-            String ciudad, String departamento){
+            String ciudad, String departamento, int id, boolean actualizando){
         String direccion = calle + " " + numero + ", " + ciudad 
                 + ", " + departamento;
         
-        webView.getEngine().executeScript("" +
+        String s = "" +
             "window.direccion = '" + direccion + "';" +
-            "document.goToLocation(window.direccion);"
-        );
+            "window.id = " + id + "; " +
+            "window.actualizando = " + (actualizando ? "1" : "0") + "; " +
+            "document.goToLocation(window.direccion, window.id, window.actualizando);";
+        
+        webView.getEngine().executeScript(s);
     }
     
     @FXML
     private void eliminarPunto(ActionEvent event){
         PuntoDeVenta punto = tableViewBorrar.getSelectionModel().getSelectedItem();
         JSONObject o = (JSONObject) JSONAuxiliar.conseguirConColumna(punto.getId() + "", "id", NOMBRE_JSON, true).get(0);
-        JSONAuxiliar.borrar(NOMBRE_JSON, o);
         
+        webView.getEngine().executeScript("" +
+            "window.id = " + o.get("id") + "; " +
+            "document.borrar(window.id);"
+        );
+        
+        JSONAuxiliar.borrar(NOMBRE_JSON, o);
+
+        Toast.show("Punto de venta eliminado.", "OK", 5, TFId);
         actualizarDatos(true);
     }
 
+    private void limpiarCampos(){
+        TFId.clear();
+        TFNombre.clear();
+        TFCalle.clear();
+        TFCiudad.clear();
+        TFNumero.clear();
+        BoxDepartamento.getSelectionModel().clearSelection();
+    }
 }
