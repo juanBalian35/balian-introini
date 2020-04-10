@@ -1,3 +1,3 @@
-# Aplicacion JAVA de escritorio de una tienda ecologica
+# Java desktop aplication using JavaFX for an ecological store
 
-[Video de demostración del proyecto](https://drive.google.com/file/d/10kdz-DQJLFyUJiiisPhTj4fJGvubg4NT/preview)
+[Video demostration of the proyect](https://drive.google.com/file/d/10kdz-DQJLFyUJiiisPhTj4fJGvubg4NT/preview)
